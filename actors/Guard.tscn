@@ -1,0 +1,40 @@
+[gd_scene load_steps=7 format=3 uid="uid://x3oke4akpoq3"]
+
+[ext_resource type="Script" path="res://scripts/Enemy.cs" id="1_eupng"]
+[ext_resource type="Texture2D" uid="uid://dypa55o5kx44h" path="res://sprites/miguel.png" id="3_fvic6"]
+[ext_resource type="PackedScene" uid="uid://b7bfvq7sekcrl" path="res://actors/Ghost.tscn" id="3_wek1m"]
+[ext_resource type="Shader" path="res://shaders/alien.gdshader" id="4_8y5fp"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dk6jk"]
+shader = ExtResource("4_8y5fp")
+shader_parameter/flash = false
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5n0t0"]
+radius = 45.0
+height = 200.0
+
+[node name="Guard" type="AnimatableBody2D"]
+material = SubResource("ShaderMaterial_dk6jk")
+collision_layer = 2
+collision_mask = 15
+sync_to_physics = false
+script = ExtResource("1_eupng")
+health = 3.0
+ghostScene = ExtResource("3_wek1m")
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+position = Vector2(0, -100)
+shape = SubResource("CapsuleShape2D_5n0t0")
+
+[node name="Miguel" type="Sprite2D" parent="."]
+use_parent_material = true
+position = Vector2(0, -100)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("3_fvic6")
+
+[node name="Sight" type="RayCast2D" parent="."]
+position = Vector2(0, -160)
+target_position = Vector2(500, 0)
+
+[node name="FloorCheck" type="RayCast2D" parent="."]
+target_position = Vector2(0, 2)

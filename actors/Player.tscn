@@ -1,0 +1,31 @@
+[gd_scene load_steps=7 format=3 uid="uid://bxs6cwm0348kr"]
+
+[ext_resource type="Script" path="res://scripts/Player.cs" id="1_d7cxj"]
+[ext_resource type="Shader" path="res://shaders/character_shader.gdshader" id="1_k8efb"]
+[ext_resource type="Texture2D" uid="uid://dypa55o5kx44h" path="res://sprites/miguel.png" id="1_wl8sn"]
+[ext_resource type="PackedScene" uid="uid://cn5ddhke3dmds" path="res://actors/Bullet.tscn" id="2_dyohu"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jtmsy"]
+shader = ExtResource("1_k8efb")
+shader_parameter/flash = false
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5n0t0"]
+radius = 45.0
+height = 200.0
+
+[node name="Player" type="CharacterBody2D"]
+material = SubResource("ShaderMaterial_jtmsy")
+collision_layer = 4
+collision_mask = 15
+script = ExtResource("1_d7cxj")
+bulletScene = ExtResource("2_dyohu")
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+position = Vector2(0, -100)
+shape = SubResource("CapsuleShape2D_5n0t0")
+
+[node name="Miguel" type="Sprite2D" parent="."]
+use_parent_material = true
+position = Vector2(0, -100)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_wl8sn")

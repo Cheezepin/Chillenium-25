@@ -1,0 +1,45 @@
+[gd_scene load_steps=5 format=3 uid="uid://bnpoyncl0lo01"]
+
+[ext_resource type="Script" path="res://scripts/ui/Credits.cs" id="1_17mrq"]
+[ext_resource type="Texture2D" uid="uid://pk6sk65is6co" path="res://ui/mainmenu/quitbutton.png" id="3_m1ydv"]
+[ext_resource type="Texture2D" uid="uid://iyexf1mumkf3" path="res://ui/mainmenu/quitbutton_c.png" id="4_fbyp0"]
+[ext_resource type="Texture2D" uid="uid://kjnytgs5stre" path="res://ui/mainmenu/quitbutton_h.png" id="5_6a88n"]
+
+[node name="Credits" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_17mrq")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 553.0
+offset_top = 102.0
+offset_right = 921.0
+offset_bottom = 489.0
+theme_override_font_sizes/normal_font_size = 30
+text = "Programmers:
+Jason Lev
+Kyle Lev
+
+Sound Engineer:
+Kyle Lev
+
+Artists:
+Kayla McHaney
+Karen Lopez
+Emily Gonzalez"
+
+[node name="Return" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 529.0
+offset_top = 528.0
+offset_right = 1381.0
+offset_bottom = 679.0
+scale = Vector2(0.333, 0.333)
+texture_normal = ExtResource("3_m1ydv")
+texture_pressed = ExtResource("4_fbyp0")
+texture_hover = ExtResource("5_6a88n")

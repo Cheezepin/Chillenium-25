@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://c5spujd2jed6i"]
+
+[ext_resource type="Script" path="res://scripts/Transitions.cs" id="1_eeemh"]
+[ext_resource type="Shader" path="res://shaders/dot_transition.gdshader" id="1_enq21"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ber1r"]
+shader = ExtResource("1_enq21")
+shader_parameter/radius = 0.02
+shader_parameter/circlesX = 15.0
+shader_parameter/circlesY = 15.0
+
+[node name="Transitions" type="CanvasLayer"]
+layer = 128
+script = ExtResource("1_eeemh")
+
+[node name="DotFade" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_ber1r")
+offset_left = -128.0
+offset_top = -483.0
+offset_right = 2072.0
+offset_bottom = 1717.0
+rotation = 0.0872665
+pivot_offset = Vector2(1100, 1100)
+color = Color(0, 0, 0, 1)
