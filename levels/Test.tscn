@@ -1,10 +1,9 @@
-[gd_scene load_steps=6 format=4 uid="uid://ch28bmvjhowbl"]
+[gd_scene load_steps=5 format=4 uid="uid://ch28bmvjhowbl"]
 
 [ext_resource type="Script" path="res://scripts/Level.cs" id="1_f6kxx"]
 [ext_resource type="Script" path="res://scripts/Camera.cs" id="1_l34xl"]
-[ext_resource type="PackedScene" uid="uid://bxs6cwm0348kr" path="res://actors/Player.tscn" id="1_ssv1b"]
+[ext_resource type="PackedScene" uid="uid://2m60ku0tayym" path="res://actors/Player.tscn" id="1_ssv1b"]
 [ext_resource type="TileSet" uid="uid://dj8650aypd1qy" path="res://tilesets/test.tres" id="2_w04bx"]
-[ext_resource type="PackedScene" uid="uid://x3oke4akpoq3" path="res://actors/Guard.tscn" id="5_0kk3k"]
 
 [node name="Test" type="Node2D"]
 script = ExtResource("1_f6kxx")
@@ -27,6 +26,3 @@ script = ExtResource("1_l34xl")
 position = Vector2(-9, 0)
 collision_layer = 1
 collision_mask = 1
-
-[node name="Guard" parent="." instance=ExtResource("5_0kk3k")]
-position = Vector2(564, 141)

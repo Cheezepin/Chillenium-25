@@ -11,8 +11,8 @@ public partial class Global : Node
 	{
 		// Input.MouseMode = Input.MouseModeEnum.Hidden;
 
-		currentLevel = GD.Load<PackedScene>("levels/" + startSceneName + ".tscn").Instantiate(); //debug level
-		// currentLevel = GD.Load<PackedScene>("ui/MainMenu.tscn").Instantiate();
+		// currentLevel = GD.Load<PackedScene>("levels/" + startSceneName + ".tscn").Instantiate(); //debug level
+		currentLevel = GD.Load<PackedScene>("ui/MainMenu.tscn").Instantiate();
 		GetTree().CurrentScene.AddChild(currentLevel);
 		
 		transitions = (Transitions)GD.Load<PackedScene>("global/Transitions.tscn").Instantiate();

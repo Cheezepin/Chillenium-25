@@ -14,10 +14,18 @@ public partial class Transitions : CanvasLayer
 
 	private ColorRect dotFadeRect;
 	private ShaderMaterial dotFade;
+
+	private ColorRect screenWipeRect;
+	private ShaderMaterial screenWipe;
 	public override void _Ready()
 	{
 		dotFadeRect = GetNode<ColorRect>("DotFade");
 		dotFade = (ShaderMaterial)dotFadeRect.Material;
+		dotFadeRect.Hide();
+
+		screenWipeRect = GetNode<ColorRect>("ScreenWipe");
+		screenWipe = (ShaderMaterial)screenWipeRect.Material;
+		screenWipeRect.Hide();
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -31,9 +39,8 @@ public partial class Transitions : CanvasLayer
 		levelTo = null;
 		toMainMenu = false;
 	}
-	
-	public override void _Process(double delta)
-	{
+
+	private void DotFade(double delta) {
 		dotFadeRect.Show();
 		if(transitionInto) {
 			dotFade.SetShaderParameter("radius", timer / 6.0);
@@ -54,9 +61,36 @@ public partial class Transitions : CanvasLayer
 		}
 	}
 
+	public void ScreenWipe(double delta) {
+		screenWipeRect.Show();
+		if(transitionInto) {
+			screenWipe.SetShaderParameter("progress", timer*2);
+
+			if(timer >= 0.5) {
+				transitionInto = false;
+				transitionFrom = true;
+				timer = 0;
+				LoadNewLevel();
+			}
+			timer += delta;
+		} else if (transitionFrom) {
+			screenWipe.SetShaderParameter("progress", (timer*2) + 1);
+			if(timer >= 0.5) {transitionFrom = false; timer = 0;}
+			timer += delta;
+		} else {
+			screenWipeRect.Hide();
+		}
+	}
+	
+	public override void _Process(double delta)
+	{
+		// DotFade(delta);
+		ScreenWipe(delta);
+	}
+
 	public void ChangeLevel(string nextLevel) {
 		levelTo = nextLevel;
-		timer = 0.02;
+		timer = 0.0;
 		transitionInto = true;
 	}
 
