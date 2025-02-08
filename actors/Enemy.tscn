@@ -87,7 +87,7 @@ target_position = Vector2(0, 20)
 
 [node name="Ding" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_om85j")
-volume_db = -7.964
+volume_db = -13.117
 
 [node name="Hit" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_8c34d")
