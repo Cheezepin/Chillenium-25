@@ -28,6 +28,7 @@ public partial class Card : Sprite2D
 			}
 			Global.transitioningColor = true;
 			Global.transitionLeft = false;
+			Global.switchSound.Play();
 			GD.Print((int)color);
 			QueueFree();
 		}

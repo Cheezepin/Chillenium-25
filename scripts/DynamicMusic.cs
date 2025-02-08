@@ -14,9 +14,11 @@ public partial class DynamicMusic : Node
         {
 			maxVolumes[i] = musicTracks[i].VolumeDb;
 			if(i != 0) musicTracks[i].VolumeDb = -80;
-			musicTracks[i].Play();
+			// musicTracks[i].Play();
         }
 	}
+
+	public bool startedPlaying = false;
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
@@ -27,6 +29,12 @@ public partial class DynamicMusic : Node
 						+ ((Global.colorsUnlocked >> 3) & 1)
 						+ ((Global.colorsUnlocked >> 4) & 1)
 						+ ((Global.colorsUnlocked >> 5) & 1);
+
+		if(!startedPlaying && Global.currBW) {
+			startedPlaying = true;
+			for(int i = 0; i < musicTracks.Length; i++)
+			{musicTracks[i].Play();}
+		} 
 
 		for(int i = 0; i < musicTracks.Length; i++)
         {
