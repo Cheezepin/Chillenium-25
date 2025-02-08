@@ -120,8 +120,8 @@ public partial class Global : Node
 
 		// GD.Print(colorsUnlocked);
 
-		// allColors = true;
-		// currBW = false;
+		allColors = true;
+		currBW = false;
 	}
 
 	public static void AsymptoticApproach(ref float curr, float target, float mult) {
