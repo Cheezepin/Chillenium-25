@@ -22,7 +22,7 @@ shader_parameter/progress = 0.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xokrd"]
 shader = ExtResource("5_2djn7")
-shader_parameter/target_color = Color(0.713726, 1, 1, 1)
+shader_parameter/target_color = Color(1, 1, 1, 1)
 shader_parameter/current_color = Color(1, 1, 1, 1)
 shader_parameter/dotted_tex = ExtResource("8_3seu8")
 
@@ -72,7 +72,7 @@ position = Vector2(-9, 0)
 script = ExtResource("1_l34xl")
 
 [node name="Player" parent="." instance=ExtResource("1_ssv1b")]
-position = Vector2(-9, 0)
+position = Vector2(-585, -8)
 
 [node name="PostProcessing" type="CanvasLayer" parent="."]
 script = ExtResource("8_rgdvr")
@@ -88,7 +88,7 @@ mouse_filter = 1
 material = SubResource("ShaderMaterial_xokrd")
 position = Vector2(1, 0)
 scale = Vector2(0.125, 0.125)
-tile_map_data = PackedByteArray("AAACAAMAAAAAAAAAAAADAAMAAAABAAAAAAAEAAMAAAACAAAAAAAHAAEAAAAAAAAAAAAIAAEAAAABAAAAAAAJAAEAAAACAAAAAAA=")
+tile_map_data = PackedByteArray("AAACAAMAAAAAAAEAAAADAAMAAAABAAEAAAAEAAMAAAACAAEAAAAHAAEAAAAAAAEAAAAIAAEAAAABAAEAAAAJAAEAAAACAAEAAAA=")
 tile_set = SubResource("TileSet_qp3j8")
 script = ExtResource("11_5bxbn")
 targetColor = Color(1, 0, 0, 1)

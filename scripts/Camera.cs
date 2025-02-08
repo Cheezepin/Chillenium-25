@@ -22,12 +22,7 @@ public partial class Camera : Camera2D
 	{
 		Vector2 position = GlobalPosition;
 
-		Vector2 mousePos = (GetViewport().GetMousePosition() / GetViewport().GetVisibleRect().Size);
-		mousePos -= new Vector2(0.5f, 0.5f);
-		mousePos = mousePos.Clamp(-0.5f, 0.5f);
-		mousePos *= 250.0f;
-
-		Vector2 intendedPos = player.GlobalPosition + mousePos + new Vector2(0, -50.0f);
+		Vector2 intendedPos = player.GlobalPosition + new Vector2(0, -50.0f);
 
 		if(shakeTimer > 0) {
 			Vector2 shakeVec = new Vector2(r.NextSingle() - 0.5f, r.NextSingle() - 0.5f)*shakeMagnitude;

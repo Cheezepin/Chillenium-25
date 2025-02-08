@@ -21,6 +21,8 @@ public partial class Enemy : AnimatableBody2D
 	{
 		s = (ShaderMaterial)Material;
 		velocity = Vector2.Zero;
+		velocity.X = 0;
+		velocity.Y = 0;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -35,7 +37,7 @@ public partial class Enemy : AnimatableBody2D
 
 	public override void _PhysicsProcess(double delta)
 	{
-		velocity.X = Mathf.MoveToward(velocity.X, 0, 2500.0f * (float)delta);
+		velocity.X = Mathf.MoveToward(velocity.X, 0, 1500.0f * (float)delta);
 		velocity.Y += gravity * (float)delta;
 		Vector2 xVelVec = new Vector2(velocity.X, 0)*(float)delta; //separation done so horizontal movement is applied without stopping in place
 		Vector2 yVelVec = new Vector2(0, velocity.Y)*(float)delta;
@@ -62,5 +64,13 @@ public partial class Enemy : AnimatableBody2D
 	public void OnJumpedOn() {
 		flashTimer = 0.04;
 		TakeDamage(1.0f);
+	}
+
+	public void _OnHurtboxAreaEntered(Node2D body) {
+		if(body is Hitbox) {
+			flashTimer = 0.04;
+			velocity.X = body.Position.X - Position.X > 0 ? 1000.0f : -1000.0f;
+			TakeDamage(1.0f);
+		}
 	}
 }

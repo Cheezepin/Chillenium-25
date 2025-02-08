@@ -4,10 +4,10 @@ using System;
 public partial class Hurtbox : Area2D
 {
 	// Called when the node enters the scene tree for the first time.
-	public Enemy parent;
+	public Node2D parent;
 	public override void _Ready()
 	{
-		parent = (Enemy)GetParent();
+		parent = (Node2D)GetParent();
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.

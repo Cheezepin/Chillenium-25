@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://2m60ku0tayym"]
+[gd_scene load_steps=16 format=3 uid="uid://2m60ku0tayym"]
 
 [ext_resource type="Script" path="res://scripts/Player.cs" id="1_d7cxj"]
 [ext_resource type="Shader" path="res://shaders/character_shader.gdshader" id="1_k8efb"]
@@ -6,6 +6,8 @@
 [ext_resource type="Script" path="res://scripts/Bullet.cs" id="3_aemv1"]
 [ext_resource type="Texture2D" uid="uid://dbhi4ul60mu0" path="res://sprites/bullet.png" id="4_yej1v"]
 [ext_resource type="Script" path="res://scripts/Footbox.cs" id="6_yyka5"]
+[ext_resource type="Script" path="res://scripts/Hitbox.cs" id="7_h8nb4"]
+[ext_resource type="Script" path="res://scripts/Hurtbox.cs" id="8_njheg"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jtmsy"]
 shader = ExtResource("1_k8efb")
@@ -34,6 +36,13 @@ height = 200.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0ttsu"]
 size = Vector2(90, 46)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5e3ro"]
+size = Vector2(87, 162)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_37mwr"]
+radius = 45.0
+height = 200.0
+
 [node name="Player" type="CharacterBody2D"]
 material = SubResource("ShaderMaterial_jtmsy")
 collision_layer = 4
@@ -58,4 +67,19 @@ script = ExtResource("6_yyka5")
 position = Vector2(1, -7)
 shape = SubResource("RectangleShape2D_0ttsu")
 
+[node name="Hitbox" type="Area2D" parent="."]
+script = ExtResource("7_h8nb4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(69.5, -97)
+shape = SubResource("RectangleShape2D_5e3ro")
+
+[node name="Hurtbox" type="Area2D" parent="."]
+script = ExtResource("8_njheg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(0, -100)
+shape = SubResource("CapsuleShape2D_37mwr")
+
 [connection signal="area_entered" from="Footbox" to="." method="_OnFootboxAreaEntered"]
+[connection signal="area_entered" from="Hurtbox" to="." method="_OnHurtboxAreaEntered"]
