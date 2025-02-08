@@ -17,6 +17,9 @@ public partial class Enemy : AnimatableBody2D
 
 	[Export]public bool canBeJumpedOn = true;
 
+	[Export] public AudioStreamPlayer ding;
+	[Export] public AudioStreamPlayer hitSound;
+
 	private double timer = 0;
 
 	public override void _Ready()
@@ -83,6 +86,8 @@ public partial class Enemy : AnimatableBody2D
 		flashTimer = 0.04;
 		TakeDamage(1.0f);
 		GlobalScale = new Vector2(GlobalScale.X, 0.5f);
+		ding.Play();
+		hitSound.Play();
 	}
 
 	public void _OnHurtboxAreaEntered(Node2D body) {

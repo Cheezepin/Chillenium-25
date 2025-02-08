@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://djsi2ionjyiqf"]
+[gd_scene load_steps=15 format=3 uid="uid://q16kfk1y2b48"]
 
 [ext_resource type="Texture2D" uid="uid://dvu3egfotdpy1" path="res://ui/tiramisu.png" id="1_ewsdf"]
 [ext_resource type="Material" uid="uid://dhqtai7vi8ml3" path="res://materials/character_material.tres" id="1_f02fe"]
@@ -6,6 +6,8 @@
 [ext_resource type="Script" path="res://scripts/Hitbox.cs" id="4_hdhqb"]
 [ext_resource type="Script" path="res://scripts/Hurtbox.cs" id="4_k83aa"]
 [ext_resource type="Script" path="res://scripts/Jumpbox.cs" id="5_iwmvv"]
+[ext_resource type="AudioStream" uid="uid://c8sst7b1o3sar" path="res://sounds/sfx/ding.ogg" id="7_om85j"]
+[ext_resource type="AudioStream" uid="uid://cmuiqv54frdno" path="res://sounds/sfx/hit.ogg" id="8_8c34d"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s4stb"]
 atlas = ExtResource("1_ewsdf")
@@ -35,12 +37,14 @@ size = Vector2(156, 27)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_byx5i"]
 size = Vector2(156, 146)
 
-[node name="Enemy" type="AnimatableBody2D"]
+[node name="Enemy" type="AnimatableBody2D" node_paths=PackedStringArray("ding", "hitSound")]
 material = ExtResource("1_f02fe")
 collision_layer = 2
 collision_mask = 4095
 sync_to_physics = false
 script = ExtResource("1_oegqa")
+ding = NodePath("Ding")
+hitSound = NodePath("Hit")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 use_parent_material = true
@@ -80,5 +84,13 @@ shape = SubResource("RectangleShape2D_byx5i")
 [node name="FloorCheck" type="RayCast2D" parent="."]
 position = Vector2(0, -10)
 target_position = Vector2(0, 20)
+
+[node name="Ding" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_om85j")
+volume_db = -7.964
+
+[node name="Hit" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_8c34d")
+volume_db = 3.279
 
 [connection signal="area_entered" from="Hurtbox" to="." method="_OnHurtboxAreaEntered"]

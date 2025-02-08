@@ -18,6 +18,7 @@ public partial class Player : CharacterBody2D
 
 	[Export] public AudioStreamPlayer footstepSound;
 	[Export] public AudioStreamPlayer jumpSound;
+	[Export] public AudioStreamPlayer hitSound;
 
 	private CollisionShape2D hitbox;
 
@@ -207,6 +208,7 @@ public partial class Player : CharacterBody2D
 			Velocity = new Vector2(velX, Velocity.Y);
 			TakeDamage(1.0f);
 			ChangeAction(Action.Stunned);
+			hitSound.Play();
 		}
 
 		if(body is DisperseTrigger) {
