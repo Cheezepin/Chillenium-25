@@ -10,6 +10,17 @@ public partial class Global : Node
 
 	public static int currColorID = 0;
 	public static Color currColor;
+	public static bool currBW;
+	public static bool allColors;
+
+	public enum ColorNames {
+		Red,
+		Orange,
+		Yellow,
+		Green,
+		Blue,
+		Purple,
+	};
 
 	public static Color[] colors = {
 		Color.Color8(255, 0, 0, 255),
@@ -20,8 +31,15 @@ public partial class Global : Node
 		Color.Color8(255, 0, 255, 255),
 	};
 
-	public int colorsUnlocked = 0;
-	
+	public static int colorsUnlocked = 0;
+	public enum ColorFilters {
+		Red = 1 << 0,
+		Orange = 1 << 1,
+		Yellow = 1 << 2,
+		Green = 1 << 3,
+		Blue = 1 << 4,
+		Purple = 1 << 5,
+	};
 	public override void _Ready()
 	{
 		// Input.MouseMode = Input.MouseModeEnum.Hidden;
@@ -50,17 +68,27 @@ public partial class Global : Node
 		// 	currColor = Color.Color8(255, 255, 255, 255);
 		// }
 
-		if(Input.IsActionJustPressed("color_left")) {
-			currColorID--;
-			if(currColorID < 0) {currColorID = colors.Length-1;}
-		}
+		if(colorsUnlocked != 0) {
+			if(Input.IsActionJustPressed("color_left")) {
+				do {
+					currColorID--;
+					if(currColorID < 0) {currColorID = colors.Length-1;}
+				} while ((colorsUnlocked & (1 << (int)currColorID)) != 0);
+			}
 
-		if(Input.IsActionJustPressed("color_right")) {
-			currColorID++;
-			if(currColorID >= colors.Length) {currColorID = 0;}
-		}
+			if(Input.IsActionJustPressed("color_right")) {
+				do {
+					currColorID++;
+					if(currColorID >= colors.Length) {currColorID = 0;}
+				} while ((colorsUnlocked & (1 << (int)currColorID)) != 0);
+			}
+			currBW = false;
+		} else {currBW = true;}
 
 		currColor = colors[currColorID];
+
+		allColors = true;
+		currBW = false;
 	}
 
 	public static void AsymptoticApproach(ref float curr, float target, float mult) {

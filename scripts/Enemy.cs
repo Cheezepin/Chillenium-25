@@ -17,6 +17,8 @@ public partial class Enemy : AnimatableBody2D
 
 	[Export]public bool canBeJumpedOn = true;
 
+	private double timer = 0;
+
 	public override void _Ready()
 	{
 		s = (ShaderMaterial)Material;
@@ -33,6 +35,8 @@ public partial class Enemy : AnimatableBody2D
 			flashTimer -= delta;
 			if(flashTimer < 0) {flashTimer = 0; s.SetShaderParameter("flash", false);}
 		}
+
+		timer += delta;
 	}
 
 	public override void _PhysicsProcess(double delta)
@@ -67,9 +71,10 @@ public partial class Enemy : AnimatableBody2D
 	}
 
 	public void _OnHurtboxAreaEntered(Node2D body) {
+		if(timer < 0.2) return;
 		if(body is Hitbox) {
 			flashTimer = 0.04;
-			velocity.X = body.Position.X - Position.X > 0 ? 1000.0f : -1000.0f;
+			velocity.X = body.GlobalPosition.X - GlobalPosition.X > 0 ? -1000.0f : 1000.0f;
 			TakeDamage(1.0f);
 		}
 	}

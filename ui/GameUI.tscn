@@ -1,24 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://bdwdf7hp3yex1"]
+[gd_scene load_steps=2 format=3 uid="uid://bdwdf7hp3yex1"]
 
 [ext_resource type="Script" path="res://scripts/GameUI.cs" id="1_htaga"]
-[ext_resource type="Texture2D" uid="uid://b72vhmr1uhdcy" path="res://ui/game/cursor.png" id="2_h5hbt"]
-[ext_resource type="Script" path="res://scripts/Cursor.cs" id="3_bsaqb"]
 
 [node name="GameUI" type="CanvasLayer"]
 script = ExtResource("1_htaga")
-
-[node name="Cursor" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-script = ExtResource("3_bsaqb")
-
-[node name="CursorRect" type="TextureRect" parent="Cursor"]
-layout_mode = 0
-offset_left = -128.0
-offset_top = -128.0
-offset_right = 128.0
-offset_bottom = 128.0
-pivot_offset = Vector2(128, 128)
-texture = ExtResource("2_h5hbt")

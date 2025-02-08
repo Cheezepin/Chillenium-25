@@ -34,14 +34,14 @@ radius = 45.0
 height = 200.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0ttsu"]
-size = Vector2(90, 46)
+size = Vector2(65, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5e3ro"]
 size = Vector2(87, 162)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_37mwr"]
 radius = 45.0
-height = 200.0
+height = 125.0
 
 [node name="Player" type="CharacterBody2D"]
 material = SubResource("ShaderMaterial_jtmsy")
@@ -64,7 +64,7 @@ texture = ExtResource("1_wl8sn")
 script = ExtResource("6_yyka5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Footbox"]
-position = Vector2(1, -7)
+position = Vector2(0, -14)
 shape = SubResource("RectangleShape2D_0ttsu")
 
 [node name="Hitbox" type="Area2D" parent="."]
@@ -82,4 +82,6 @@ position = Vector2(0, -100)
 shape = SubResource("CapsuleShape2D_37mwr")
 
 [connection signal="area_entered" from="Footbox" to="." method="_OnFootboxAreaEntered"]
+[connection signal="body_entered" from="Footbox" to="." method="_OnFootboxBodyEntered"]
+[connection signal="body_exited" from="Footbox" to="." method="_OnFootboxBodyExited"]
 [connection signal="area_entered" from="Hurtbox" to="." method="_OnHurtboxAreaEntered"]
