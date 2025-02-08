@@ -10,8 +10,14 @@ public partial class Global : Node
 
 	public static int currColorID = 0;
 	public static Color currColor;
-	public static bool currBW;
+	public static bool currBW = true;
 	public static bool allColors;
+
+	public static int targetColorID = 0;
+	public static double colorSlideProgress = 0;
+
+	public static bool transitioningColor = false;
+	public static bool transitionLeft = false;
 
 	public enum ColorNames {
 		Red,
@@ -33,6 +39,7 @@ public partial class Global : Node
 
 	public static int colorsUnlocked = 0;
 	public enum ColorFilters {
+		Blank,
 		Red = 1 << 0,
 		Orange = 1 << 1,
 		Yellow = 1 << 2,
@@ -68,27 +75,49 @@ public partial class Global : Node
 		// 	currColor = Color.Color8(255, 255, 255, 255);
 		// }
 
-		if(colorsUnlocked != 0) {
-			if(Input.IsActionJustPressed("color_left")) {
-				do {
-					currColorID--;
-					if(currColorID < 0) {currColorID = colors.Length-1;}
-				} while ((colorsUnlocked & (1 << (int)currColorID)) != 0);
+		if(transitioningColor) {
+			colorSlideProgress += delta*5.0;
+			if(colorSlideProgress >= 1.0) {
+				currColorID = targetColorID;
+				currBW = false;
 			}
+			if(colorSlideProgress >= 2.0) {
+				colorSlideProgress = 0;
+				transitioningColor = false;
+			}
+		} else {
+			targetColorID = currColorID;
+			if(colorsUnlocked != 0) {
+				if(Input.IsActionJustPressed("color_left")) {
+					do {
+						targetColorID--;
+						if(targetColorID < 0) {targetColorID = colors.Length-1;}
+					} while ((colorsUnlocked & (1 << (int)targetColorID)) == 0);
+					transitionLeft = false;
+				}
 
-			if(Input.IsActionJustPressed("color_right")) {
-				do {
-					currColorID++;
-					if(currColorID >= colors.Length) {currColorID = 0;}
-				} while ((colorsUnlocked & (1 << (int)currColorID)) != 0);
+				if(Input.IsActionJustPressed("color_right")) {
+					do {
+						targetColorID++;
+						if(targetColorID >= colors.Length) {targetColorID = 0;}
+					} while ((colorsUnlocked & (1 << (int)targetColorID)) == 0);
+					transitionLeft = true;
+				}
+				currBW = false;
 			}
-			currBW = false;
-		} else {currBW = true;}
+		}
+
+		if(!transitioningColor && targetColorID != currColorID) {
+			transitioningColor = true;
+			colorSlideProgress = 0;
+		}
 
 		currColor = colors[currColorID];
 
-		allColors = true;
-		currBW = false;
+		// GD.Print(colorsUnlocked);
+
+		// allColors = true;
+		// currBW = false;
 	}
 
 	public static void AsymptoticApproach(ref float curr, float target, float mult) {

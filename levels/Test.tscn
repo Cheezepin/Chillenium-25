@@ -8,9 +8,9 @@
 [ext_resource type="Shader" path="res://shaders/color.gdshader" id="5_cchji"]
 [ext_resource type="Texture2D" uid="uid://b0as2v4mhc54k" path="res://tilesets/dotted.png" id="8_3seu8"]
 [ext_resource type="Script" path="res://scripts/ui/PostProcessing.cs" id="8_rgdvr"]
-[ext_resource type="TileSet" uid="uid://7jgsd74watj7" path="res://tilesets/ColoredPlatforms.tres" id="9_72l6g"]
+[ext_resource type="TileSet" uid="uid://dn05yrc5ieiyg" path="res://tilesets/ColoredPlatforms.tres" id="9_72l6g"]
 [ext_resource type="Script" path="res://scripts/ColoredPlatforms.cs" id="11_5bxbn"]
-[ext_resource type="PackedScene" uid="uid://djsi2ionjyiqf" path="res://actors/BasicEnemy.tscn" id="11_byapu"]
+[ext_resource type="PackedScene" uid="uid://djsi2ionjyiqf" path="res://actors/Enemy.tscn" id="11_byapu"]
 [ext_resource type="Script" path="res://scripts/DynamicMusic.cs" id="12_q26cw"]
 [ext_resource type="AudioStream" uid="uid://cokd8sk37wbln" path="res://sounds/music/maingameplay1.ogg" id="13_em7cl"]
 [ext_resource type="AudioStream" uid="uid://cq8hdjb4s4jey" path="res://sounds/music/maingameplay2.ogg" id="14_uqktj"]
@@ -23,9 +23,7 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4du2b"]
 shader = ExtResource("5_cchji")
 shader_parameter/screen_color_bw = false
-shader_parameter/screen_color_other_bw = false
 shader_parameter/screen_color = Color(1, 0, 0, 1)
-shader_parameter/screen_color_other = Color(1, 1, 0, 1)
 shader_parameter/progress = 0.0
 
 [sub_resource type="Shader" id="Shader_t4j1t"]
