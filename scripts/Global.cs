@@ -19,6 +19,8 @@ public partial class Global : Node
 	public static bool transitioningColor = false;
 	public static bool transitionLeft = false;
 
+	public static AudioStreamPlayer switchSound;
+
 	public enum ColorNames {
 		Red,
 		Orange,
@@ -89,6 +91,7 @@ public partial class Global : Node
 			targetColorID = currColorID;
 			if(colorsUnlocked != 0 && !allColors) {
 				if(Input.IsActionJustPressed("color_left")) {
+					switchSound.Play();
 					do {
 						targetColorID--;
 						if(targetColorID < 0) {targetColorID = colors.Length-1;}
@@ -97,6 +100,7 @@ public partial class Global : Node
 				}
 
 				if(Input.IsActionJustPressed("color_right")) {
+					switchSound.Play();
 					do {
 						targetColorID++;
 						if(targetColorID >= colors.Length) {targetColorID = 0;}

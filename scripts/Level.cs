@@ -18,6 +18,7 @@ public partial class Level : Node2D
 		Global.allColors = true;
 		Global.currBW = false;
 		Global.colorsUnlocked = 0;
+		Global.switchSound = GetNode<AudioStreamPlayer>("Switch");
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.

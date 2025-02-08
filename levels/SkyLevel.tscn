@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=4 uid="uid://cx75o0oqspqql"]
+[gd_scene load_steps=51 format=4 uid="uid://cx75o0oqspqql"]
 
 [ext_resource type="Script" path="res://scripts/Level.cs" id="1_dmkto"]
 [ext_resource type="Texture2D" uid="uid://cbtnj0s7e3gv0" path="res://sprites/sky.png" id="2_gey6x"]
@@ -31,6 +31,8 @@
 [ext_resource type="Texture2D" uid="uid://dbxolldm7hode" path="res://tilesets/Child's_Play_TileSet_Castle_Window-03.png" id="21_yufcp"]
 [ext_resource type="Texture2D" uid="uid://d4jkx06lf1gr7" path="res://sprites/stainedglass.png" id="22_i3ctk"]
 [ext_resource type="Script" path="res://scripts/DisperseTrigger.cs" id="22_sj1f2"]
+[ext_resource type="AudioStream" uid="uid://bfb8glcsmjg71" path="res://sounds/sfx/switch.ogg" id="30_vn31i"]
+[ext_resource type="AudioStream" uid="uid://bndcedipiuesl" path="res://sounds/sfx/chirp.ogg" id="31_w0pxm"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kdq6d"]
 texture = ExtResource("19_5vwqj")
@@ -489,3 +491,12 @@ volume_db = -15.847
 [node name="Track7" type="AudioStreamPlayer" parent="DynamicMusic"]
 stream = ExtResource("21_waec8")
 volume_db = -36.612
+
+[node name="Switch" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("30_vn31i")
+volume_db = -5.622
+
+[node name="Chirp" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("31_w0pxm")
+volume_db = -23.892
+autoplay = true
