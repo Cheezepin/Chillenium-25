@@ -4,7 +4,7 @@ using System.Collections;
 
 public partial class Global : Node
 {
-	public static string startSceneName = "Test";
+	public static string startSceneName = "SkyLevel";
 	public static Node currentLevel;
 	public static Transitions transitions;
 

@@ -1,6 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://bdwdf7hp3yex1"]
+[gd_scene load_steps=3 format=3 uid="uid://bdwdf7hp3yex1"]
 
 [ext_resource type="Script" path="res://scripts/GameUI.cs" id="1_htaga"]
+[ext_resource type="Texture2D" uid="uid://dftiunfvyslab" path="res://ui/vignette.png" id="2_uwkuw"]
 
 [node name="GameUI" type="CanvasLayer"]
+layer = 10
 script = ExtResource("1_htaga")
+
+[node name="Card" type="TextureRect" parent="."]
+offset_right = 3840.0
+offset_bottom = 2160.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_uwkuw")
