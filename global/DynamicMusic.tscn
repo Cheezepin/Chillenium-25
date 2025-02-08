@@ -1,0 +1,42 @@
+[gd_scene load_steps=9 format=3 uid="uid://c2bu8c7go0jhx"]
+
+[ext_resource type="Script" path="res://scripts/DynamicMusic.cs" id="1_f5j1x"]
+[ext_resource type="AudioStream" uid="uid://cokd8sk37wbln" path="res://sounds/music/maingameplay1.ogg" id="2_on80q"]
+[ext_resource type="AudioStream" uid="uid://cq8hdjb4s4jey" path="res://sounds/music/maingameplay2.ogg" id="3_uhii1"]
+[ext_resource type="AudioStream" uid="uid://ca30ud811l5qg" path="res://sounds/music/maingameplay3.ogg" id="4_54ojl"]
+[ext_resource type="AudioStream" uid="uid://c6di047wag7f8" path="res://sounds/music/maingameplay4.ogg" id="5_uilau"]
+[ext_resource type="AudioStream" uid="uid://cfgrug1s3rf7k" path="res://sounds/music/maingameplay5.ogg" id="6_vrh0m"]
+[ext_resource type="AudioStream" uid="uid://dwwa1e32g0rbk" path="res://sounds/music/maingameplay6.ogg" id="7_gpc16"]
+[ext_resource type="AudioStream" uid="uid://dg75t5v3d6r4m" path="res://sounds/music/maingameplay7.ogg" id="8_qmpvw"]
+
+[node name="DynamicMusic" type="Node" node_paths=PackedStringArray("musicTracks")]
+script = ExtResource("1_f5j1x")
+musicTracks = [NodePath("Track1"), NodePath("Track2"), NodePath("Track3"), NodePath("Track4"), NodePath("Track5"), NodePath("Track6"), NodePath("Track7")]
+
+[node name="Track1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_on80q")
+volume_db = -5.0
+
+[node name="Track2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_uhii1")
+volume_db = -16.0
+
+[node name="Track3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_54ojl")
+volume_db = -18.515
+
+[node name="Track4" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_uilau")
+volume_db = -24.43
+
+[node name="Track5" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_vrh0m")
+volume_db = -14.0
+
+[node name="Track6" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_gpc16")
+volume_db = -15.847
+
+[node name="Track7" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_qmpvw")
+volume_db = -36.612
