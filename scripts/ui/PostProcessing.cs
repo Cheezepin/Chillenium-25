@@ -22,6 +22,7 @@ public partial class PostProcessing : CanvasLayer
 		else {
 			s.SetShaderParameter("screen_color_bw", false);
 			s.SetShaderParameter("screen_color", Global.currColor);
+			s.SetShaderParameter("progress", (float)Global.colorSlideProgress);
 		}
 	}
 }
