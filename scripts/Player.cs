@@ -32,6 +32,8 @@ public partial class Player : CharacterBody2D
 	private double actionTimer = 0;
 
 	private ColoredPlatforms currPlatform = null;
+
+	private AnimatedSprite2D sprite;
 	public override void _Ready()
 	{
 		s = (ShaderMaterial)Material;
@@ -39,6 +41,7 @@ public partial class Player : CharacterBody2D
 		hitbox = GetNode<Hitbox>("Hitbox").GetNode<CollisionShape2D>("CollisionShape2D");;
 		hitbox.Disabled = true;
 		action = Action.Move;
+		sprite = GetNode<AnimatedSprite2D>("Vuey");
 		base._Ready();
 	}
 
@@ -80,6 +83,8 @@ public partial class Player : CharacterBody2D
 				float xDirection = Input.GetAxis("move_left", "move_right");
 				if (xDirection != 0)
 				{
+					if(IsOnFloor()) sprite.Play("run");
+
 					if (IsOnFloor() && !footstepSound.Playing)
 					{
 						footstepSound.Play();
@@ -103,8 +108,11 @@ public partial class Player : CharacterBody2D
 				}
 				else
 				{
+					if(IsOnFloor()) sprite.Play("idle");
 					velocity.X = Mathf.MoveToward(Velocity.X, 0, (float)(xFriction*delta));
 				}
+
+				if(!IsOnFloor() && sprite.Animation != "jump") sprite.Play("jump");
 
 				if (Input.IsActionJustPressed("attack"))
 				{
@@ -177,6 +185,13 @@ public partial class Player : CharacterBody2D
 			Velocity = new Vector2(velX, Velocity.Y);
 			TakeDamage(1.0f);
 			ChangeAction(Action.Stunned);
+		}
+
+		if(body is DisperseTrigger) {
+			Global.allColors = false;
+			Global.currBW = true;
+			Global.colorsUnlocked = 0;
+			body.QueueFree();
 		}
 	}
 }

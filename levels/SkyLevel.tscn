@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=4 uid="uid://cx75o0oqspqql"]
+[gd_scene load_steps=49 format=4 uid="uid://cx75o0oqspqql"]
 
 [ext_resource type="Script" path="res://scripts/Level.cs" id="1_dmkto"]
 [ext_resource type="Texture2D" uid="uid://cbtnj0s7e3gv0" path="res://sprites/sky.png" id="2_gey6x"]
@@ -30,6 +30,7 @@
 [ext_resource type="AudioStream" uid="uid://dg75t5v3d6r4m" path="res://sounds/music/maingameplay7.ogg" id="21_waec8"]
 [ext_resource type="Texture2D" uid="uid://dbxolldm7hode" path="res://tilesets/Child's_Play_TileSet_Castle_Window-03.png" id="21_yufcp"]
 [ext_resource type="Texture2D" uid="uid://d4jkx06lf1gr7" path="res://sprites/stainedglass.png" id="22_i3ctk"]
+[ext_resource type="Script" path="res://scripts/DisperseTrigger.cs" id="22_sj1f2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kdq6d"]
 texture = ExtResource("19_5vwqj")
@@ -121,6 +122,9 @@ physics_layer_0/collision_mask = 7
 sources/1 = SubResource("TileSetAtlasSource_kdq6d")
 sources/2 = SubResource("TileSetAtlasSource_isstx")
 sources/3 = SubResource("TileSetAtlasSource_qcn5q")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jcw4p"]
+size = Vector2(200, 20)
 
 [sub_resource type="Shader" id="Shader_t4j1t"]
 code = "shader_type canvas_item;
@@ -286,9 +290,19 @@ position = Vector2(-9, 0)
 script = ExtResource("3_arpdf")
 
 [node name="Player" parent="." instance=ExtResource("4_xeiba")]
-position = Vector2(-4583, -3605)
+position = Vector2(311, 671)
 floor_max_angle = 1.39626
 floor_snap_length = 32.0
+
+[node name="DisperseTrigger" type="Area2D" parent="."]
+position = Vector2(-3, 691)
+scale = Vector2(1.46693, 1.96045)
+collision_layer = 15
+collision_mask = 15
+script = ExtResource("22_sj1f2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DisperseTrigger"]
+shape = SubResource("RectangleShape2D_jcw4p")
 
 [node name="RedPlatforms" type="Node2D" parent="."]
 position = Vector2(1, 0)
@@ -296,7 +310,7 @@ scale = Vector2(0.125, 0.125)
 
 [node name="RedPlatforms" type="TileMapLayer" parent="RedPlatforms"]
 material = SubResource("ShaderMaterial_4pjek")
-tile_map_data = PackedByteArray("AAACAAMAAAAAAAIAAAADAAMAAAABAAIAAAAEAAMAAAACAAIAAAACAAQAAAAAAAMAAAADAAQAAAABAAMAAAAEAAQAAAACAAMAAAA=")
+tile_map_data = PackedByteArray("AAAZAAEAAAAAAAIAAAAZAAIAAAAAAAMAAAAaAAEAAAABAAIAAAAaAAIAAAABAAMAAAAbAAEAAAACAAIAAAAbAAIAAAACAAMAAAA=")
 tile_set = ExtResource("8_oxa15")
 script = ExtResource("9_uevfq")
 
@@ -359,7 +373,7 @@ script = ExtResource("9_uevfq")
 targetColor = 5
 
 [node name="Enemy" parent="." instance=ExtResource("11_pists")]
-position = Vector2(1030, 575)
+position = Vector2(145, 663)
 scale = Vector2(-1, 1)
 health = 10.0
 
@@ -378,31 +392,31 @@ layer = 5
 follow_viewport_enabled = true
 
 [node name="RedCard" parent="Cards" instance=ExtResource("13_q0uwx")]
-position = Vector2(-190, 675)
+position = Vector2(507, 462)
 color = 1
 
 [node name="OrangeCard" parent="Cards" instance=ExtResource("13_q0uwx")]
-position = Vector2(-92, 672)
+position = Vector2(584, 576)
 texture = ExtResource("14_5gc7s")
 color = 2
 
 [node name="YellowCard" parent="Cards" instance=ExtResource("13_q0uwx")]
-position = Vector2(0, 670)
+position = Vector2(683, 606)
 texture = ExtResource("15_g3a2c")
 color = 4
 
 [node name="GreenCard" parent="Cards" instance=ExtResource("13_q0uwx")]
-position = Vector2(101, 670)
+position = Vector2(841, 525)
 texture = ExtResource("16_q3j1f")
 color = 8
 
 [node name="BlueCard" parent="Cards" instance=ExtResource("13_q0uwx")]
-position = Vector2(235, 668)
+position = Vector2(781, 677)
 texture = ExtResource("17_b42hd")
 color = 16
 
 [node name="PurpleCard" parent="Cards" instance=ExtResource("13_q0uwx")]
-position = Vector2(360, 672)
+position = Vector2(930, 462)
 texture = ExtResource("18_0ugmc")
 color = 32
 
@@ -412,37 +426,31 @@ scale = Vector2(1.46693, 1.96045)
 
 [node name="Sprite2D" type="Sprite2D" parent="ForegroundDecos"]
 modulate = Color(1, 0, 0, 0.188235)
-scale = Vector2(1, 1)
 texture = ExtResource("22_i3ctk")
 
 [node name="Sprite2D2" type="Sprite2D" parent="ForegroundDecos"]
 modulate = Color(1, 0.498039, 0, 0.188235)
 position = Vector2(354.483, -2.04023)
-scale = Vector2(1, 1)
 texture = ExtResource("22_i3ctk")
 
 [node name="Sprite2D3" type="Sprite2D" parent="ForegroundDecos"]
 modulate = Color(1, 1, 0, 0.188235)
 position = Vector2(706.239, 0.000124454)
-scale = Vector2(1, 1)
 texture = ExtResource("22_i3ctk")
 
 [node name="Sprite2D4" type="Sprite2D" parent="ForegroundDecos"]
 modulate = Color(0, 1, 0, 0.188235)
 position = Vector2(1051.18, 2.04047)
-scale = Vector2(1, 1)
 texture = ExtResource("22_i3ctk")
 
 [node name="Sprite2D5" type="Sprite2D" parent="ForegroundDecos"]
 modulate = Color(0, 0, 1, 0.188235)
 position = Vector2(1405.66, 3.06065)
-scale = Vector2(1, 1)
 texture = ExtResource("22_i3ctk")
 
 [node name="Sprite2D6" type="Sprite2D" parent="ForegroundDecos"]
 modulate = Color(1, 0, 1, 0.188235)
 position = Vector2(1749.24, 2.04047)
-scale = Vector2(1, 1)
 texture = ExtResource("22_i3ctk")
 
 [node name="Foreground" type="TileMapLayer" parent="."]

@@ -14,6 +14,10 @@ public partial class Level : Node2D
 		AddChild(ui);
 		camera = GetNode<Camera>("Camera"); //should we just spawn these instead of looking for them?
 		player = GetNode<Player>("Player");
+
+		Global.allColors = true;
+		Global.currBW = false;
+		Global.colorsUnlocked = 0;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.

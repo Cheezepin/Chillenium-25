@@ -87,7 +87,7 @@ public partial class Global : Node
 			}
 		} else {
 			targetColorID = currColorID;
-			if(colorsUnlocked != 0) {
+			if(colorsUnlocked != 0 && !allColors) {
 				if(Input.IsActionJustPressed("color_left")) {
 					do {
 						targetColorID--;
@@ -116,8 +116,8 @@ public partial class Global : Node
 
 		// GD.Print(colorsUnlocked);
 
-		allColors = true;
-		currBW = false;
+		// allColors = true;
+		// currBW = false;
 	}
 
 	public static void AsymptoticApproach(ref float curr, float target, float mult) {

@@ -30,7 +30,7 @@ height = 100.0
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("footstepSound", "jumpSound")]
 material = SubResource("ShaderMaterial_jtmsy")
-collision_layer = 4
+collision_layer = 15
 collision_mask = 4095
 script = ExtResource("1_d7cxj")
 footstepSound = NodePath("Footsteps")
@@ -48,11 +48,12 @@ scale = Vector2(0.2, 0.2)
 texture = ExtResource("1_wl8sn")
 
 [node name="Vuey" type="AnimatedSprite2D" parent="."]
-position = Vector2(14, -83)
+use_parent_material = true
+position = Vector2(9, -80)
 scale = Vector2(0.1, 0.1)
 sprite_frames = ExtResource("6_nupav")
-autoplay = "default"
-frame_progress = 0.218838
+animation = &"idle"
+frame_progress = 0.103193
 
 [node name="Footbox" type="Area2D" parent="."]
 script = ExtResource("6_yyka5")
