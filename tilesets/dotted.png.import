@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b6j5dgtivf82w"
-path="res://.godot/imported/Child's_Play_TileSet-06.png-7426b9a1a94708fcbe3811a7624bcdf4.ctex"
+uid="uid://b0as2v4mhc54k"
+path="res://.godot/imported/dotted.png-bacca2e5fb0d4717237befc0e1a8c509.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://tilesets/Child's_Play_TileSet-06.png"
-dest_files=["res://.godot/imported/Child's_Play_TileSet-06.png-7426b9a1a94708fcbe3811a7624bcdf4.ctex"]
+source_file="res://tilesets/dotted.png"
+dest_files=["res://.godot/imported/dotted.png-bacca2e5fb0d4717237befc0e1a8c509.ctex"]
 
 [params]
 
