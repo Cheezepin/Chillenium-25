@@ -17,6 +17,9 @@ public partial class Player : CharacterBody2D
 
 	[Export]public PackedScene bulletScene;
 
+	[Export] public AudioStreamPlayer footstepSound;
+	[Export] public AudioStreamPlayer jumpSound;
+
 	private CollisionShape2D hitbox;
 
 	public double health = 3;
@@ -73,11 +76,20 @@ public partial class Player : CharacterBody2D
 				if (Input.IsActionJustPressed("jump") && IsOnFloor())
 				{
 					velocity.Y = JumpVelocity;
+					jumpSound.Play();
 				}
 
 				float xDirection = Input.GetAxis("move_left", "move_right");
 				if (xDirection != 0)
 				{
+					if (IsOnFloor() && !footstepSound.Playing)
+					{
+						footstepSound.Play();
+					}
+					else
+					{
+						if(!IsOnFloor()) footstepSound.Stop();
+					}
 					velocity.X = Mathf.MoveToward(Velocity.X, xDirection*speed, (float)(xAcceleration*delta));
 					GD.Print(GlobalScale);
 					if(xDirection > 0) {
