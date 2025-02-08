@@ -84,8 +84,8 @@ public partial class Transitions : CanvasLayer
 	
 	public override void _Process(double delta)
 	{
-		// DotFade(delta);
-		ScreenWipe(delta);
+		DotFade(delta);
+		// ScreenWipe(delta);
 	}
 
 	public void ChangeLevel(string nextLevel) {

@@ -1,0 +1,10 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://cdpanxp07ji5i"]
+
+[ext_resource type="Shader" path="res://shaders/color_platform.gdshader" id="1_bd3b1"]
+[ext_resource type="Texture2D" uid="uid://b0as2v4mhc54k" path="res://tilesets/dotted.png" id="2_uv1ue"]
+
+[resource]
+shader = ExtResource("1_bd3b1")
+shader_parameter/target_color = Color(1, 1, 1, 1)
+shader_parameter/current_color = Color(1, 1, 1, 1)
+shader_parameter/dotted_tex = ExtResource("2_uv1ue")
