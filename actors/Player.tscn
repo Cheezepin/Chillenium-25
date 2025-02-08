@@ -1,37 +1,18 @@
-[gd_scene load_steps=17 format=3 uid="uid://2m60ku0tayym"]
-[gd_scene load_steps=18 format=3 uid="uid://2m60ku0tayym"]
+[gd_scene load_steps=15 format=3 uid="uid://2m60ku0tayym"]
 
 [ext_resource type="Script" path="res://scripts/Player.cs" id="1_d7cxj"]
 [ext_resource type="Shader" path="res://shaders/character_shader.gdshader" id="1_k8efb"]
 [ext_resource type="Texture2D" uid="uid://dypa55o5kx44h" path="res://sprites/miguel.png" id="1_wl8sn"]
-[ext_resource type="Script" path="res://scripts/Bullet.cs" id="3_aemv1"]
-[ext_resource type="Texture2D" uid="uid://dbhi4ul60mu0" path="res://sprites/bullet.png" id="4_yej1v"]
 [ext_resource type="SpriteFrames" uid="uid://cldk1vdqkr8a8" path="res://sprites/CharacterAnims.tres" id="6_nupav"]
 [ext_resource type="Script" path="res://scripts/Footbox.cs" id="6_yyka5"]
 [ext_resource type="Script" path="res://scripts/Hitbox.cs" id="7_h8nb4"]
+[ext_resource type="AudioStream" uid="uid://bfultgqdq0tfe" path="res://sounds/sfx/footsteps.ogg" id="8_kca0u"]
 [ext_resource type="Script" path="res://scripts/Hurtbox.cs" id="8_njheg"]
-[ext_resource type="AudioStream" uid="uid://bfultgqdq0tfe" path="res://sounds/sfx/footsteps.ogg" id="9_qw7ag"]
-[ext_resource type="AudioStream" uid="uid://bvdudq6lw7cr6" path="res://sounds/sfx/jump.ogg" id="10_uv1k1"]
+[ext_resource type="AudioStream" uid="uid://bvdudq6lw7cr6" path="res://sounds/sfx/jump.ogg" id="9_4cool"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jtmsy"]
 shader = ExtResource("1_k8efb")
 shader_parameter/flash = false
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_mmo0u"]
-size = Vector2(60, 26)
-
-[sub_resource type="PackedScene" id="PackedScene_d8jvr"]
-_bundled = {
-"conn_count": 1,
-"conns": PackedInt32Array(0, 0, 11, 10, 2, 0, 0),
-"editable_instances": [],
-"names": PackedStringArray("Bullet", "collision_layer", "collision_mask", "script", "Area2D", "CollisionShape2D", "position", "shape", "Sprite2D", "texture", "_OnBodyEntered", "body_entered"),
-"node_count": 3,
-"node_paths": [],
-"nodes": PackedInt32Array(-1, -1, 4, 0, -1, 3, 1, 0, 2, 1, 3, 2, 0, 0, 0, 5, 5, -1, 2, 6, 3, 7, 4, 0, 0, 0, 8, 8, -1, 1, 9, 5, 0),
-"variants": [4, 3, ExtResource("3_aemv1"), Vector2(-2, -2), SubResource("RectangleShape2D_mmo0u"), ExtResource("4_yej1v")],
-"version": 3
-}
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5n0t0"]
 radius = 45.0
@@ -52,7 +33,6 @@ material = SubResource("ShaderMaterial_jtmsy")
 collision_layer = 4
 collision_mask = 4095
 script = ExtResource("1_d7cxj")
-bulletScene = SubResource("PackedScene_d8jvr")
 footstepSound = NodePath("Footsteps")
 jumpSound = NodePath("Jump")
 
@@ -96,11 +76,11 @@ position = Vector2(0, -80)
 shape = SubResource("CapsuleShape2D_37mwr")
 
 [node name="Footsteps" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("9_qw7ag")
+stream = ExtResource("8_kca0u")
 
 [node name="Jump" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("10_uv1k1")
-volume_db = -5.622
+stream = ExtResource("9_4cool")
+volume_db = -5.6
 
 [connection signal="area_entered" from="Footbox" to="." method="_OnFootboxAreaEntered"]
 [connection signal="body_entered" from="Footbox" to="." method="_OnFootboxBodyEntered"]

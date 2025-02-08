@@ -15,8 +15,6 @@ public partial class Player : CharacterBody2D
 	ShaderMaterial s;
 	private double flashTimer = 0;
 
-	[Export]public PackedScene bulletScene;
-
 	[Export] public AudioStreamPlayer footstepSound;
 	[Export] public AudioStreamPlayer jumpSound;
 
