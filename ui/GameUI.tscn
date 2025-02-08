@@ -1,14 +1,66 @@
-[gd_scene load_steps=3 format=3 uid="uid://bdwdf7hp3yex1"]
+[gd_scene load_steps=11 format=3 uid="uid://bdwdf7hp3yex1"]
 
 [ext_resource type="Script" path="res://scripts/GameUI.cs" id="1_htaga"]
 [ext_resource type="Texture2D" uid="uid://dftiunfvyslab" path="res://ui/vignette.png" id="2_uwkuw"]
+[ext_resource type="Texture2D" uid="uid://cox2jbt55ki21" path="res://ui/game/Child's_Play_Health-04.png" id="3_wasll"]
+[ext_resource type="Texture2D" uid="uid://cfao3o6csv44q" path="res://ui/game/Child's_Play_Health-08.png" id="4_48w3b"]
+[ext_resource type="Script" path="res://scripts/ui/Head.cs" id="4_758wv"]
+[ext_resource type="Texture2D" uid="uid://wgkhqamjgjds" path="res://ui/game/Child's_Play_Health-05.png" id="5_f7lbr"]
+[ext_resource type="Script" path="res://scripts/ui/Heart.cs" id="6_buu1s"]
+[ext_resource type="Texture2D" uid="uid://c5w05dp7h0k5m" path="res://ui/game/Child's_Play_Health-06.png" id="6_tx01g"]
+[ext_resource type="Texture2D" uid="uid://jdqcpluvbp1m" path="res://ui/game/Child's_Play_Health-07.png" id="7_fd75w"]
+[ext_resource type="Texture2D" uid="uid://cn6soyaifo21u" path="res://ui/game/Child's_Play_Health-09.png" id="10_dwrit"]
 
 [node name="GameUI" type="CanvasLayer"]
 layer = 10
 script = ExtResource("1_htaga")
 
 [node name="Slide" type="TextureRect" parent="."]
-offset_right = 11520.0
+offset_left = -1920.0
+offset_right = 9600.0
 offset_bottom = 2160.0
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_uwkuw")
+
+[node name="Head" type="TextureRect" parent="."]
+offset_left = -2.0
+offset_top = -25.0
+offset_right = 510.0
+offset_bottom = 487.0
+scale = Vector2(0.499019, 0.499019)
+texture = ExtResource("3_wasll")
+script = ExtResource("4_758wv")
+texs = Array[Texture2D]([ExtResource("5_f7lbr"), ExtResource("6_tx01g"), ExtResource("3_wasll"), ExtResource("7_fd75w")])
+
+[node name="Heart1" type="TextureRect" parent="."]
+offset_left = 222.0
+offset_top = 10.0
+offset_right = 734.0
+offset_bottom = 522.0
+scale = Vector2(0.332319, 0.332319)
+texture = ExtResource("4_48w3b")
+script = ExtResource("6_buu1s")
+texs = Array[Texture2D]([ExtResource("4_48w3b"), ExtResource("10_dwrit")])
+id = 1
+
+[node name="Heart2" type="TextureRect" parent="."]
+offset_left = 350.0
+offset_top = 10.0
+offset_right = 862.0
+offset_bottom = 522.0
+scale = Vector2(0.332319, 0.332319)
+texture = ExtResource("4_48w3b")
+script = ExtResource("6_buu1s")
+texs = Array[Texture2D]([ExtResource("4_48w3b"), ExtResource("10_dwrit")])
+id = 2
+
+[node name="Heart3" type="TextureRect" parent="."]
+offset_left = 478.0
+offset_top = 10.0
+offset_right = 990.0
+offset_bottom = 522.0
+scale = Vector2(0.332319, 0.332319)
+texture = ExtResource("4_48w3b")
+script = ExtResource("6_buu1s")
+texs = Array[Texture2D]([ExtResource("4_48w3b"), ExtResource("10_dwrit")])
+id = 3

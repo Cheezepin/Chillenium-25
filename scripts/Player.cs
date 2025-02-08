@@ -14,6 +14,7 @@ public partial class Player : CharacterBody2D
 
 	ShaderMaterial s;
 	private double flashTimer = 0;
+	private double hitHeadTimer = 0;
 
 	[Export] public AudioStreamPlayer footstepSound;
 	[Export] public AudioStreamPlayer jumpSound;
@@ -53,6 +54,26 @@ public partial class Player : CharacterBody2D
 			flashTimer -= delta;
 			if(flashTimer < 0) {flashTimer = 0; s.SetShaderParameter("flash", false);}
 		}
+		if(hitHeadTimer > 0) {
+			Global.headState = 1;
+			hitHeadTimer -= delta;
+			if(hitHeadTimer < 0) hitHeadTimer = 0;
+		} else {
+			switch(health) {
+				case 0:
+					Global.headState = 3;
+					break;
+				case 1:
+					Global.headState = 2;
+					break;
+				default:
+					Global.headState = 0;
+					break;
+			}
+		}
+
+		Global.heartState = (int)health;
+
 		base._Process(delta);
 	}
 
@@ -182,6 +203,7 @@ public partial class Player : CharacterBody2D
 		if(action == Action.Stunned) return;
 		if(body.GetParent() != this && body is Hitbox) {
 			flashTimer = 0.04;
+			hitHeadTimer = 0.5;
 			float velX = body.GlobalPosition.X - GlobalPosition.X > 0 ? -1000.0f : 1000.0f;
 			Velocity = new Vector2(velX, Velocity.Y);
 			TakeDamage(1.0f);

@@ -21,6 +21,9 @@ public partial class Global : Node
 
 	public static AudioStreamPlayer switchSound;
 
+	public static int heartState = 0;
+	public static int headState = 0;
+
 	public enum ColorNames {
 		Red,
 		Orange,

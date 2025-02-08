@@ -291,7 +291,7 @@ position = Vector2(-9, 0)
 script = ExtResource("3_arpdf")
 
 [node name="Player" parent="." instance=ExtResource("4_xeiba")]
-position = Vector2(-4540, -3647)
+position = Vector2(280, 553)
 floor_max_angle = 1.39626
 floor_snap_length = 32.0
 
