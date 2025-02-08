@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=4 uid="uid://cx75o0oqspqql"]
+[gd_scene load_steps=44 format=4 uid="uid://cx75o0oqspqql"]
 
 [ext_resource type="Script" path="res://scripts/Level.cs" id="1_dmkto"]
 [ext_resource type="Texture2D" uid="uid://cbtnj0s7e3gv0" path="res://sprites/sky.png" id="2_gey6x"]
@@ -8,11 +8,11 @@
 [ext_resource type="Script" path="res://scripts/ui/PostProcessing.cs" id="5_j8p5i"]
 [ext_resource type="Shader" path="res://shaders/color.gdshader" id="6_qhkaq"]
 [ext_resource type="Texture2D" uid="uid://b0as2v4mhc54k" path="res://tilesets/dotted.png" id="7_3rgll"]
-[ext_resource type="TileSet" uid="uid://dn05yrc5ieiyg" path="res://tilesets/ColoredPlatforms.tres" id="8_oxa15"]
+[ext_resource type="TileSet" uid="uid://7jgsd74watj7" path="res://tilesets/ColoredPlatforms.tres" id="8_oxa15"]
 [ext_resource type="Script" path="res://scripts/ColoredPlatforms.cs" id="9_uevfq"]
 [ext_resource type="Shader" path="res://shaders/color_platform.gdshader" id="10_mtd1h"]
-[ext_resource type="PackedScene" uid="uid://djsi2ionjyiqf" path="res://actors/Enemy.tscn" id="11_pists"]
-[ext_resource type="PackedScene" uid="uid://duam5f5qbghn7" path="res://actors/Card.tscn" id="13_q0uwx"]
+[ext_resource type="PackedScene" path="res://actors/Enemy.tscn" id="11_pists"]
+[ext_resource type="PackedScene" path="res://actors/Card.tscn" id="13_q0uwx"]
 [ext_resource type="Texture2D" uid="uid://ctj0qmqqsmiq3" path="res://sprites/orange_card.png" id="14_5gc7s"]
 [ext_resource type="Script" path="res://scripts/DynamicMusic.cs" id="14_iud5m"]
 [ext_resource type="Texture2D" uid="uid://b71vu60fbs6vc" path="res://sprites/yellow_card.png" id="15_g3a2c"]
@@ -29,6 +29,8 @@
 [ext_resource type="Texture2D" uid="uid://hc7hkj01bg1b" path="res://tilesets/Child's_Play_TileSet_Castle_Bricks-03.png" id="20_qgckr"]
 [ext_resource type="AudioStream" uid="uid://dg75t5v3d6r4m" path="res://sounds/music/maingameplay7.ogg" id="21_waec8"]
 [ext_resource type="Texture2D" uid="uid://dbxolldm7hode" path="res://tilesets/Child's_Play_TileSet_Castle_Window-03.png" id="21_yufcp"]
+[ext_resource type="AudioStream" uid="uid://bfb8glcsmjg71" path="res://sounds/sfx/switch.ogg" id="30_vn31i"]
+[ext_resource type="AudioStream" uid="uid://bndcedipiuesl" path="res://sounds/sfx/chirp.ogg" id="31_w0pxm"]
 
 [sub_resource type="Shader" id="Shader_t4j1t"]
 code = "shader_type canvas_item;
@@ -345,3 +347,11 @@ volume_db = -15.847
 [node name="Track7" type="AudioStreamPlayer" parent="DynamicMusic"]
 stream = ExtResource("21_waec8")
 volume_db = -36.612
+
+[node name="Switch" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("30_vn31i")
+volume_db = -5.622
+
+[node name="Chirp" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("31_w0pxm")
+autoplay = true

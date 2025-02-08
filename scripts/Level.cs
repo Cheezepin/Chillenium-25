@@ -14,6 +14,7 @@ public partial class Level : Node2D
 		AddChild(ui);
 		camera = GetNode<Camera>("Camera"); //should we just spawn these instead of looking for them?
 		player = GetNode<Player>("Player");
+		Global.switchSound = GetNode<AudioStreamPlayer>("Switch");
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.

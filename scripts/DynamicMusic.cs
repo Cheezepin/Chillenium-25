@@ -32,7 +32,7 @@ public partial class DynamicMusic : Node
         {
 			float newVol = -80;
 			if (i <= totalColors) newVol = maxVolumes[i];
-			musicTracks[i].VolumeDb = Mathf.Lerp(musicTracks[i].VolumeDb, newVol, (float)delta);
+			musicTracks[i].VolumeDb = Mathf.Lerp(musicTracks[i].VolumeDb, newVol, (float)delta * 4);
         }
 	}
 }
