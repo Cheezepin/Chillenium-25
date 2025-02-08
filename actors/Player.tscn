@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://2m60ku0tayym"]
+[gd_scene load_steps=18 format=3 uid="uid://2m60ku0tayym"]
 
 [ext_resource type="Script" path="res://scripts/Player.cs" id="1_d7cxj"]
 [ext_resource type="Shader" path="res://shaders/character_shader.gdshader" id="1_k8efb"]
@@ -8,6 +8,8 @@
 [ext_resource type="Script" path="res://scripts/Footbox.cs" id="6_yyka5"]
 [ext_resource type="Script" path="res://scripts/Hitbox.cs" id="7_h8nb4"]
 [ext_resource type="Script" path="res://scripts/Hurtbox.cs" id="8_njheg"]
+[ext_resource type="AudioStream" uid="uid://bfultgqdq0tfe" path="res://sounds/sfx/footsteps.ogg" id="9_qw7ag"]
+[ext_resource type="AudioStream" uid="uid://bvdudq6lw7cr6" path="res://sounds/sfx/jump.ogg" id="10_uv1k1"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jtmsy"]
 shader = ExtResource("1_k8efb")
@@ -43,12 +45,14 @@ size = Vector2(87, 162)
 radius = 45.0
 height = 125.0
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("footstepSound", "jumpSound")]
 material = SubResource("ShaderMaterial_jtmsy")
 collision_layer = 4
 collision_mask = 4095
 script = ExtResource("1_d7cxj")
 bulletScene = SubResource("PackedScene_d8jvr")
+footstepSound = NodePath("Footsteps")
+jumpSound = NodePath("Jump")
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 position = Vector2(0, -100)
@@ -80,6 +84,13 @@ script = ExtResource("8_njheg")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 position = Vector2(0, -100)
 shape = SubResource("CapsuleShape2D_37mwr")
+
+[node name="Footsteps" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_qw7ag")
+
+[node name="Jump" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_uv1k1")
+volume_db = -5.622
 
 [connection signal="area_entered" from="Footbox" to="." method="_OnFootboxAreaEntered"]
 [connection signal="body_entered" from="Footbox" to="." method="_OnFootboxBodyEntered"]
