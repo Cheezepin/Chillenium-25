@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=4 uid="uid://cx75o0oqspqql"]
+[gd_scene load_steps=49 format=4 uid="uid://cx75o0oqspqql"]
 
 [ext_resource type="Script" path="res://scripts/Level.cs" id="1_dmkto"]
 [ext_resource type="Texture2D" uid="uid://cbtnj0s7e3gv0" path="res://sprites/sky.png" id="2_gey6x"]
@@ -29,9 +29,9 @@
 [ext_resource type="Texture2D" uid="uid://hc7hkj01bg1b" path="res://tilesets/Child's_Play_TileSet_Castle_Bricks-03.png" id="20_qgckr"]
 [ext_resource type="AudioStream" uid="uid://dg75t5v3d6r4m" path="res://sounds/music/maingameplay7.ogg" id="21_waec8"]
 [ext_resource type="Texture2D" uid="uid://dbxolldm7hode" path="res://tilesets/Child's_Play_TileSet_Castle_Window-03.png" id="21_yufcp"]
+[ext_resource type="Texture2D" uid="uid://d4jkx06lf1gr7" path="res://sprites/stainedglass.png" id="22_i3ctk"]
 [ext_resource type="AudioStream" uid="uid://bfb8glcsmjg71" path="res://sounds/sfx/switch.ogg" id="30_vn31i"]
 [ext_resource type="AudioStream" uid="uid://bndcedipiuesl" path="res://sounds/sfx/chirp.ogg" id="31_w0pxm"]
-[ext_resource type="Texture2D" uid="uid://d4jkx06lf1gr7" path="res://sprites/stainedglass.png" id="22_i3ctk"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kdq6d"]
 texture = ExtResource("19_5vwqj")
@@ -123,7 +123,6 @@ physics_layer_0/collision_mask = 7
 sources/1 = SubResource("TileSetAtlasSource_kdq6d")
 sources/2 = SubResource("TileSetAtlasSource_isstx")
 sources/3 = SubResource("TileSetAtlasSource_qcn5q")
-[ext_resource type="AudioStream" uid="uid://bndcedipiuesl" path="res://sounds/sfx/chirp.ogg" id="31_w0pxm"]
 
 [sub_resource type="Shader" id="Shader_t4j1t"]
 code = "shader_type canvas_item;
@@ -415,37 +414,31 @@ scale = Vector2(1.46693, 1.96045)
 
 [node name="Sprite2D" type="Sprite2D" parent="ForegroundDecos"]
 modulate = Color(1, 0, 0, 0.188235)
-scale = Vector2(1, 1)
 texture = ExtResource("22_i3ctk")
 
 [node name="Sprite2D2" type="Sprite2D" parent="ForegroundDecos"]
 modulate = Color(1, 0.498039, 0, 0.188235)
 position = Vector2(354.483, -2.04023)
-scale = Vector2(1, 1)
 texture = ExtResource("22_i3ctk")
 
 [node name="Sprite2D3" type="Sprite2D" parent="ForegroundDecos"]
 modulate = Color(1, 1, 0, 0.188235)
 position = Vector2(706.239, 0.000124454)
-scale = Vector2(1, 1)
 texture = ExtResource("22_i3ctk")
 
 [node name="Sprite2D4" type="Sprite2D" parent="ForegroundDecos"]
 modulate = Color(0, 1, 0, 0.188235)
 position = Vector2(1051.18, 2.04047)
-scale = Vector2(1, 1)
 texture = ExtResource("22_i3ctk")
 
 [node name="Sprite2D5" type="Sprite2D" parent="ForegroundDecos"]
 modulate = Color(0, 0, 1, 0.188235)
 position = Vector2(1405.66, 3.06065)
-scale = Vector2(1, 1)
 texture = ExtResource("22_i3ctk")
 
 [node name="Sprite2D6" type="Sprite2D" parent="ForegroundDecos"]
 modulate = Color(1, 0, 1, 0.188235)
 position = Vector2(1749.24, 2.04047)
-scale = Vector2(1, 1)
 texture = ExtResource("22_i3ctk")
 
 [node name="Foreground" type="TileMapLayer" parent="."]
@@ -491,4 +484,5 @@ volume_db = -5.622
 
 [node name="Chirp" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("31_w0pxm")
+volume_db = -23.892
 autoplay = true
