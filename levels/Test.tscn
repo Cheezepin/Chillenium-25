@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://ch28bmvjhowbl"]
+[gd_scene load_steps=28 format=4 uid="uid://ch28bmvjhowbl"]
 
 [ext_resource type="Script" path="res://scripts/Level.cs" id="1_f6kxx"]
 [ext_resource type="Script" path="res://scripts/Camera.cs" id="1_l34xl"]
@@ -8,9 +8,17 @@
 [ext_resource type="Shader" path="res://shaders/color.gdshader" id="5_cchji"]
 [ext_resource type="Texture2D" uid="uid://b0as2v4mhc54k" path="res://tilesets/dotted.png" id="8_3seu8"]
 [ext_resource type="Script" path="res://scripts/ui/PostProcessing.cs" id="8_rgdvr"]
-[ext_resource type="TileSet" uid="uid://dn05yrc5ieiyg" path="res://tilesets/ColoredPlatforms.tres" id="9_72l6g"]
+[ext_resource type="TileSet" uid="uid://7jgsd74watj7" path="res://tilesets/ColoredPlatforms.tres" id="9_72l6g"]
 [ext_resource type="Script" path="res://scripts/ColoredPlatforms.cs" id="11_5bxbn"]
 [ext_resource type="PackedScene" uid="uid://djsi2ionjyiqf" path="res://actors/BasicEnemy.tscn" id="11_byapu"]
+[ext_resource type="Script" path="res://scripts/DynamicMusic.cs" id="12_q26cw"]
+[ext_resource type="AudioStream" uid="uid://cokd8sk37wbln" path="res://sounds/music/maingameplay1.ogg" id="13_em7cl"]
+[ext_resource type="AudioStream" uid="uid://cq8hdjb4s4jey" path="res://sounds/music/maingameplay2.ogg" id="14_uqktj"]
+[ext_resource type="AudioStream" uid="uid://ca30ud811l5qg" path="res://sounds/music/maingameplay3.ogg" id="15_1d3kh"]
+[ext_resource type="AudioStream" uid="uid://c6di047wag7f8" path="res://sounds/music/maingameplay4.ogg" id="16_ctaf2"]
+[ext_resource type="AudioStream" uid="uid://cfgrug1s3rf7k" path="res://sounds/music/maingameplay5.ogg" id="17_q32a0"]
+[ext_resource type="AudioStream" uid="uid://dwwa1e32g0rbk" path="res://sounds/music/maingameplay6.ogg" id="18_tfrl4"]
+[ext_resource type="AudioStream" uid="uid://dg75t5v3d6r4m" path="res://sounds/music/maingameplay7.ogg" id="19_c1lyv"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4du2b"]
 shader = ExtResource("5_cchji")
@@ -173,3 +181,35 @@ targetColor = 5
 [node name="BasicEnemy" parent="." instance=ExtResource("11_byapu")]
 position = Vector2(-88, 227)
 health = 3.0
+
+[node name="DynamicMusic" type="Node" parent="." node_paths=PackedStringArray("musicTracks")]
+script = ExtResource("12_q26cw")
+musicTracks = [NodePath("Track1"), NodePath("Track2"), NodePath("Track3"), NodePath("Track4"), NodePath("Track5"), NodePath("Track6"), NodePath("Track7")]
+
+[node name="Track1" type="AudioStreamPlayer" parent="DynamicMusic"]
+stream = ExtResource("13_em7cl")
+volume_db = -5.0
+
+[node name="Track2" type="AudioStreamPlayer" parent="DynamicMusic"]
+stream = ExtResource("14_uqktj")
+volume_db = -16.0
+
+[node name="Track3" type="AudioStreamPlayer" parent="DynamicMusic"]
+stream = ExtResource("15_1d3kh")
+volume_db = -18.515
+
+[node name="Track4" type="AudioStreamPlayer" parent="DynamicMusic"]
+stream = ExtResource("16_ctaf2")
+volume_db = -24.43
+
+[node name="Track5" type="AudioStreamPlayer" parent="DynamicMusic"]
+stream = ExtResource("17_q32a0")
+volume_db = -14.0
+
+[node name="Track6" type="AudioStreamPlayer" parent="DynamicMusic"]
+stream = ExtResource("18_tfrl4")
+volume_db = -15.847
+
+[node name="Track7" type="AudioStreamPlayer" parent="DynamicMusic"]
+stream = ExtResource("19_c1lyv")
+volume_db = -36.612
