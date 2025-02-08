@@ -5,6 +5,7 @@ public partial class Card : Sprite2D
 {
 	// Called when the node enters the scene tree for the first time.
 	[Export]public Global.ColorFilters color;
+	[Export] public AudioStream getSound;
 	private Player player;
 	public override void _Ready()
 	{
@@ -29,6 +30,15 @@ public partial class Card : Sprite2D
 			Global.transitioningColor = true;
 			Global.transitionLeft = false;
 			Global.switchSound.Play();
+            AudioStreamPlayer get = new()
+            {
+                Stream = getSound,
+				VolumeDb = -16,
+				PitchScale = 1.2f
+            };
+			get.Finished += () => { get.QueueFree(); };
+			GetParent().AddChild(get);
+            get.Play();
 			GD.Print((int)color);
 			QueueFree();
 		}
