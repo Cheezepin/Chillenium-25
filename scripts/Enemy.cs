@@ -14,7 +14,8 @@ public partial class Enemy : AnimatableBody2D
 	public const float gravity = 2500.0f;
 
 	[Export]public float health = 1.0f;
-	[Export]public PackedScene ghostScene;
+
+	[Export]public bool canBeJumpedOn = true;
 
 	public override void _Ready()
 	{
@@ -47,10 +48,6 @@ public partial class Enemy : AnimatableBody2D
 	private void TakeDamage(float dmg) {
 		health -= dmg;
 		if(health <= 0) {
-			var ghost = ghostScene.Instantiate<Ghost>();
-			Global.currentLevel.CallDeferred(Node.MethodName.AddChild, ghost);//what?
-			ghost.GlobalPosition = GlobalPosition;
-
 			QueueFree();
 		}
 	}
@@ -59,6 +56,11 @@ public partial class Enemy : AnimatableBody2D
 		// QueueFree();
 		flashTimer = 0.04;
 		velocity = bullet.velocity * 0.25f;
+		TakeDamage(1.0f);
+	}
+
+	public void OnJumpedOn() {
+		flashTimer = 0.04;
 		TakeDamage(1.0f);
 	}
 }

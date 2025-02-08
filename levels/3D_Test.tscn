@@ -1,0 +1,47 @@
+[gd_scene load_steps=6 format=3 uid="uid://bkps4gd17tbeb"]
+
+[ext_resource type="Script" path="res://scripts/Level.cs" id="1_ftvj2"]
+[ext_resource type="Script" path="res://scripts/Camera.cs" id="3_uyog1"]
+[ext_resource type="PackedScene" uid="uid://2m60ku0tayym" path="res://actors/Player.tscn" id="4_5ouoe"]
+[ext_resource type="MeshLibrary" uid="uid://ci51cqdpqm4y5" path="res://tilesets/SkyTiles.tres" id="4_rob6r"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_clgr0"]
+
+[node name="3D_Test" type="Node3D"]
+script = ExtResource("1_ftvj2")
+
+[node name="Player" parent="." instance=ExtResource("4_5ouoe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.06749, 0)
+
+[node name="Camera" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.25111, 15.3034)
+fov = 147.2
+size = 25.0
+script = ExtResource("3_uyog1")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, -2.80548, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="CSGBox3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CSGBox3D/StaticBody3D"]
+shape = SubResource("BoxShape3D_clgr0")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+visible = false
+offset_left = -970.0
+offset_top = -537.0
+offset_right = 950.0
+offset_bottom = 543.0
+
+[node name="GridMap" type="GridMap" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+mesh_library = ExtResource("4_rob6r")
+cell_size = Vector3(1, 1, 1)
+cell_scale = 100.0
+data = {
+"cells": PackedInt32Array(1, 65534, 0, 65534, 65534, 0, 65534, 65532, 0, 0, 65534, 0)
+}
+metadata/_editor_floor_ = Vector3(0, 0, -1)

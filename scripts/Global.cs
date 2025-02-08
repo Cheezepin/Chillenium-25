@@ -6,6 +6,8 @@ public partial class Global : Node
 	public static string startSceneName = "Test";
 	public static Node currentLevel;
 	public static Transitions transitions;
+
+	public static Color currColor;
 	
 	public override void _Ready()
 	{
@@ -17,6 +19,8 @@ public partial class Global : Node
 		
 		transitions = (Transitions)GD.Load<PackedScene>("global/Transitions.tscn").Instantiate();
 		GetTree().CurrentScene.AddChild(transitions);
+
+		currColor = Color.Color8(255, 0, 0, 255);
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -24,6 +28,13 @@ public partial class Global : Node
 	{
 		if(Input.IsActionJustPressed("debug")) {
 			transitions.ExitToMainMenu();
+		}
+
+		if(Input.IsActionJustPressed("move_left")) {
+			currColor = Color.Color8(255, 0, 0, 255);
+		}
+		if(Input.IsActionJustPressed("move_right")) {
+			currColor = Color.Color8(255, 255, 255, 255);
 		}
 	}
 

@@ -33,6 +33,10 @@ window/vsync/vsync_mode=0
 
 project/assembly_name="Chillenium-25"
 
+[filesystem]
+
+import/blender/enabled=false
+
 [input]
 
 move_left={
@@ -69,4 +73,4 @@ debug={
 2d_physics/layer_1="Level"
 2d_physics/layer_2="Entity"
 2d_physics/layer_3="Player"
-2d_physics/layer_4="Ghost"
+2d_physics/layer_4="Red Platforms"

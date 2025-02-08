@@ -6,13 +6,12 @@ public partial class Player : CharacterBody2D
 {
 	public const float MaxSpeed = 600.0f;
 	public const float JumpVelocity = -800.0f;
+	public const float EnemyBounceVelocity = -600.0f;
 
 	public const double xAcceleration = 5500.0f;
 	public const float gravity = 2500.0f;
 
 	[Export]public PackedScene bulletScene;
-
-	public List<Ghost> ghosts = new List<Ghost>();
 
 	public override void _Ready()
 	{
@@ -23,7 +22,7 @@ public partial class Player : CharacterBody2D
 	{
 		Vector2 velocity = Velocity;
 
-		float speed = MaxSpeed - (ghosts.Count*200.0f);
+		float speed = MaxSpeed;
 
 		// Add the gravity.
 		if (!IsOnFloor())
@@ -66,5 +65,14 @@ public partial class Player : CharacterBody2D
 
 		Velocity = velocity;
 		MoveAndSlide();
+	}
+
+	void _OnFootboxAreaEntered(Node2D body) {
+		if(body is Jumpbox) {
+			GD.Print("Yeah!");
+			Enemy e = ((Jumpbox)body).parent;
+			e.OnJumpedOn();
+			Velocity = new Vector2(Velocity.X, EnemyBounceVelocity);
+		}
 	}
 }

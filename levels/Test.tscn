@@ -1,9 +1,42 @@
-[gd_scene load_steps=5 format=4 uid="uid://ch28bmvjhowbl"]
+[gd_scene load_steps=16 format=4 uid="uid://ch28bmvjhowbl"]
 
 [ext_resource type="Script" path="res://scripts/Level.cs" id="1_f6kxx"]
 [ext_resource type="Script" path="res://scripts/Camera.cs" id="1_l34xl"]
 [ext_resource type="PackedScene" uid="uid://2m60ku0tayym" path="res://actors/Player.tscn" id="1_ssv1b"]
 [ext_resource type="TileSet" uid="uid://dj8650aypd1qy" path="res://tilesets/test.tres" id="2_w04bx"]
+[ext_resource type="Shader" path="res://shaders/color_platform.gdshader" id="5_2djn7"]
+[ext_resource type="Shader" path="res://shaders/color.gdshader" id="5_cchji"]
+[ext_resource type="Script" path="res://scripts/ui/PostProcessing.cs" id="8_rgdvr"]
+[ext_resource type="Texture2D" uid="uid://53kirky63pj0" path="res://tilesets/red.png" id="9_hqki7"]
+[ext_resource type="Texture2D" uid="uid://dbhi4ul60mu0" path="res://sprites/bullet.png" id="9_r3pv4"]
+[ext_resource type="Script" path="res://scripts/ColoredPlatforms.cs" id="11_5bxbn"]
+[ext_resource type="PackedScene" uid="uid://djsi2ionjyiqf" path="res://actors/BasicEnemy.tscn" id="11_byapu"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4du2b"]
+shader = ExtResource("5_cchji")
+shader_parameter/screen_color_bw = false
+shader_parameter/screen_color_other_bw = false
+shader_parameter/screen_color = Color(1, 0, 0, 1)
+shader_parameter/screen_color_other = Color(1, 1, 0, 1)
+shader_parameter/progress = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xokrd"]
+shader = ExtResource("5_2djn7")
+shader_parameter/target_color = Color(1, 0, 0, 1)
+shader_parameter/current_color = Color(1, 1, 1, 1)
+shader_parameter/dotted_tex = ExtResource("9_r3pv4")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_biuq0"]
+texture = ExtResource("9_hqki7")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+
+[sub_resource type="TileSet" id="TileSet_a2r4j"]
+tile_size = Vector2i(64, 64)
+physics_layer_0/collision_layer = 8
+physics_layer_0/collision_mask = 15
+sources/0 = SubResource("TileSetAtlasSource_biuq0")
 
 [node name="Test" type="Node2D"]
 script = ExtResource("1_f6kxx")
@@ -24,5 +57,24 @@ script = ExtResource("1_l34xl")
 
 [node name="Player" parent="." instance=ExtResource("1_ssv1b")]
 position = Vector2(-9, 0)
-collision_layer = 1
-collision_mask = 1
+
+[node name="PostProcessing" type="CanvasLayer" parent="."]
+script = ExtResource("8_rgdvr")
+
+[node name="ColorRect" type="ColorRect" parent="PostProcessing"]
+visible = false
+material = SubResource("ShaderMaterial_4du2b")
+offset_right = 1920.0
+offset_bottom = 1080.0
+mouse_filter = 1
+
+[node name="RedPlatforms" type="TileMapLayer" parent="."]
+material = SubResource("ShaderMaterial_xokrd")
+tile_map_data = PackedByteArray("AAAIAAEAAAAAAAAAAAAJAAEAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_a2r4j")
+script = ExtResource("11_5bxbn")
+targetColor = Color(1, 0, 0, 1)
+
+[node name="BasicEnemy" parent="." instance=ExtResource("11_byapu")]
+position = Vector2(-414, 173)
+health = 3.0

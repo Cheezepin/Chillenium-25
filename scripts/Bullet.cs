@@ -21,7 +21,6 @@ public partial class Bullet : Area2D
 
 	public void _OnBodyEntered(Node2D body)
 	{
-		GD.Print("hit!");
 		if(body is TileMapLayer) {
 			QueueFree();
 		}
