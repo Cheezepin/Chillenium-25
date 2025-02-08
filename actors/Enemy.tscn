@@ -35,7 +35,7 @@ size = Vector2(156, 27)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_byx5i"]
 size = Vector2(156, 146)
 
-[node name="BasicEnemy" type="AnimatableBody2D"]
+[node name="Enemy" type="AnimatableBody2D"]
 material = ExtResource("1_f02fe")
 collision_layer = 2
 collision_mask = 4095
@@ -76,5 +76,9 @@ script = ExtResource("4_hdhqb")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 position = Vector2(0, -1)
 shape = SubResource("RectangleShape2D_byx5i")
+
+[node name="FloorCheck" type="RayCast2D" parent="."]
+position = Vector2(0, -10)
+target_position = Vector2(0, 20)
 
 [connection signal="area_entered" from="Hurtbox" to="." method="_OnHurtboxAreaEntered"]

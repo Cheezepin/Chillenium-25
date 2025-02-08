@@ -10,7 +10,7 @@
 [ext_resource type="Script" path="res://scripts/ui/PostProcessing.cs" id="8_rgdvr"]
 [ext_resource type="TileSet" uid="uid://dn05yrc5ieiyg" path="res://tilesets/ColoredPlatforms.tres" id="9_72l6g"]
 [ext_resource type="Script" path="res://scripts/ColoredPlatforms.cs" id="11_5bxbn"]
-[ext_resource type="PackedScene" uid="uid://djsi2ionjyiqf" path="res://actors/BasicEnemy.tscn" id="11_byapu"]
+[ext_resource type="PackedScene" uid="uid://djsi2ionjyiqf" path="res://actors/Enemy.tscn" id="11_byapu"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4du2b"]
 shader = ExtResource("5_cchji")

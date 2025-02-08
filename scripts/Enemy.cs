@@ -28,6 +28,18 @@ public partial class Enemy : AnimatableBody2D
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
+	private void ApproachScale(double delta) {
+		float sign = GlobalScale.Y < 0 ? -1 : 1;
+		float xScale = Math.Abs(GlobalScale.X);
+		float yScale = Math.Abs(GlobalScale.Y);
+		Global.AsymptoticApproach(ref xScale, 1.0f, (float)(5.0*delta));
+		Global.AsymptoticApproach(ref yScale, 1.0f, (float)(5.0*delta));
+		GlobalScale = new Vector2(xScale, yScale);
+		// Global.AsymptoticApproach(ref scale, Vector2.One, (float)(5.0*delta));
+		// scale.Y *= sign;
+		// GD.Print(scale + " " + GlobalScale);
+		// GlobalScale = scale;
+	}
 	public override void _Process(double delta)
 	{
 		if(flashTimer > 0) {
@@ -36,12 +48,14 @@ public partial class Enemy : AnimatableBody2D
 			if(flashTimer < 0) {flashTimer = 0; s.SetShaderParameter("flash", false);}
 		}
 
+		ApproachScale(delta);
+
 		timer += delta;
 	}
 
 	public override void _PhysicsProcess(double delta)
 	{
-		velocity.X = Mathf.MoveToward(velocity.X, 0, 1500.0f * (float)delta);
+		velocity.X = Mathf.MoveToward(velocity.X, 0, 3000.0f * (float)delta);
 		velocity.Y += gravity * (float)delta;
 		Vector2 xVelVec = new Vector2(velocity.X, 0)*(float)delta; //separation done so horizontal movement is applied without stopping in place
 		Vector2 yVelVec = new Vector2(0, velocity.Y)*(float)delta;
@@ -68,6 +82,7 @@ public partial class Enemy : AnimatableBody2D
 	public void OnJumpedOn() {
 		flashTimer = 0.04;
 		TakeDamage(1.0f);
+		GlobalScale = new Vector2(GlobalScale.X, 0.5f);
 	}
 
 	public void _OnHurtboxAreaEntered(Node2D body) {
@@ -76,6 +91,7 @@ public partial class Enemy : AnimatableBody2D
 			flashTimer = 0.04;
 			velocity.X = body.GlobalPosition.X - GlobalPosition.X > 0 ? -1000.0f : 1000.0f;
 			TakeDamage(1.0f);
+			GlobalScale = new Vector2(0.5f, 1.0f);
 		}
 	}
 }
