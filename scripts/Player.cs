@@ -91,7 +91,6 @@ public partial class Player : CharacterBody2D
 						if(!IsOnFloor()) footstepSound.Stop();
 					}
 					velocity.X = Mathf.MoveToward(Velocity.X, xDirection*speed, (float)(xAcceleration*delta));
-					GD.Print(GlobalScale);
 					if(xDirection > 0) {
 						if(GlobalScale != new Vector2(1.0f, 1.0f)) {
 							GlobalScale = new Vector2(1.0f, -1.0f);
@@ -151,7 +150,6 @@ public partial class Player : CharacterBody2D
 
 	void _OnFootboxAreaEntered(Node2D body) {
 		if(body is Jumpbox) {
-			GD.Print("Yeah!");
 			Enemy e = ((Jumpbox)body).parent;
 			e.OnJumpedOn();
 			Velocity = new Vector2(Velocity.X, EnemyBounceVelocity);
