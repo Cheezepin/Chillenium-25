@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://q16kfk1y2b48"]
+[gd_scene load_steps=15 format=3 uid="uid://djsi2ionjyiqf"]
 
 [ext_resource type="Texture2D" uid="uid://dvu3egfotdpy1" path="res://ui/tiramisu.png" id="1_ewsdf"]
 [ext_resource type="Material" uid="uid://dhqtai7vi8ml3" path="res://materials/character_material.tres" id="1_f02fe"]

@@ -12,6 +12,8 @@ public partial class Player : CharacterBody2D
 	public const double xFriction = 3500.0f;
 	public const float gravity = 2500.0f;
 
+	private Checkpoint checkpoint = null;
+
 	ShaderMaterial s;
 	private double flashTimer = 0;
 	private double hitHeadTimer = 0;
@@ -28,6 +30,8 @@ public partial class Player : CharacterBody2D
 		Move,
 		Attack,
 		Stunned,
+		Faceplant,
+		Die,
 	};
 	
 	private Action action;
@@ -36,6 +40,7 @@ public partial class Player : CharacterBody2D
 	private ColoredPlatforms currPlatform = null;
 
 	private AnimatedSprite2D sprite;
+	private bool hasPurpleSpeed = false;
 	public override void _Ready()
 	{
 		s = (ShaderMaterial)Material;
@@ -94,6 +99,10 @@ public partial class Player : CharacterBody2D
 			velocity += new Vector2(0, gravity) * (float)delta;
 		}
 
+		if(health <= 0 && action != Action.Die) {
+			ChangeAction(Action.Die);
+		}
+
 		switch(action) {
 			case Action.Move:
 				if (Input.IsActionJustPressed("jump") && IsOnFloor())
@@ -103,9 +112,15 @@ public partial class Player : CharacterBody2D
 				}
 
 				float xDirection = Input.GetAxis("move_left", "move_right");
-				if (xDirection != 0)
+				if(IsOnFloor() && currPlatform != null && currPlatform.targetColor == Global.ColorNames.Purple)
 				{
-					if(IsOnFloor()) sprite.Play("run");
+					sprite.Play("run");
+					velocity.X = Mathf.MoveToward(Velocity.X, GlobalScale.Y*MaxSpeed*2, (float)(xAcceleration*1.0*delta));
+					hasPurpleSpeed = true;
+				}
+				else if (xDirection != 0)
+				{
+					if(IsOnFloor()) {sprite.Play("run"); hasPurpleSpeed = false;}
 
 					if (IsOnFloor() && !footstepSound.Playing)
 					{
@@ -115,23 +130,26 @@ public partial class Player : CharacterBody2D
 					{
 						if(!IsOnFloor()) footstepSound.Stop();
 					}
-					velocity.X = Mathf.MoveToward(Velocity.X, xDirection*speed, (float)(xAcceleration*delta));
-					if(xDirection > 0) {
-						if(GlobalScale != new Vector2(1.0f, 1.0f)) {
-							GlobalScale = new Vector2(1.0f, -1.0f);
-							RotationDegrees = 0;
-						}
-					} else {
-						if(GlobalScale != new Vector2(1.0f, -1.0f)) {
-							GlobalScale = new Vector2(1.0f, -1.0f);
-							RotationDegrees = 180;
+
+					if(!hasPurpleSpeed) {
+						velocity.X = Mathf.MoveToward(Velocity.X, xDirection*speed, (float)(xAcceleration*delta));
+						if(xDirection > 0) {
+							if(GlobalScale != new Vector2(1.0f, 1.0f)) {
+								GlobalScale = new Vector2(1.0f, -1.0f);
+								RotationDegrees = 0;
+							}
+						} else {
+							if(GlobalScale != new Vector2(1.0f, -1.0f)) {
+								GlobalScale = new Vector2(1.0f, -1.0f);
+								RotationDegrees = 180;
+							}
 						}
 					}
 				}
 				else
 				{
-					if(IsOnFloor()) sprite.Play("idle");
-					velocity.X = Mathf.MoveToward(Velocity.X, 0, (float)(xFriction*delta));
+					if(IsOnFloor()) {sprite.Play("idle"); hasPurpleSpeed = false;}
+					if(!hasPurpleSpeed) velocity.X = Mathf.MoveToward(Velocity.X, 0, (float)(xFriction*delta));
 				}
 
 				if(!IsOnFloor() && sprite.Animation != "jump") sprite.Play("jump");
@@ -153,14 +171,18 @@ public partial class Player : CharacterBody2D
 				velocity.X = Mathf.MoveToward(velocity.X, 0, (float)(xFriction*delta));
 				if(actionTimer > 0.2) ChangeAction(Action.Move);
 				break;
+			case Action.Faceplant:
+				velocity.X = Mathf.MoveToward(Velocity.X, 0, (float)(xFriction*delta));
+				if(actionTimer > 1.0) ChangeAction(Action.Move);
+				break;
+			case Action.Die:
+				velocity.X = Mathf.MoveToward(Velocity.X, 0, (float)(xFriction*delta));
+				if(actionTimer > 1.0) {ReturnToCheckpoint(); ChangeAction(Action.Move);}
+				break;
 		}
 
 		if(currPlatform != null) {
-			if(currPlatform.targetColor == Global.ColorNames.Purple) {
-				velocity.X =currPlatform.velocity.Length() * GlobalScale.Y * MaxSpeed * 2;
-			} else {
-				GlobalPosition += currPlatform.velocity;
-			}
+			GlobalPosition += currPlatform.velocity;
 		}
 
 		Velocity = velocity;
@@ -174,6 +196,11 @@ public partial class Player : CharacterBody2D
 		if(health <= 0) {
 			// QueueFree();
 		}
+	}
+
+	private void ReturnToCheckpoint() {
+		health = 3;
+		GlobalPosition = checkpoint.GlobalPosition;
 	}
 
 	void _OnFootboxAreaEntered(Node2D body) {
@@ -216,6 +243,16 @@ public partial class Player : CharacterBody2D
 			Global.currBW = true;
 			Global.colorsUnlocked = 0;
 			body.QueueFree();
+			ChangeAction(Action.Faceplant);
+		}
+
+		if(body is DeathFloor) {
+			ReturnToCheckpoint();
+		}
+
+		if(body is Checkpoint) {
+			checkpoint = (Checkpoint)body;
+			GD.Print("Checkpoint reached!");
 		}
 	}
 }
