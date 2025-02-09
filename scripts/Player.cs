@@ -92,7 +92,7 @@ public partial class Player : CharacterBody2D
 
 		Global.heartState = (int)health;
 
-		if(!hasSeenIntro && GlobalPosition.X > -500f && Global.colorsUnlocked == 0) {
+		if(!hasSeenIntro && GlobalPosition.X > -500f && Global.currentLevel.Name == "SkyLevel") {
 			ChangeAction(Action.Intro);
 			hasSeenIntro = true;
 		}
@@ -232,6 +232,12 @@ public partial class Player : CharacterBody2D
 
 		if(currPlatform != null) {
 			GlobalPosition += currPlatform.velocity;
+		}
+
+		float dLR = Input.GetAxis("debug_left", "debug_right");
+		float dUD = Input.GetAxis("debug_up", "debug_down");
+		if(dLR != 0 || dUD != 0) {
+			velocity = new Vector2(dLR, dUD)*250000.0f*(float)delta;
 		}
 
 		Velocity = velocity;
