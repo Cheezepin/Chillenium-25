@@ -69,6 +69,8 @@ public partial class Enemy : AnimatableBody2D
 	}
 
 	private void TakeDamage(float dmg) {
+		ding.Play();
+		hitSound.Play();
 		health -= dmg;
 		if(health <= 0) {
 			QueueFree();
@@ -86,8 +88,6 @@ public partial class Enemy : AnimatableBody2D
 		flashTimer = 0.04;
 		TakeDamage(1.0f);
 		GlobalScale = new Vector2(GlobalScale.X, 0.5f);
-		ding.Play();
-		hitSound.Play();
 	}
 
 	public void _OnHurtboxAreaEntered(Node2D body) {

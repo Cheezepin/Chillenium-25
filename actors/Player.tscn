@@ -1,14 +1,16 @@
-[gd_scene load_steps=16 format=3 uid="uid://2m60ku0tayym"]
+[gd_scene load_steps=18 format=3 uid="uid://2m60ku0tayym"]
 
 [ext_resource type="Script" path="res://scripts/Player.cs" id="1_d7cxj"]
 [ext_resource type="Shader" path="res://shaders/character_shader.gdshader" id="1_k8efb"]
 [ext_resource type="Texture2D" uid="uid://dypa55o5kx44h" path="res://sprites/miguel.png" id="1_wl8sn"]
-[ext_resource type="SpriteFrames" uid="uid://cldk1vdqkr8a8" path="res://sprites/CharacterAnims.tres" id="6_nupav"]
+[ext_resource type="SpriteFrames" uid="uid://cncuutjngx5tr" path="res://sprites/CharacterAnims.tres" id="6_nupav"]
 [ext_resource type="Script" path="res://scripts/Footbox.cs" id="6_yyka5"]
 [ext_resource type="Script" path="res://scripts/Hitbox.cs" id="7_h8nb4"]
 [ext_resource type="AudioStream" uid="uid://bfultgqdq0tfe" path="res://sounds/sfx/footsteps.ogg" id="8_kca0u"]
 [ext_resource type="Script" path="res://scripts/Hurtbox.cs" id="8_njheg"]
 [ext_resource type="AudioStream" uid="uid://bvdudq6lw7cr6" path="res://sounds/sfx/jump.ogg" id="9_4cool"]
+[ext_resource type="AudioStream" uid="uid://b7yuqdfbh3vjp" path="res://sounds/sfx/slide.ogg" id="9_261xk"]
+[ext_resource type="AudioStream" uid="uid://cbsbxot3g60fi" path="res://sounds/sfx/swoosh.ogg" id="9_bk2yp"]
 [ext_resource type="AudioStream" uid="uid://cmuiqv54frdno" path="res://sounds/sfx/hit.ogg" id="10_ayveh"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jtmsy"]
@@ -29,7 +31,7 @@ size = Vector2(185, 162)
 radius = 40.0
 height = 100.0
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("footstepSound", "jumpSound", "hitSound")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("footstepSound", "jumpSound", "hitSound", "slideSound", "attackSound")]
 material = SubResource("ShaderMaterial_jtmsy")
 collision_layer = 15
 collision_mask = 4095
@@ -37,6 +39,8 @@ script = ExtResource("1_d7cxj")
 footstepSound = NodePath("Footsteps")
 jumpSound = NodePath("Jump")
 hitSound = NodePath("Hit")
+slideSound = NodePath("Slide")
+attackSound = NodePath("Attack")
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 position = Vector2(0, -70)
@@ -80,9 +84,17 @@ shape = SubResource("CapsuleShape2D_37mwr")
 [node name="Footsteps" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_kca0u")
 
+[node name="Attack" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_bk2yp")
+volume_db = -5.152
+
+[node name="Slide" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_261xk")
+volume_db = -13.117
+
 [node name="Jump" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("9_4cool")
-volume_db = -5.6
+volume_db = -2.321
 
 [node name="Hit" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("10_ayveh")

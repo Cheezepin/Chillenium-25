@@ -21,6 +21,8 @@ public partial class Player : CharacterBody2D
 	[Export] public AudioStreamPlayer footstepSound;
 	[Export] public AudioStreamPlayer jumpSound;
 	[Export] public AudioStreamPlayer hitSound;
+	[Export] public AudioStreamPlayer slideSound;
+	[Export] public AudioStreamPlayer attackSound;
 
 	private CollisionShape2D hitbox;
 
@@ -116,6 +118,7 @@ public partial class Player : CharacterBody2D
 				{
 					sprite.Play("run");
 					velocity.X = Mathf.MoveToward(Velocity.X, GlobalScale.Y*MaxSpeed*2, (float)(xAcceleration*1.0*delta));
+					slideSound.Play();
 					hasPurpleSpeed = true;
 				}
 				else if (xDirection != 0)
@@ -162,7 +165,11 @@ public partial class Player : CharacterBody2D
 			case Action.Attack:
 				velocity.X = Mathf.MoveToward(Velocity.X, 0, (float)(xFriction*delta));
 				hitbox.Disabled = false;
-				if(sprite.Animation != "attack") sprite.Play("attack");
+				if (sprite.Animation != "attack")
+				{
+					sprite.Play("attack");
+					attackSound.Play();
+				}
 				if(actionTimer > 0.4) {
 					ChangeAction(Action.Move);
 					hitbox.Disabled = true;
