@@ -1,4 +1,4 @@
-[gd_scene load_steps=77 format=4 uid="uid://cx75o0oqspqql"]
+[gd_scene load_steps=82 format=4 uid="uid://cx75o0oqspqql"]
 
 [ext_resource type="Script" path="res://scripts/Level.cs" id="1_dmkto"]
 [ext_resource type="PackedScene" uid="uid://brhxin3wl51k" path="res://actors/Intro.tscn" id="2_5ly7j"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://scripts/Camera.cs" id="3_arpdf"]
 [ext_resource type="Texture2D" uid="uid://p76d72onkth1" path="res://sprites/Background/cloudlayer1.png" id="3_mi0d7"]
 [ext_resource type="PackedScene" uid="uid://2m60ku0tayym" path="res://actors/Player.tscn" id="4_xeiba"]
+[ext_resource type="Texture2D" uid="uid://cvf4b8wyfetbq" path="res://tilesets/Child's_Play_TileSet_Small_Platform-18.png" id="5_2b7rl"]
 [ext_resource type="Script" path="res://scripts/ui/PostProcessing.cs" id="5_j8p5i"]
 [ext_resource type="Shader" path="res://shaders/color.gdshader" id="6_qhkaq"]
 [ext_resource type="Texture2D" uid="uid://b0as2v4mhc54k" path="res://tilesets/dotted.png" id="7_3rgll"]
@@ -27,12 +28,22 @@
 [ext_resource type="Texture2D" uid="uid://dbxolldm7hode" path="res://tilesets/Child's_Play_TileSet_Castle_Window-03.png" id="21_yufcp"]
 [ext_resource type="Texture2D" uid="uid://d4jkx06lf1gr7" path="res://sprites/stainedglass.png" id="22_i3ctk"]
 [ext_resource type="Script" path="res://scripts/DisperseTrigger.cs" id="22_sj1f2"]
-[ext_resource type="PackedScene" uid="uid://c2bu8c7go0jhx" path="res://global/DynamicMusic.tscn" id="26_dkwr1"]
+[ext_resource type="PackedScene" path="res://global/DynamicMusic.tscn" id="26_dkwr1"]
 [ext_resource type="PackedScene" uid="uid://vjjvrv40250f" path="res://actors/RedDroplet.tscn" id="26_si5v2"]
-[ext_resource type="PackedScene" uid="uid://buftnxmpesmkc" path="res://actors/GreenDroplet.tscn" id="27_uwww5"]
+[ext_resource type="PackedScene" uid="uid://bqtj3u7qtdwj4" path="res://actors/GreenDroplet.tscn" id="27_uwww5"]
 [ext_resource type="PackedScene" uid="uid://ch75sdvgpnjxy" path="res://actors/OrangeDroplet.tscn" id="27_x0xjj"]
 [ext_resource type="AudioStream" uid="uid://bfb8glcsmjg71" path="res://sounds/sfx/switch.ogg" id="30_vn31i"]
 [ext_resource type="AudioStream" uid="uid://bndcedipiuesl" path="res://sounds/sfx/chirp.ogg" id="31_w0pxm"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_w6fpg"]
+texture = ExtResource("5_2b7rl")
+texture_region_size = Vector2i(512, 512)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kdq6d"]
 texture = ExtResource("19_5vwqj")
@@ -124,12 +135,16 @@ physics_layer_0/collision_mask = 7
 sources/1 = SubResource("TileSetAtlasSource_kdq6d")
 sources/2 = SubResource("TileSetAtlasSource_isstx")
 sources/3 = SubResource("TileSetAtlasSource_qcn5q")
+sources/0 = SubResource("TileSetAtlasSource_w6fpg")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dk6or"]
 size = Vector2(2000, 50)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j67vv"]
 size = Vector2(586, 378)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_enoit"]
+size = Vector2(924, 514)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ess3e"]
 size = Vector2(20000, 1000)
@@ -580,10 +595,6 @@ sources/3 = SubResource("TileSetAtlasSource_pwg3w")
 [node name="Test" type="Node2D"]
 script = ExtResource("1_dmkto")
 
-[node name="Intro" parent="." instance=ExtResource("2_5ly7j")]
-position = Vector2(1.99997, -3813)
-scale = Vector2(0.188, 0.188)
-
 [node name="Camera" type="Camera2D" parent="."]
 position = Vector2(-9, 0)
 script = ExtResource("3_arpdf")
@@ -607,8 +618,12 @@ texture = ExtResource("3_mi0d7")
 
 [node name="Background" type="TileMapLayer" parent="."]
 scale = Vector2(0.25, 0.25)
-tile_map_data = PackedByteArray("AADg/+H/AgACAAAAAADg/+L/AgACAAEAAADg/+P/AgACAAIAAADg/+T/AgACAAMAAADh/+H/AgACAAAAAADh/+L/AgACAAEAAADh/+P/AgACAAIAAADh/+T/AgACAAMAAADi/+H/AgACAAAAAADi/+L/AgACAAEAAADi/+P/AgACAAIAAADi/+T/AgACAAMAAADk/+H/AgACAAAAAADk/+L/AgACAAEAAADk/+P/AgACAAIAAADk/+T/AgACAAMAAADl/+H/AgACAAAAAADl/+L/AgACAAEAAADl/+P/AgACAAIAAADl/+T/AgACAAMAAADm/+H/AgACAAAAAADm/+L/AgACAAEAAADm/+P/AgACAAIAAADm/+T/AgACAAMAAADo/+H/AgACAAAAAADo/+L/AgACAAEAAADo/+P/AgACAAIAAADo/+T/AgACAAMAAADp/+H/AgACAAAAAADp/+L/AgACAAEAAADp/+P/AgACAAIAAADp/+T/AgACAAMAAADq/+H/AgACAAAAAADq/+L/AgACAAEAAADq/+P/AgACAAIAAADq/+T/AgACAAMAAADs/+H/AgACAAAAAADs/+L/AgACAAEAAADs/+P/AgACAAIAAADs/+T/AgACAAMAAADt/+H/AgACAAAAAADt/+L/AgACAAEAAADt/+P/AgACAAIAAADt/+T/AgACAAMAAADu/+H/AgACAAAAAADu/+L/AgACAAEAAADu/+P/AgACAAIAAADu/+T/AgACAAMAAADx/+H/AgACAAAAAADx/+L/AgACAAEAAADx/+P/AgACAAIAAADx/+T/AgACAAMAAADw/+H/AgACAAAAAADw/+L/AgACAAEAAADw/+P/AgACAAIAAADw/+T/AgACAAMAAADy/+H/AgACAAAAAADy/+L/AgACAAEAAADy/+P/AgACAAIAAADy/+T/AgACAAMAAAD0/+H/AgACAAAAAAD0/+L/AgACAAEAAAD0/+P/AgACAAIAAAD0/+T/AgACAAMAAAD1/+H/AgACAAAAAAD1/+L/AgACAAEAAAD1/+P/AgACAAIAAAD1/+T/AgACAAMAAAD2/+H/AgACAAAAAAD2/+L/AgACAAEAAAD2/+P/AgACAAIAAAD2/+T/AgACAAMAAAD3/+H/AgACAAAAAAD3/+L/AgACAAEAAAD3/+P/AgACAAIAAAD3/+T/AgACAAMAAADz/+H/AgACAAAAAADz/+L/AgACAAEAAADz/+P/AgACAAIAAADz/+T/AgACAAMAAADv/+H/AgACAAAAAADv/+L/AgACAAEAAADv/+P/AgACAAIAAADv/+T/AgACAAMAAADr/+H/AgACAAAAAADr/+L/AgACAAEAAADr/+P/AgACAAIAAADr/+T/AgACAAMAAADn/+H/AgACAAAAAADn/+L/AgACAAEAAADn/+P/AgACAAIAAADn/+T/AgACAAMAAADj/+H/AgACAAAAAADj/+L/AgACAAEAAADj/+P/AgACAAIAAADj/+T/AgACAAMAAADf/+H/AgACAAAAAADf/+L/AgACAAEAAADf/+P/AgACAAIAAADf/+T/AgACAAMAAAA=")
+tile_map_data = PackedByteArray("AADg/+H/AgACAAAAAADg/+L/AgACAAEAAADg/+P/AgACAAIAAADg/+T/AgACAAMAAADh/+H/AgACAAAAAADh/+L/AgACAAEAAADh/+P/AgACAAIAAADh/+T/AgACAAMAAADi/+H/AgACAAAAAADi/+L/AgACAAEAAADi/+P/AgACAAIAAADi/+T/AgACAAMAAADk/+H/AgACAAAAAADk/+L/AgACAAEAAADk/+P/AgACAAIAAADk/+T/AgACAAMAAADl/+H/AgACAAAAAADl/+L/AgACAAEAAADl/+P/AgACAAIAAADl/+T/AgACAAMAAADm/+H/AgACAAAAAADm/+L/AgACAAEAAADm/+P/AgACAAIAAADm/+T/AgACAAMAAADo/+H/AgACAAAAAADo/+L/AgACAAEAAADo/+P/AgACAAIAAADo/+T/AgACAAMAAADp/+H/AgACAAAAAADp/+L/AgACAAEAAADp/+P/AgACAAIAAADp/+T/AgACAAMAAADq/+H/AgACAAAAAADq/+L/AgACAAEAAADq/+P/AgACAAIAAADq/+T/AgACAAMAAADs/+H/AgACAAAAAADs/+L/AgACAAEAAADs/+P/AgACAAIAAADs/+T/AgACAAMAAADt/+H/AgACAAAAAADt/+L/AgACAAEAAADt/+P/AgACAAIAAADt/+T/AgACAAMAAADu/+H/AgACAAAAAADu/+L/AgACAAEAAADu/+P/AgACAAIAAADu/+T/AgACAAMAAADx/+H/AgACAAAAAADx/+L/AgACAAEAAADx/+P/AgACAAIAAADx/+T/AgACAAMAAADw/+H/AgACAAAAAADw/+L/AgACAAEAAADw/+P/AgACAAIAAADw/+T/AgACAAMAAADy/+H/AgACAAAAAADy/+L/AgACAAEAAADy/+P/AgACAAIAAADy/+T/AgACAAMAAAD0/+H/AgACAAAAAAD0/+L/AgACAAEAAAD0/+P/AgACAAIAAAD0/+T/AgACAAMAAAD1/+H/AgACAAAAAAD1/+L/AgACAAEAAAD1/+P/AgACAAIAAAD1/+T/AgACAAMAAAD2/+H/AgACAAAAAAD2/+L/AgACAAEAAAD2/+P/AgACAAIAAAD2/+T/AgACAAMAAAD3/+H/AgACAAAAAAD3/+L/AgACAAEAAAD3/+P/AgACAAIAAAD3/+T/AgACAAMAAADz/+H/AgACAAAAAADz/+L/AgACAAEAAADz/+P/AgACAAIAAADz/+T/AgACAAMAAADv/+H/AgACAAAAAADv/+L/AgACAAEAAADv/+P/AgACAAIAAADv/+T/AgACAAMAAADr/+H/AgACAAAAAADr/+L/AgACAAEAAADr/+P/AgACAAIAAADr/+T/AgACAAMAAADn/+H/AgACAAAAAADn/+L/AgACAAEAAADn/+P/AgACAAIAAADn/+T/AgACAAMAAADj/+H/AgACAAAAAADj/+L/AgACAAEAAADj/+P/AgACAAIAAADj/+T/AgACAAMAAADf/+H/AgACAAAAAADf/+L/AgACAAEAAADf/+P/AgACAAIAAADf/+T/AgACAAMAAAABAOP/AAAAAAAAAAACAOP/AAABAAAAAAADAOP/AAACAAAAAAABAOT/AAAAAAEAAAACAOT/AAABAAEAAAADAOT/AAACAAEAAAA=")
 tile_set = SubResource("TileSet_d1c6a")
+
+[node name="Intro" parent="." instance=ExtResource("2_5ly7j")]
+position = Vector2(73, -3677)
+scale = Vector2(0.188, 0.188)
 
 [node name="Collision" type="TileMapLayer" parent="."]
 scale = Vector2(0.25, 0.25)
@@ -616,7 +631,7 @@ tile_map_data = PackedByteArray("AAD+/wUAAQABAAAAAAD+/wYAAQABAAEAAAD+/wcAAQABAAI
 tile_set = ExtResource("2_i0ee6")
 
 [node name="Player" parent="." instance=ExtResource("4_xeiba")]
-position = Vector2(-1309, -3626)
+position = Vector2(2518, -92)
 floor_max_angle = 1.39626
 floor_snap_length = 32.0
 
@@ -638,11 +653,11 @@ position = Vector2(146, 18)
 shape = SubResource("RectangleShape2D_j67vv")
 
 [node name="JumpTutorial" type="Area2D" parent="TextTriggers"]
-position = Vector2(-737, -3626)
+position = Vector2(-2960, -3681)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TextTriggers/JumpTutorial"]
-position = Vector2(146, 18)
-shape = SubResource("RectangleShape2D_j67vv")
+position = Vector2(315, -50)
+shape = SubResource("RectangleShape2D_enoit")
 
 [node name="AttackTutorial" type="Area2D" parent="TextTriggers"]
 position = Vector2(-2760, 847)

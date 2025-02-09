@@ -35,10 +35,10 @@ public partial class Global : Node
 
 	public static Color[] colors = {
 		Color.Color8(255, 0, 0, 255),
-		Color.Color8(255, 127, 0, 255),
-		Color.Color8(255, 255, 0, 255),
+		Color.Color8(255, 106, 0, 255),
+		Color.Color8(255, 255, 50, 255),
 		Color.Color8(0, 255, 0, 255),
-		Color.Color8(0, 0, 255, 255),
+		Color.Color8(0, 0, 200, 255),
 		Color.Color8(255, 0, 255, 255),
 	};
 

@@ -7,7 +7,7 @@ public partial class Player : CharacterBody2D
 	public const float MaxSpeed = 600.0f;
 	public const float JumpVelocity = -1000.0f;
 	public const float EnemyBounceVelocity = -600.0f;
-	public const float RedBounceVelocity = -900.0f;
+	public const float RedBounceVelocity = -1000.0f;
 	public const float BlueBounceVelocity = -1500.0f;
 
 	public const double xAcceleration = 5500.0f;
@@ -236,6 +236,7 @@ public partial class Player : CharacterBody2D
 			}
 			e.OnJumpedOn();
 			Velocity = new Vector2(Velocity.X, EnemyBounceVelocity);
+			sprite.Play("jump");
 		}
 	}
 
@@ -265,6 +266,7 @@ public partial class Player : CharacterBody2D
 			hitHeadTimer = 0.5;
 			float velX = body.GlobalPosition.X - GlobalPosition.X > 0 ? -1000.0f : 1000.0f;
 			Velocity = new Vector2(velX, Velocity.Y);
+			((Enemy)(body.GetParent())).cooldown = 1.5;
 			TakeDamage(1.0f);
 			ChangeAction(Action.Stunned);
 			hitSound.Play();
