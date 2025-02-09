@@ -1,8 +1,25 @@
-[gd_resource type="TileSet" load_steps=7 format=3 uid="uid://ci51cqdpqm4y5"]
+[gd_resource type="TileSet" load_steps=9 format=3 uid="uid://ci51cqdpqm4y5"]
 
 [ext_resource type="Texture2D" uid="uid://bjfxw4ybw0dte" path="res://tilesets/Child's_Play_TileSet_Platform-02.png" id="1_l4wdu"]
+[ext_resource type="Texture2D" uid="uid://cvf4b8wyfetbq" path="res://tilesets/Child's_Play_TileSet_Small_Platform-18.png" id="1_lji2o"]
 [ext_resource type="Texture2D" uid="uid://hc7hkj01bg1b" path="res://tilesets/Child's_Play_TileSet_Castle_Bricks-03.png" id="2_p4mqv"]
 [ext_resource type="Texture2D" uid="uid://dbxolldm7hode" path="res://tilesets/Child's_Play_TileSet_Castle_Window-03.png" id="3_ga6cm"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_uaqyi"]
+texture = ExtResource("1_lji2o")
+texture_region_size = Vector2i(512, 512)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-256, 0, 256, 0, 256, 256, -256, 256)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-256, 0, 256, 0, 256, 256, -256, 256)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-256, 0, 256, 0, 256, 256, -256, 256)
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-256, -256, 256, -256, 256, 256, -256, 256)
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-256, -256, 256, -256, 256, 256, -256, 256)
+2:1/0 = 0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-256, -256, 256, -256, 256, 256, -256, 256)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_anuiq"]
 texture = ExtResource("1_l4wdu")
@@ -94,3 +111,4 @@ physics_layer_0/collision_mask = 7
 sources/1 = SubResource("TileSetAtlasSource_anuiq")
 sources/2 = SubResource("TileSetAtlasSource_2k6jp")
 sources/3 = SubResource("TileSetAtlasSource_ba7am")
+sources/0 = SubResource("TileSetAtlasSource_uaqyi")

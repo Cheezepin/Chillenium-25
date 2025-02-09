@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://dfuypm0jwpke2" path="res://sprites/Enemies/red_0005.png" id="7_7fkvg"]
 [ext_resource type="Script" path="res://scripts/Hurtbox.cs" id="8_k0847"]
 [ext_resource type="Script" path="res://scripts/Jumpbox.cs" id="9_6tley"]
+[ext_resource type="Shape2D" uid="uid://d2eb8k1bxprf8" path="res://actors/hurtbox_droplet.tres" id="10_5a7nf"]
 [ext_resource type="Script" path="res://scripts/Hitbox.cs" id="10_k7n38"]
 [ext_resource type="AudioStream" uid="uid://c8sst7b1o3sar" path="res://sounds/sfx/ding.ogg" id="11_4am0m"]
 [ext_resource type="AudioStream" uid="uid://cmuiqv54frdno" path="res://sounds/sfx/hit.ogg" id="12_6p81f"]
@@ -46,9 +47,6 @@ animations = [{
 radius = 18.0
 height = 36.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_o33fw"]
-size = Vector2(70.5, 79)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_esgsk"]
 size = Vector2(70, 27)
 
@@ -71,7 +69,7 @@ position = Vector2(0, -76)
 scale = Vector2(0.1, 0.1)
 sprite_frames = SubResource("SpriteFrames_ta4ab")
 autoplay = "default"
-frame_progress = 0.147871
+frame_progress = 0.834267
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -20)
@@ -82,7 +80,7 @@ script = ExtResource("8_k0847")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 position = Vector2(-1, -42)
-shape = SubResource("RectangleShape2D_o33fw")
+shape = ExtResource("10_5a7nf")
 
 [node name="Jumpbox" type="Area2D" parent="."]
 script = ExtResource("9_6tley")

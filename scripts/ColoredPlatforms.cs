@@ -12,6 +12,7 @@ public partial class ColoredPlatforms : TileMapLayer
 	double timer = 0;
 	[Export]double phase = 0;
 	[Export]double speed = 1.0;
+	[Export]float range = 1.0f;
 
 	public Vector2 velocity;
 	
@@ -45,12 +46,12 @@ public partial class ColoredPlatforms : TileMapLayer
 				GlobalPosition = new Vector2(10f*(float)Math.Sin((timer*speed)*20.0), home.Y);
 				break;
 			case Global.ColorNames.Orange:
-				float yVel = (((timer*speed) + phase) % 2.0) < 1.0 ? 200.0f : -200.0f;
+				float yVel = (((timer*speed) + phase) % 2.0) < 1.0 ? 200.0f*range : -200.0f*range;
 				velocity = new Vector2(0, yVel)*(float)delta;
 				GlobalPosition += velocity;
 				break;
 			case Global.ColorNames.Yellow:
-				float xVel = (((timer*speed) + phase) % 2.0) < 1.0 ? 200.0f : -200.0f;
+				float xVel = (((timer*speed) + phase) % 2.0) < 1.0 ? 200.0f*range : -200.0f*range;
 				velocity = new Vector2(xVel, 0)*(float)delta;
 				GlobalPosition += velocity;
 				break;
