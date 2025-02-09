@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://2m60ku0tayym"]
+[gd_scene load_steps=21 format=3 uid="uid://2m60ku0tayym"]
 
 [ext_resource type="Script" path="res://scripts/Player.cs" id="1_d7cxj"]
 [ext_resource type="Shader" path="res://shaders/character_shader.gdshader" id="1_k8efb"]
@@ -14,6 +14,7 @@
 [ext_resource type="AudioStream" uid="uid://cbsbxot3g60fi" path="res://sounds/sfx/swoosh.ogg" id="9_bk2yp"]
 [ext_resource type="AudioStream" uid="uid://cn1t4hifmlndp" path="res://sounds/sfx/splat.ogg" id="9_ccwl7"]
 [ext_resource type="AudioStream" uid="uid://cmuiqv54frdno" path="res://sounds/sfx/hit.ogg" id="10_ayveh"]
+[ext_resource type="AudioStream" uid="uid://cwwke0jod0k8s" path="res://sounds/sfx/spring.ogg" id="10_f8rr7"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jtmsy"]
 shader = ExtResource("1_k8efb")
@@ -33,7 +34,7 @@ size = Vector2(114, 162)
 radius = 40.0
 height = 100.0
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("footstepSound", "jumpSound", "hitSound", "slideSound", "attackSound", "splatSound")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("footstepSound", "jumpSound", "hitSound", "slideSound", "attackSound", "splatSound", "springSound")]
 material = SubResource("ShaderMaterial_jtmsy")
 collision_layer = 15
 collision_mask = 4095
@@ -44,6 +45,7 @@ hitSound = NodePath("Hit")
 slideSound = NodePath("Slide")
 attackSound = NodePath("Attack")
 splatSound = NodePath("Splat")
+springSound = NodePath("Spring")
 flyCardSpawner = ExtResource("3_7q2c7")
 
 [node name="Collision" type="CollisionShape2D" parent="."]
@@ -87,6 +89,10 @@ shape = SubResource("CapsuleShape2D_37mwr")
 
 [node name="Footsteps" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_kca0u")
+
+[node name="Spring" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_f8rr7")
+volume_db = -1.406
 
 [node name="Splat" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("9_ccwl7")
