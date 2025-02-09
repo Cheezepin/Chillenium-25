@@ -93,8 +93,14 @@ public partial class Global : Node
 		} else {
 			targetColorID = currColorID;
 			if(colorsUnlocked != 0 && !allColors) {
-				if(Input.IsActionJustPressed("color_left")) {
-					switchSound.Play();
+				int totalColors = (colorsUnlocked & 1)
+						+ ((colorsUnlocked >> 1) & 1)
+						+ ((colorsUnlocked >> 2) & 1)
+						+ ((colorsUnlocked >> 3) & 1)
+						+ ((colorsUnlocked >> 4) & 1)
+						+ ((colorsUnlocked >> 5) & 1);
+				if (Input.IsActionJustPressed("color_left")) {
+					if(totalColors > 1) switchSound.Play();
 					do {
 						targetColorID--;
 						if(targetColorID < 0) {targetColorID = colors.Length-1;}
@@ -103,7 +109,7 @@ public partial class Global : Node
 				}
 
 				if(Input.IsActionJustPressed("color_right")) {
-					switchSound.Play();
+					if (totalColors > 1) switchSound.Play();
 					do {
 						targetColorID++;
 						if(targetColorID >= colors.Length) {targetColorID = 0;}
