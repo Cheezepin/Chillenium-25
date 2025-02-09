@@ -29,7 +29,7 @@ public partial class MainMenu : Control
 	private void OnPlayButtonPressed(){
 		// Global.FadeToScene("res://levels/level1.tscn");
 		// Global.FadeToScene("res://ui/cutscenes/cutscene_1.tscn");
-		Global.transitions.ChangeLevel("Test");
+		Global.transitions.ChangeLevel("SkyLevel");
 	}
 
 	private void OnCreditsButtonPressed(){

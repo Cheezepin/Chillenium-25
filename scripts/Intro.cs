@@ -36,17 +36,17 @@ public partial class Intro : Node2D
 				}
 				break;
 			case 1:
-				Global.AsymptoticApproach(ref handPos, new Vector2(home.X, handPos.Y), 7.5f*(float)delta);
+				Global.AsymptoticApproach(ref handPos, new Vector2(home.X, handPos.Y), 5.5f*(float)delta);
 				if(timer >= 0.8) {
 					girl.Play("snatch");
 					introState++;
 				}
 				break;
 			case 2:
-				Global.AsymptoticApproach(ref handPos, new Vector2(home.X, handPos.Y), 7.5f*(float)delta);
+				Global.AsymptoticApproach(ref handPos, new Vector2(home.X, handPos.Y), 5.5f*(float)delta);
 				if(timer >= 1.0) {
 					hand.Hide();
-					Global.AsymptoticApproach(ref girlPos, new Vector2(home.X + 3000.0f, girlPos.Y), 1.5f*(float)delta);
+					Global.AsymptoticApproach(ref girlPos, new Vector2(home.X + 10000.0f, girlPos.Y), 0.75f*(float)delta);
 				}
 				if(timer >= 10.0) {Hide(); QueueFree();}
 				break;
