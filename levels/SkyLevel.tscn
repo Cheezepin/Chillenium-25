@@ -1,4 +1,4 @@
-[gd_scene load_steps=99 format=4 uid="uid://cx75o0oqspqql"]
+[gd_scene load_steps=98 format=4 uid="uid://cx75o0oqspqql"]
 
 [ext_resource type="Script" path="res://scripts/Level.cs" id="1_dmkto"]
 [ext_resource type="PackedScene" uid="uid://brhxin3wl51k" path="res://actors/Intro.tscn" id="2_5ly7j"]
@@ -35,7 +35,6 @@
 [ext_resource type="Shader" path="res://shaders/droplet_shader.gdshader" id="29_1jufe"]
 [ext_resource type="AudioStream" uid="uid://bfb8glcsmjg71" path="res://sounds/sfx/switch.ogg" id="30_vn31i"]
 [ext_resource type="PackedScene" uid="uid://45aj0e4kcquh" path="res://actors/BlueDroplet.tscn" id="31_a2cgn"]
-[ext_resource type="AudioStream" uid="uid://bndcedipiuesl" path="res://sounds/sfx/chirp.ogg" id="31_w0pxm"]
 [ext_resource type="PackedScene" uid="uid://dkxq6j6bxs80a" path="res://actors/YellowDroplet.tscn" id="32_22yv6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_w6fpg"]
@@ -1261,11 +1260,6 @@ tile_set = SubResource("TileSet_husks")
 [node name="Switch" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("30_vn31i")
 volume_db = -4.217
-
-[node name="Chirp" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("31_w0pxm")
-volume_db = -23.892
-autoplay = true
 
 [connection signal="body_entered" from="TextTriggers/MovementTutorial" to="TextTriggers" method="OnBodyEntered" binds= ["MovementTutorial"]]
 [connection signal="body_exited" from="TextTriggers/MovementTutorial" to="TextTriggers" method="OnBodyExit"]

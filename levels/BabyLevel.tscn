@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://dp2jh3378yluw"]
+[gd_scene load_steps=16 format=4 uid="uid://dp2jh3378yluw"]
 
 [ext_resource type="Script" path="res://scripts/Level.cs" id="1_pkabl"]
 [ext_resource type="Script" path="res://scripts/Camera.cs" id="2_ft1l0"]
@@ -13,7 +13,6 @@
 [ext_resource type="Script" path="res://scripts/ColoredPlatforms.cs" id="26_ian6p"]
 [ext_resource type="Shader" path="res://shaders/color_platform.gdshader" id="27_u6olh"]
 [ext_resource type="AudioStream" uid="uid://bfb8glcsmjg71" path="res://sounds/sfx/switch.ogg" id="36_ff25b"]
-[ext_resource type="AudioStream" uid="uid://bndcedipiuesl" path="res://sounds/sfx/chirp.ogg" id="37_v2m7b"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4du2b"]
 shader = ExtResource("17_u755c")
@@ -91,10 +90,5 @@ targetColor = 5
 [node name="Switch" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("36_ff25b")
 volume_db = -4.217
-
-[node name="Chirp" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("37_v2m7b")
-volume_db = -23.892
-autoplay = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

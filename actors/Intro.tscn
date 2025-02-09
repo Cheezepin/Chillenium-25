@@ -44,8 +44,9 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Intro" type="Node2D"]
+[node name="Intro" type="Node2D" node_paths=PackedStringArray("whistleSound")]
 script = ExtResource("1_niuiv")
+whistleSound = NodePath("Whistle")
 
 [node name="Hand" type="AnimatedSprite2D" parent="."]
 position = Vector2(730, -250)
