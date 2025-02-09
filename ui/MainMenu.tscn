@@ -1,20 +1,20 @@
 [gd_scene load_steps=61 format=3 uid="uid://chctv32d526c8"]
 
-[ext_resource type="Texture2D" uid="uid://b031ikw3ix33g" path="res://ui/mainmenu/playbutton.png" id="1_d1073"]
 [ext_resource type="Script" path="res://scripts/ui/MainMenu.cs" id="1_e0ubc"]
-[ext_resource type="Texture2D" uid="uid://doricih1uwb43" path="res://ui/mainmenu/playbutton_c.png" id="2_7rydc"]
 [ext_resource type="Texture2D" uid="uid://dfgmw6sj8ai05" path="res://ui/NEW_mainmenu/character.png" id="3_6nb1q"]
-[ext_resource type="Texture2D" uid="uid://cxmcu3vu55cx5" path="res://ui/mainmenu/playbutton_h.png" id="3_elhq0"]
 [ext_resource type="Script" path="res://scripts/ui/Vuey.cs" id="4_loc0l"]
-[ext_resource type="Texture2D" uid="uid://clb8bma88qvjs" path="res://ui/mainmenu/creditsbutton.png" id="4_xi6so"]
-[ext_resource type="Texture2D" uid="uid://celw221n33fgv" path="res://ui/mainmenu/creditsbutton_c.png" id="5_nm18n"]
-[ext_resource type="Texture2D" uid="uid://bo3e5liblb63w" path="res://ui/mainmenu/creditsbutton_h.png" id="6_yr8wb"]
+[ext_resource type="Texture2D" uid="uid://chm685ejymsdy" path="res://ui/NEW_mainmenu/start_button.png" id="5_bny0x"]
+[ext_resource type="Texture2D" uid="uid://c2qyhx80ijogx" path="res://ui/NEW_mainmenu/start_button_c.png" id="6_qxfgf"]
 [ext_resource type="PackedScene" uid="uid://bnpoyncl0lo01" path="res://ui/Credits.tscn" id="7_a3uva"]
-[ext_resource type="Texture2D" uid="uid://pk6sk65is6co" path="res://ui/mainmenu/quitbutton.png" id="7_ai8pk"]
-[ext_resource type="Texture2D" uid="uid://iyexf1mumkf3" path="res://ui/mainmenu/quitbutton_c.png" id="8_27rxt"]
-[ext_resource type="Texture2D" uid="uid://kjnytgs5stre" path="res://ui/mainmenu/quitbutton_h.png" id="9_4mp5e"]
+[ext_resource type="Texture2D" uid="uid://l4ttj3mwrkew" path="res://ui/NEW_mainmenu/start_button_h.png" id="7_dxuc3"]
+[ext_resource type="Texture2D" uid="uid://d3uo4iql1ohys" path="res://ui/NEW_mainmenu/credits_button.png" id="8_pxabp"]
+[ext_resource type="Texture2D" uid="uid://dxr6845cfheyk" path="res://ui/NEW_mainmenu/credits_button_c.png" id="9_mxrnq"]
+[ext_resource type="Texture2D" uid="uid://im146pua5exu" path="res://ui/NEW_mainmenu/credits_button_h.png" id="10_hdh5q"]
+[ext_resource type="Texture2D" uid="uid://duq4uahwpr44j" path="res://ui/NEW_mainmenu/quit_button.png" id="11_dhn4i"]
 [ext_resource type="Texture2D" uid="uid://dat4epklldeg3" path="res://ui/NEW_mainmenu/bg.png" id="11_ofr88"]
+[ext_resource type="Texture2D" uid="uid://dbfisoxgtmxvd" path="res://ui/NEW_mainmenu/quit_button_c.png" id="12_2orl4"]
 [ext_resource type="Texture2D" uid="uid://btf0fnhykxwcj" path="res://ui/ghost.png" id="12_gfvki"]
+[ext_resource type="Texture2D" uid="uid://yhsqmqr8d" path="res://ui/NEW_mainmenu/quit_button_h.png" id="13_3ry0e"]
 [ext_resource type="Texture2D" uid="uid://dqgbtpberrxxl" path="res://ui/NEW_mainmenu/title.png" id="14_gavn6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vlemi"]
@@ -359,44 +359,45 @@ offset_bottom = 354.0
 
 [node name="Play" type="TextureButton" parent="MainMenuItems"]
 layout_mode = 0
-offset_left = 418.0
-offset_top = 362.0
-offset_right = 1816.0
-offset_bottom = 598.0
+offset_left = 496.0
+offset_top = 280.0
+offset_right = 1894.0
+offset_bottom = 771.0
 scale = Vector2(0.5, 0.5)
-texture_normal = ExtResource("1_d1073")
-texture_pressed = ExtResource("2_7rydc")
-texture_hover = ExtResource("3_elhq0")
+texture_normal = ExtResource("5_bny0x")
+texture_pressed = ExtResource("6_qxfgf")
+texture_hover = ExtResource("7_dxuc3")
 
 [node name="Credits" type="TextureButton" parent="MainMenuItems"]
 layout_mode = 0
-offset_left = 473.0
-offset_top = 489.0
-offset_right = 1654.0
-offset_bottom = 704.0
+offset_left = 259.0
+offset_top = 537.0
+offset_right = 1440.0
+offset_bottom = 956.0
 scale = Vector2(0.5, 0.5)
-texture_normal = ExtResource("4_xi6so")
-texture_pressed = ExtResource("5_nm18n")
-texture_hover = ExtResource("6_yr8wb")
+texture_normal = ExtResource("8_pxabp")
+texture_pressed = ExtResource("9_mxrnq")
+texture_hover = ExtResource("10_hdh5q")
 
 [node name="Quit" type="TextureButton" parent="MainMenuItems"]
 layout_mode = 0
-offset_left = 564.0
-offset_top = 609.0
-offset_right = 1416.0
-offset_bottom = 760.0
+offset_left = 824.0
+offset_top = 569.0
+offset_right = 1676.0
+offset_bottom = 920.0
 scale = Vector2(0.5, 0.5)
-texture_normal = ExtResource("7_ai8pk")
-texture_pressed = ExtResource("8_27rxt")
-texture_hover = ExtResource("9_4mp5e")
+texture_normal = ExtResource("11_dhn4i")
+texture_pressed = ExtResource("12_2orl4")
+texture_hover = ExtResource("13_3ry0e")
 
 [node name="Logo" type="TextureRect" parent="MainMenuItems"]
 layout_mode = 0
-offset_left = 366.0
-offset_top = -319.0
-offset_right = 2264.0
-offset_bottom = 930.0
+offset_left = -625.0
+offset_top = -314.0
+offset_right = 3215.0
+offset_bottom = 1846.0
 scale = Vector2(0.5, 0.5)
+mouse_filter = 2
 texture = ExtResource("14_gavn6")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

@@ -38,6 +38,7 @@ public partial class Player : CharacterBody2D
 		Stunned,
 		Faceplant,
 		Die,
+		Intro,
 	};
 	
 	private Action action;
@@ -49,6 +50,7 @@ public partial class Player : CharacterBody2D
 	private bool hasPurpleSpeed = false;
 
 	[Export]public PackedScene flyCardSpawner;
+	private bool hasSeenIntro = false;
 	public override void _Ready()
 	{
 		s = (ShaderMaterial)Material;
@@ -86,6 +88,11 @@ public partial class Player : CharacterBody2D
 		}
 
 		Global.heartState = (int)health;
+
+		if(!hasSeenIntro && GlobalPosition.X > -500f && Global.colorsUnlocked == 0) {
+			ChangeAction(Action.Intro);
+			hasSeenIntro = true;
+		}
 
 		base._Process(delta);
 	}
@@ -164,7 +171,7 @@ public partial class Player : CharacterBody2D
 
 				if(!IsOnFloor() && sprite.Animation != "jump") sprite.Play("jump");
 
-				if (Input.IsActionJustPressed("attack"))
+				if (!hasPurpleSpeed && Input.IsActionJustPressed("attack"))
 				{
 					ChangeAction(Action.Attack);
 				}
@@ -204,6 +211,11 @@ public partial class Player : CharacterBody2D
 					splatSound.Play();
 				}
 				if(actionTimer > 2.0) {ReturnToCheckpoint(); ChangeAction(Action.Move);}
+				break;
+			case Action.Intro:
+				velocity.X = Mathf.MoveToward(velocity.X, 0, (float)(xFriction*delta));
+				sprite.Play("idle");
+				if(actionTimer > 1.5) ChangeAction(Action.Move);
 				break;
 		}
 
