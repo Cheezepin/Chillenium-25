@@ -89,7 +89,7 @@ public partial class Player : CharacterBody2D
 
 		Global.heartState = (int)health;
 
-		if(!hasSeenIntro && GlobalPosition.X > -500f) {
+		if(!hasSeenIntro && GlobalPosition.X > -500f && Global.colorsUnlocked == 0) {
 			ChangeAction(Action.Intro);
 			hasSeenIntro = true;
 		}
@@ -171,7 +171,7 @@ public partial class Player : CharacterBody2D
 
 				if(!IsOnFloor() && sprite.Animation != "jump") sprite.Play("jump");
 
-				if (Input.IsActionJustPressed("attack"))
+				if (!hasPurpleSpeed && Input.IsActionJustPressed("attack"))
 				{
 					ChangeAction(Action.Attack);
 				}

@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://bnpoyncl0lo01"]
 
 [ext_resource type="Script" path="res://scripts/ui/Credits.cs" id="1_17mrq"]
-[ext_resource type="Texture2D" uid="uid://pk6sk65is6co" path="res://ui/mainmenu/quitbutton.png" id="3_m1ydv"]
-[ext_resource type="Texture2D" uid="uid://iyexf1mumkf3" path="res://ui/mainmenu/quitbutton_c.png" id="4_fbyp0"]
-[ext_resource type="Texture2D" uid="uid://kjnytgs5stre" path="res://ui/mainmenu/quitbutton_h.png" id="5_6a88n"]
+[ext_resource type="Texture2D" uid="uid://duq4uahwpr44j" path="res://ui/NEW_mainmenu/quit_button.png" id="2_2x265"]
+[ext_resource type="Texture2D" uid="uid://dbfisoxgtmxvd" path="res://ui/NEW_mainmenu/quit_button_c.png" id="3_tdoe3"]
+[ext_resource type="Texture2D" uid="uid://yhsqmqr8d" path="res://ui/NEW_mainmenu/quit_button_h.png" id="4_4kyw6"]
 
 [node name="Credits" type="Control"]
 layout_mode = 3
@@ -17,7 +17,7 @@ script = ExtResource("1_17mrq")
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 layout_mode = 0
 offset_left = 1121.0
-offset_top = 42.0
+offset_top = 12.0
 offset_right = 1921.0
 offset_bottom = 972.0
 theme_override_colors/default_color = Color(0, 0, 0, 1)
@@ -41,11 +41,11 @@ All other assets created by XIII Studios for Chillennium 2025"
 
 [node name="Return" type="TextureButton" parent="."]
 layout_mode = 0
-offset_left = 1297.0
-offset_top = 972.0
-offset_right = 2149.0
-offset_bottom = 1123.0
+offset_left = 1327.0
+offset_top = 950.0
+offset_right = 2179.0
+offset_bottom = 1301.0
 scale = Vector2(0.333, 0.333)
-texture_normal = ExtResource("3_m1ydv")
-texture_pressed = ExtResource("4_fbyp0")
-texture_hover = ExtResource("5_6a88n")
+texture_normal = ExtResource("2_2x265")
+texture_pressed = ExtResource("3_tdoe3")
+texture_hover = ExtResource("4_4kyw6")

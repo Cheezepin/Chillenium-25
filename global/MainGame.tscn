@@ -1,6 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://cwrxn4r80eve3"]
+[gd_scene load_steps=3 format=3 uid="uid://cwrxn4r80eve3"]
 
 [ext_resource type="Script" path="res://scripts/MainGame.cs" id="1_ivp8l"]
+[ext_resource type="AudioStream" uid="uid://bndcedipiuesl" path="res://sounds/sfx/chirp.ogg" id="2_jhqb0"]
 
 [node name="MainGame" type="Node"]
 script = ExtResource("1_ivp8l")
+
+[node name="Chirp" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_jhqb0")
+volume_db = -23.892
+autoplay = true

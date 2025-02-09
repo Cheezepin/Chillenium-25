@@ -19,7 +19,7 @@ public partial class TextTriggers : Node2D
 	}
 
 	RichTextLabel tutorialLabel;
-	int tutorialPos = -150;
+	int tutorialPos = -250;
 
 	bool movement = false;
 	bool jump = false;
@@ -44,7 +44,7 @@ public partial class TextTriggers : Node2D
 				case "JumpTutorial":
 					if (!jump)
 					{
-						tutorialLabel.Text = "[center]Use W or k to jump![/center]";
+						tutorialLabel.Text = "[center]Use Space or K to jump![/center]";
 						tutorialPos = 182;
 						//jump = true;
 					}
@@ -60,7 +60,7 @@ public partial class TextTriggers : Node2D
 				case "AttackTutorial":
 					if(!attack)
                     {
-						tutorialLabel.Text = "[center]Use J or jump on enemies to attack enemies of your color![/center]";
+						tutorialLabel.Text = "[center]Use J or jump to attack enemies of your color![/center]";
 						tutorialPos = 182;
 						//attack = true;
 					}

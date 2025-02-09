@@ -56,8 +56,8 @@ public partial class Global : Node
 	{
 		// Input.MouseMode = Input.MouseModeEnum.Hidden;
 
-		currentLevel = GD.Load<PackedScene>("levels/" + startSceneName + ".tscn").Instantiate(); //debug level
-		// currentLevel = GD.Load<PackedScene>("ui/MainMenu.tscn").Instantiate();
+		// currentLevel = GD.Load<PackedScene>("levels/" + startSceneName + ".tscn").Instantiate(); //debug level
+		currentLevel = GD.Load<PackedScene>("ui/MainMenu.tscn").Instantiate();
 		GetTree().CurrentScene.AddChild(currentLevel);
 		
 		transitions = (Transitions)GD.Load<PackedScene>("global/Transitions.tscn").Instantiate();
@@ -69,9 +69,9 @@ public partial class Global : Node
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		if(Input.IsActionJustPressed("debug")) {
-			transitions.ExitToMainMenu();
-		}
+		// if(Input.IsActionJustPressed("debug")) {
+		// 	transitions.ExitToMainMenu();
+		// }
 
 		// if(Input.IsActionJustPressed("move_left")) {
 		// 	currColor = Color.Color8(255, 0, 0, 255);
