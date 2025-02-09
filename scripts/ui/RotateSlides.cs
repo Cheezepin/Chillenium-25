@@ -14,6 +14,7 @@ public partial class RotateSlides : Control
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
+		if(Global.allColors || Global.currBW) {RotationDegrees = 0; return;}
 		switch(state) {
 			case 0:
 				if(currColor != Global.currColorID) {

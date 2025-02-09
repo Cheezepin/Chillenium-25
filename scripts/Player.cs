@@ -237,7 +237,7 @@ public partial class Player : CharacterBody2D
 		float dLR = Input.GetAxis("debug_left", "debug_right");
 		float dUD = Input.GetAxis("debug_up", "debug_down");
 		if(dLR != 0 || dUD != 0) {
-			velocity = new Vector2(dLR, dUD)*250000.0f*(float)delta;
+			// velocity = new Vector2(dLR, dUD)*250000.0f*(float)delta;
 		}
 
 		Velocity = velocity;
