@@ -47,7 +47,7 @@ public partial class Player : CharacterBody2D
 
 	private ColoredPlatforms currPlatform = null;
 
-	private AnimatedSprite2D sprite;
+	public AnimatedSprite2D sprite;
 	private bool hasPurpleSpeed = false;
 
 	[Export]public PackedScene flyCardSpawner;
@@ -191,6 +191,7 @@ public partial class Player : CharacterBody2D
 				if(actionTimer > 0.4) {
 					if(killedBaby) {
 						ChangeAction(Action.End);
+						sprite.Play("catch");
 					} else {
 						ChangeAction(Action.Move);
 					}
@@ -226,7 +227,6 @@ public partial class Player : CharacterBody2D
 				break;
 			case Action.End:
 				velocity.X = Mathf.MoveToward(velocity.X, 0, (float)(xFriction*delta));
-				sprite.Play("idle");
 				break;
 		}
 
