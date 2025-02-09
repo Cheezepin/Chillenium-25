@@ -24,6 +24,8 @@ public partial class Global : Node
 	public static int heartState = 0;
 	public static int headState = 0;
 
+	public static bool endScreenTriggered = false;
+
 	public enum ColorNames {
 		Red,
 		Orange,
