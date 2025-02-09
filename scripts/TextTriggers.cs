@@ -19,7 +19,7 @@ public partial class TextTriggers : Node2D
 	}
 
 	RichTextLabel tutorialLabel;
-	int tutorialPos = -250;
+	int tutorialPos = -275;
 
 	bool movement = false;
 	bool jump = false;
@@ -73,7 +73,7 @@ public partial class TextTriggers : Node2D
     {
 		if (body is Player)
 		{
-			tutorialPos = -250;
+			tutorialPos = -275;
 		}
     }
 }

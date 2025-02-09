@@ -46,7 +46,8 @@ public partial class Baby : AnimatedSprite2D
 			flashTimer = 0.04;
 			body.GetParent<Player>().killedBaby = true;
 			Girl girlNode = girl.Instantiate<Girl>();
-			girlNode.GlobalPosition += new Vector2(-150.0f, -150.0f);
+			Global.currentLevel.AddChild(girlNode);
+			girlNode.GlobalPosition = new Vector2(1300.0f, -250.0f);
 		}
 	}
 }

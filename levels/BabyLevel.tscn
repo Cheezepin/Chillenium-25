@@ -140,4 +140,7 @@ script = ExtResource("16_340b4")
 position = Vector2(91.5, -94.5)
 shape = SubResource("RectangleShape2D_f56w8")
 
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(1300, -250)
+
 [connection signal="area_entered" from="Baby/Hurtbox" to="Baby" method="_on_hurtbox_area_entered"]

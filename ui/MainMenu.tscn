@@ -409,10 +409,9 @@ autoplay = "default"
 frame = 15
 frame_progress = 0.621084
 
-[node name="Credits" parent="." node_paths=PackedStringArray("pressSound") instance=ExtResource("7_a3uva")]
+[node name="Credits" parent="." instance=ExtResource("7_a3uva")]
 visible = false
 layout_mode = 1
-pressSound = NodePath("../Hover")
 
 [node name="Hover" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("17_vgevt")
