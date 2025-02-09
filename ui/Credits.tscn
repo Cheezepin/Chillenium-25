@@ -16,29 +16,28 @@ script = ExtResource("1_17mrq")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 layout_mode = 0
-offset_left = 553.0
-offset_top = 102.0
-offset_right = 921.0
-offset_bottom = 489.0
+offset_left = 915.0
+offset_top = 380.0
+offset_right = 1715.0
+offset_bottom = 980.0
 theme_override_font_sizes/normal_font_size = 30
-text = "Programmers:
-Jason Lev
-Kyle Lev
+text = "Full Team: Kayla McHaney, Karen Lopez, Kyle Lev, Jason Lev
 
-Sound Engineer:
-Kyle Lev
+Art: Kayla McHaney, Karen Lopez
 
-Artists:
-Kayla McHaney
-Karen Lopez
-Emily Gonzalez"
+Sound Engineering: Kyle Lev
+
+Programming:
+Jason Lev, Kyle Lev
+
+Level Design: Jason Lev"
 
 [node name="Return" type="TextureButton" parent="."]
 layout_mode = 0
-offset_left = 529.0
-offset_top = 528.0
-offset_right = 1381.0
-offset_bottom = 679.0
+offset_left = 913.0
+offset_top = 1004.0
+offset_right = 1765.0
+offset_bottom = 1155.0
 scale = Vector2(0.333, 0.333)
 texture_normal = ExtResource("3_m1ydv")
 texture_pressed = ExtResource("4_fbyp0")
