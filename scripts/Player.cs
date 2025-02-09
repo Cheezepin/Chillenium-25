@@ -164,7 +164,8 @@ public partial class Player : CharacterBody2D
 			case Action.Attack:
 				velocity.X = Mathf.MoveToward(Velocity.X, 0, (float)(xFriction*delta));
 				hitbox.Disabled = false;
-				if(actionTimer > 0.2) {
+				if(sprite.Animation != "attack") sprite.Play("attack");
+				if(actionTimer > 0.4) {
 					ChangeAction(Action.Move);
 					hitbox.Disabled = true;
 				}

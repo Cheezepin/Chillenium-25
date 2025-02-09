@@ -56,8 +56,9 @@ use_parent_material = true
 position = Vector2(9, -80)
 scale = Vector2(0.1, 0.1)
 sprite_frames = ExtResource("6_nupav")
-animation = &"idle"
-frame_progress = 0.103193
+animation = &"attack"
+frame = 3
+frame_progress = 1.0
 
 [node name="Footbox" type="Area2D" parent="."]
 script = ExtResource("6_yyka5")
