@@ -44,7 +44,7 @@ public partial class Droplet : Enemy
 
 	public override void _OnHurtboxAreaEntered(Node2D body) {
 		if(timer < 0.2) return;
-		if(!Global.currBW && Global.currColorID == (int)color && body is Hitbox) {
+		if(!Global.currBW && Global.currColorID == (int)color && body is Hitbox && body.GetParent() is Player) {
 			flashTimer = 0.04;
 			velocity.X = body.GlobalPosition.X - GlobalPosition.X > 0 ? -500.0f : 500.0f;
 			TakeDamage(1.0f);

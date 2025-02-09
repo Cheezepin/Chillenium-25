@@ -255,7 +255,11 @@ public partial class Player : CharacterBody2D
 	}
 
 	public void _OnHurtboxAreaEntered(Node2D body) {
-		if(action == Action.Stunned) return;
+		if(body is Checkpoint) {
+			checkpoint = (Checkpoint)body;
+			GD.Print("Checkpoint reached!");
+		}
+		if(action >= Action.Stunned) return;
 		if(body.GetParent() != this && body is Hitbox) {
 			flashTimer = 0.04;
 			hitHeadTimer = 0.5;
@@ -280,11 +284,6 @@ public partial class Player : CharacterBody2D
 		if(body is DeathFloor) {
 			splatSound.Play();
 			ReturnToCheckpoint();
-		}
-
-		if(body is Checkpoint) {
-			checkpoint = (Checkpoint)body;
-			GD.Print("Checkpoint reached!");
 		}
 	}
 }

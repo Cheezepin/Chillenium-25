@@ -23,6 +23,7 @@ public partial class Level : Node2D
 		//DEBUG REMOVE LATER
 		Global.allColors = false;
 		Global.colorsUnlocked |= (int)Global.ColorFilters.Red;
+		Global.currColorID = 0;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
