@@ -1,9 +1,8 @@
-[gd_scene load_steps=16 format=3 uid="uid://djsi2ionjyiqf"]
+[gd_scene load_steps=15 format=3 uid="uid://djsi2ionjyiqf"]
 
 [ext_resource type="Texture2D" uid="uid://dvu3egfotdpy1" path="res://ui/tiramisu.png" id="1_ewsdf"]
 [ext_resource type="Material" uid="uid://dhqtai7vi8ml3" path="res://materials/character_material.tres" id="1_f02fe"]
 [ext_resource type="Script" path="res://scripts/Enemy.cs" id="1_oegqa"]
-[ext_resource type="AudioStream" uid="uid://cn1t4hifmlndp" path="res://sounds/sfx/splat.ogg" id="3_ro42x"]
 [ext_resource type="Script" path="res://scripts/Hitbox.cs" id="4_hdhqb"]
 [ext_resource type="Script" path="res://scripts/Hurtbox.cs" id="4_k83aa"]
 [ext_resource type="Script" path="res://scripts/Jumpbox.cs" id="5_iwmvv"]
@@ -46,7 +45,6 @@ sync_to_physics = false
 script = ExtResource("1_oegqa")
 ding = NodePath("Ding")
 hitSound = NodePath("Hit")
-splatSound = ExtResource("3_ro42x")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 use_parent_material = true
