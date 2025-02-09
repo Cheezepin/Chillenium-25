@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=4 uid="uid://dp2jh3378yluw"]
+[gd_scene load_steps=27 format=4 uid="uid://dp2jh3378yluw"]
 
 [ext_resource type="Script" path="res://scripts/Level.cs" id="1_pkabl"]
 [ext_resource type="Script" path="res://scripts/Camera.cs" id="2_ft1l0"]
@@ -11,10 +11,11 @@
 [ext_resource type="Texture2D" uid="uid://bxnjvmxsj6t11" path="res://sprites/Ending_Sprites/Baby_1.png" id="15_1jsj3"]
 [ext_resource type="Script" path="res://scripts/Baby.cs" id="16_3cnf7"]
 [ext_resource type="Script" path="res://scripts/Hurtbox.cs" id="16_340b4"]
-[ext_resource type="Texture2D" uid="uid://cbxe4thd22m4i" path="res://sprites/Ending_Sprites/Baby_3.png" id="16_tmjqc"]
 [ext_resource type="Script" path="res://scripts/ui/PostProcessing.cs" id="16_tqlgl"]
 [ext_resource type="Shader" path="res://shaders/color.gdshader" id="17_u755c"]
 [ext_resource type="PackedScene" uid="uid://cqfd54o78yib" path="res://actors/Girl.tscn" id="18_fo30m"]
+[ext_resource type="AudioStream" uid="uid://c8sst7b1o3sar" path="res://sounds/sfx/ding.ogg" id="20_m7npr"]
+[ext_resource type="AudioStream" uid="uid://cmuiqv54frdno" path="res://sounds/sfx/hit.ogg" id="21_i3f12"]
 [ext_resource type="Texture2D" uid="uid://b0as2v4mhc54k" path="res://tilesets/dotted.png" id="24_idt86"]
 [ext_resource type="TileSet" uid="uid://dn05yrc5ieiyg" path="res://tilesets/ColoredPlatforms.tres" id="25_mvm6a"]
 [ext_resource type="Script" path="res://scripts/ColoredPlatforms.cs" id="26_ian6p"]
@@ -45,14 +46,6 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("16_tmjqc")
-}],
-"loop": true,
-"name": &"die",
 "speed": 5.0
 }, {
 "frames": [{
@@ -132,15 +125,17 @@ targetColor = 5
 stream = ExtResource("36_ff25b")
 volume_db = -4.217
 
-[node name="Baby" type="AnimatedSprite2D" parent="."]
+[node name="Baby" type="AnimatedSprite2D" parent="." node_paths=PackedStringArray("hitSound", "dingSound")]
 material = SubResource("ShaderMaterial_bxxcs")
 position = Vector2(1382, -101)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_mqmyn")
-animation = &"die"
+animation = &"eat"
 autoplay = "default"
 script = ExtResource("16_3cnf7")
 girl = ExtResource("18_fo30m")
+hitSound = NodePath("Hit")
+dingSound = NodePath("Ding")
 
 [node name="Hurtbox" type="Area2D" parent="Baby"]
 script = ExtResource("16_340b4")
@@ -148,6 +143,14 @@ script = ExtResource("16_340b4")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Baby/Hurtbox"]
 position = Vector2(91.5, -94.5)
 shape = SubResource("RectangleShape2D_f56w8")
+
+[node name="Ding" type="AudioStreamPlayer" parent="Baby"]
+stream = ExtResource("20_m7npr")
+volume_db = -13.117
+
+[node name="Hit" type="AudioStreamPlayer" parent="Baby"]
+stream = ExtResource("21_i3f12")
+volume_db = 3.279
 
 [node name="Node2D" type="Node2D" parent="."]
 position = Vector2(1300, -250)

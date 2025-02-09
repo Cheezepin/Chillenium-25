@@ -40,6 +40,7 @@ public partial class Player : CharacterBody2D
 		Die,
 		Intro,
 		End,
+		SorryNothing
 	};
 	
 	private Action action;
@@ -231,6 +232,11 @@ public partial class Player : CharacterBody2D
 					splatSound.Play();
 					Global.endScreenTriggered = true;
 				}
+				if(actionTimer > 8.0)
+                {
+					Global.transitions.ExitToMainMenu();
+					action = Action.SorryNothing;
+                }
 				break;
 		}
 

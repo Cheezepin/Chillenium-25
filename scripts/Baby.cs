@@ -13,6 +13,8 @@ public partial class Baby : AnimatedSprite2D
 	private ShaderMaterial s;
 	private Player player;
 	[Export]public PackedScene girl;
+	[Export] public AudioStreamPlayer hitSound;
+	[Export] public AudioStreamPlayer dingSound;
 
 	public override void _Ready()
 	{
@@ -50,6 +52,8 @@ public partial class Baby : AnimatedSprite2D
 			Global.currentLevel.AddChild(girlNode);
 			girlNode.GlobalPosition = new Vector2(1300.0f, -250.0f);
 			girlNode.player = body.GetParent<Player>();
+			hitSound.Play();
+			dingSound.Play();
 		}
 	}
 }
