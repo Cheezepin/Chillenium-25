@@ -484,7 +484,7 @@ tile_map_data = PackedByteArray("AAD+/wUAAQABAAAAAAD+/wYAAQABAAEAAAD+/wcAAQABAAI
 tile_set = ExtResource("2_i0ee6")
 
 [node name="Player" parent="." instance=ExtResource("4_xeiba")]
-position = Vector2(-56, -672)
+position = Vector2(-4526, -4177)
 floor_max_angle = 1.39626
 floor_snap_length = 32.0
 
