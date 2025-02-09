@@ -56,7 +56,7 @@ public partial class ColoredPlatforms : TileMapLayer
 				GlobalPosition += velocity;
 				break;
 			case Global.ColorNames.Green:
-				GlobalRotation += (float)delta;
+				GlobalRotation += (float)(delta*speed);
 				break;
 			case Global.ColorNames.Blue:
 				GlobalPosition = new Vector2(home.X, 10f*(float)Math.Sin((timer*speed)*20.0));

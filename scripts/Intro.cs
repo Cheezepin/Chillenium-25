@@ -25,7 +25,7 @@ public partial class Intro : Node2D
 	public override void _Process(double delta)
 	{
 		player = ((Level)Global.currentLevel).player;
-		GD.Print(player.GlobalPosition.X);
+		// GD.Print(player.GlobalPosition.X);
 		Vector2 handPos = hand.Position;
 		Vector2 girlPos = girl.Position;
 		switch(introState) {

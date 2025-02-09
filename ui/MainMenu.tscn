@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://chctv32d526c8"]
+[gd_scene load_steps=61 format=3 uid="uid://chctv32d526c8"]
 
 [ext_resource type="Texture2D" uid="uid://b031ikw3ix33g" path="res://ui/mainmenu/playbutton.png" id="1_d1073"]
 [ext_resource type="Script" path="res://scripts/ui/MainMenu.cs" id="1_e0ubc"]
@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://kjnytgs5stre" path="res://ui/mainmenu/quitbutton_h.png" id="9_4mp5e"]
 [ext_resource type="Texture2D" uid="uid://dat4epklldeg3" path="res://ui/NEW_mainmenu/bg.png" id="11_ofr88"]
 [ext_resource type="Texture2D" uid="uid://btf0fnhykxwcj" path="res://ui/ghost.png" id="12_gfvki"]
+[ext_resource type="Texture2D" uid="uid://dqgbtpberrxxl" path="res://ui/NEW_mainmenu/title.png" id="14_gavn6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vlemi"]
 atlas = ExtResource("12_gfvki")
@@ -358,36 +359,45 @@ offset_bottom = 354.0
 
 [node name="Play" type="TextureButton" parent="MainMenuItems"]
 layout_mode = 0
-offset_left = 423.0
-offset_top = 435.0
-offset_right = 1821.0
-offset_bottom = 671.0
-scale = Vector2(0.333, 0.333)
+offset_left = 418.0
+offset_top = 362.0
+offset_right = 1816.0
+offset_bottom = 598.0
+scale = Vector2(0.5, 0.5)
 texture_normal = ExtResource("1_d1073")
 texture_pressed = ExtResource("2_7rydc")
 texture_hover = ExtResource("3_elhq0")
 
 [node name="Credits" type="TextureButton" parent="MainMenuItems"]
 layout_mode = 0
-offset_left = 454.0
-offset_top = 519.0
-offset_right = 1635.0
-offset_bottom = 734.0
-scale = Vector2(0.333, 0.333)
+offset_left = 473.0
+offset_top = 489.0
+offset_right = 1654.0
+offset_bottom = 704.0
+scale = Vector2(0.5, 0.5)
 texture_normal = ExtResource("4_xi6so")
 texture_pressed = ExtResource("5_nm18n")
 texture_hover = ExtResource("6_yr8wb")
 
 [node name="Quit" type="TextureButton" parent="MainMenuItems"]
 layout_mode = 0
-offset_left = 505.0
-offset_top = 597.0
-offset_right = 1357.0
-offset_bottom = 748.0
-scale = Vector2(0.333, 0.333)
+offset_left = 564.0
+offset_top = 609.0
+offset_right = 1416.0
+offset_bottom = 760.0
+scale = Vector2(0.5, 0.5)
 texture_normal = ExtResource("7_ai8pk")
 texture_pressed = ExtResource("8_27rxt")
 texture_hover = ExtResource("9_4mp5e")
+
+[node name="Logo" type="TextureRect" parent="MainMenuItems"]
+layout_mode = 0
+offset_left = -624.0
+offset_top = -316.0
+offset_right = 3216.0
+offset_bottom = 1844.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("14_gavn6")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 visible = false

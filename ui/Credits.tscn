@@ -17,27 +17,32 @@ script = ExtResource("1_17mrq")
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 layout_mode = 0
 offset_left = 915.0
-offset_top = 380.0
-offset_right = 1715.0
-offset_bottom = 980.0
+offset_top = 46.0
+offset_right = 1915.0
+offset_bottom = 946.0
 theme_override_font_sizes/normal_font_size = 30
-text = "Full Team: Kayla McHaney, Karen Lopez, Kyle Lev, Jason Lev
+text = "XIII Studios: Kayla McHaney, Karen Lopez, Kyle Lev, Jason Lev
 
 Art: Kayla McHaney, Karen Lopez
 
 Sound Engineering: Kyle Lev
 
-Programming:
-Jason Lev, Kyle Lev
+Programming: Jason Lev, Kyle Lev
 
-Level Design: Jason Lev"
+Level Design: Jason Lev
+
+Morning chirping of birds by dibko https://freesound.org/people/dibko/sounds/624126/
+Swosh swoosh whoosh air sound by qubodup https://freesound.org/people/qubodup/sounds/60026/
+Vocal_splat_04 by benhillyard https://freesound.org/people/benhillyard/sounds/47976/
+
+All other assets created by XIII Studios for Chillennium 2025"
 
 [node name="Return" type="TextureButton" parent="."]
 layout_mode = 0
-offset_left = 913.0
-offset_top = 1004.0
-offset_right = 1765.0
-offset_bottom = 1155.0
+offset_left = 1297.0
+offset_top = 972.0
+offset_right = 2149.0
+offset_bottom = 1123.0
 scale = Vector2(0.333, 0.333)
 texture_normal = ExtResource("3_m1ydv")
 texture_pressed = ExtResource("4_fbyp0")

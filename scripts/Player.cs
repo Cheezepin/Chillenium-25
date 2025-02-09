@@ -8,7 +8,7 @@ public partial class Player : CharacterBody2D
 	public const float JumpVelocity = -1000.0f;
 	public const float EnemyBounceVelocity = -600.0f;
 	public const float RedBounceVelocity = -1000.0f;
-	public const float BlueBounceVelocity = -1500.0f;
+	public const float BlueBounceVelocity = -2500.0f;
 
 	public const double xAcceleration = 5500.0f;
 	public const double xFriction = 3500.0f;
