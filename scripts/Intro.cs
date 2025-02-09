@@ -30,7 +30,7 @@ public partial class Intro : Node2D
 		Vector2 girlPos = girl.Position;
 		switch(introState) {
 			case 0:
-				if(player.GlobalPosition.X > -600.0) {
+				if(player.GlobalPosition.X > -500.0) {
 					introState++;
 					timer = 0;
 				}

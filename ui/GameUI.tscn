@@ -85,75 +85,97 @@ offset_right = 1200.0
 offset_bottom = 1536.0
 script = ExtResource("12_g71rv")
 
-[node name="Red" type="TextureRect" parent="Projector/Rotate"]
+[node name="Center" type="Control" parent="Projector/Rotate"]
+anchors_preset = 0
+offset_top = -800.0
+offset_right = 40.0
+offset_bottom = -760.0
+script = ExtResource("14_cc6pg")
+
+[node name="Tex" type="TextureRect" parent="Projector/Rotate/Center"]
 modulate = Color(1, 0, 0, 1)
 layout_mode = 0
-offset_left = -408.0
-offset_top = -1392.0
-offset_right = 422.0
-offset_bottom = -289.0
+offset_left = -260.0
+offset_top = -354.0
+offset_right = 260.0
+offset_bottom = 354.0
 texture = ExtResource("12_hwdf5")
-script = ExtResource("14_cc6pg")
 
-[node name="Orange" type="TextureRect" parent="Projector/Rotate"]
-modulate = Color(1, 0.498039, 0, 1)
-layout_mode = 0
-offset_left = 1010.58
-offset_top = -1017.63
-offset_right = 1840.58
-offset_bottom = 85.3749
+[node name="R1" type="Control" parent="Projector/Rotate"]
+anchors_preset = 0
+offset_left = 692.82
+offset_top = -400.0
+offset_right = 732.82
+offset_bottom = -360.0
 rotation = 1.0472
-texture = ExtResource("12_hwdf5")
 script = ExtResource("14_cc6pg")
-col = 1
+id = 1
 
-[node name="Yellow" type="TextureRect" parent="Projector/Rotate"]
-modulate = Color(1, 1, 0, 1)
+[node name="Tex" type="TextureRect" parent="Projector/Rotate/R1"]
+modulate = Color(1, 0, 0, 1)
 layout_mode = 0
-offset_left = 1407.36
-offset_top = 378.375
-offset_right = 2237.36
-offset_bottom = 1481.37
-rotation = 2.0944
+offset_left = -260.0
+offset_top = -354.0
+offset_right = 260.0
+offset_bottom = 354.0
 texture = ExtResource("12_hwdf5")
-script = ExtResource("14_cc6pg")
-col = 2
 
-[node name="Green" type="TextureRect" parent="Projector/Rotate"]
-modulate = Color(0, 1, 0, 1)
-layout_mode = 0
-offset_left = 384.0
-offset_top = 1504.0
-offset_right = 1214.0
-offset_bottom = 2607.0
-rotation = -3.14159
-texture = ExtResource("12_hwdf5")
-script = ExtResource("14_cc6pg")
-col = 3
-
-[node name="Blue" type="TextureRect" parent="Projector/Rotate"]
-modulate = Color(0, 0, 1, 1)
-layout_mode = 0
-offset_left = -1098.5
-offset_top = 1105.34
-offset_right = -268.502
-offset_bottom = 2208.34
-rotation = -2.09439
-texture = ExtResource("12_hwdf5")
-script = ExtResource("14_cc6pg")
-col = 4
-
-[node name="Purple" type="TextureRect" parent="Projector/Rotate"]
-modulate = Color(1, 0, 1, 1)
-layout_mode = 0
-offset_left = -1490.79
-offset_top = -361.877
-offset_right = -660.79
-offset_bottom = 741.123
+[node name="L1" type="Control" parent="Projector/Rotate"]
+anchors_preset = 0
+offset_left = -692.82
+offset_top = -400.0
+offset_right = -652.82
+offset_bottom = -360.0
 rotation = -1.0472
-texture = ExtResource("12_hwdf5")
 script = ExtResource("14_cc6pg")
-col = 5
+id = -1
+
+[node name="Tex" type="TextureRect" parent="Projector/Rotate/L1"]
+modulate = Color(1, 0, 0, 1)
+layout_mode = 0
+offset_left = -260.0
+offset_top = -354.0
+offset_right = 260.0
+offset_bottom = 354.0
+texture = ExtResource("12_hwdf5")
+
+[node name="L2" type="Control" parent="Projector/Rotate"]
+anchors_preset = 0
+offset_left = -692.82
+offset_top = 400.0
+offset_right = -652.82
+offset_bottom = 440.0
+rotation = -2.0944
+script = ExtResource("14_cc6pg")
+id = -2
+
+[node name="Tex" type="TextureRect" parent="Projector/Rotate/L2"]
+modulate = Color(0.490365, 0.441185, 0.97621, 1)
+layout_mode = 0
+offset_left = -260.0
+offset_top = -354.0
+offset_right = 260.0
+offset_bottom = 354.0
+texture = ExtResource("12_hwdf5")
+
+[node name="R2" type="Control" parent="Projector/Rotate"]
+anchors_preset = 0
+offset_left = 692.82
+offset_top = 400.0
+offset_right = 732.82
+offset_bottom = 440.0
+rotation = 2.0944
+script = ExtResource("14_cc6pg")
+id = 2
+
+[node name="Tex" type="TextureRect" parent="Projector/Rotate/R2"]
+modulate = Color(5.10186e-06, 0.578726, 0.803713, 1)
+layout_mode = 0
+offset_left = -260.0
+offset_top = -354.0
+offset_right = 260.0
+offset_bottom = 354.0
+texture = ExtResource("12_hwdf5")
 
 [node name="Tutorial" type="RichTextLabel" parent="."]
 anchors_preset = 5
