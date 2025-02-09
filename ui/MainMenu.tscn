@@ -392,11 +392,12 @@ texture_hover = ExtResource("9_4mp5e")
 
 [node name="Logo" type="TextureRect" parent="MainMenuItems"]
 layout_mode = 0
-offset_left = 366.0
-offset_top = -319.0
-offset_right = 2264.0
-offset_bottom = 930.0
+offset_left = -625.0
+offset_top = -314.0
+offset_right = 3215.0
+offset_bottom = 1846.0
 scale = Vector2(0.5, 0.5)
+mouse_filter = 2
 texture = ExtResource("14_gavn6")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

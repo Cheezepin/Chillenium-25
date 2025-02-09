@@ -36,7 +36,7 @@ public partial class TextTriggers : Node2D
 				case "MovementTutorial":
 					if(!movement)
                     {
-						tutorialLabel.Text = "[center]Use the arrow keys or WASD to move![/center]";
+						tutorialLabel.Text = "[center]Use WASD to move![/center]";
 						tutorialPos = 182;
 						//movement = true;
                     }
@@ -44,7 +44,7 @@ public partial class TextTriggers : Node2D
 				case "JumpTutorial":
 					if (!jump)
 					{
-						tutorialLabel.Text = "[center]Use Z, K, or SPACE to jump![/center]";
+						tutorialLabel.Text = "[center]Use W or k to jump![/center]";
 						tutorialPos = 182;
 						//jump = true;
 					}
@@ -52,7 +52,7 @@ public partial class TextTriggers : Node2D
 				case "SwitchTutorial":
 					if (!switchT)
 					{
-						tutorialLabel.Text = "[center]Use Q and E or U and I to switch between colors![/center]";
+						tutorialLabel.Text = "[center]Use Q and E to switch between colors![/center]";
 						tutorialPos = 182;
 						//switchT = true;
 					}
@@ -60,7 +60,7 @@ public partial class TextTriggers : Node2D
 				case "AttackTutorial":
 					if(!attack)
                     {
-						tutorialLabel.Text = "[center]Use X or J to attack![/center]";
+						tutorialLabel.Text = "[center]Use J or jump on enemies to attack enemies of your color![/center]";
 						tutorialPos = 182;
 						//attack = true;
 					}
