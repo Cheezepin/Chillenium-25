@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=4 uid="uid://cx75o0oqspqql"]
+[gd_scene load_steps=56 format=4 uid="uid://cx75o0oqspqql"]
 
 [ext_resource type="Script" path="res://scripts/Level.cs" id="1_dmkto"]
 [ext_resource type="TileSet" uid="uid://ci51cqdpqm4y5" path="res://tilesets/SkyTiles.tres" id="2_i0ee6"]
@@ -12,6 +12,7 @@
 [ext_resource type="TileSet" uid="uid://dn05yrc5ieiyg" path="res://tilesets/ColoredPlatforms.tres" id="8_oxa15"]
 [ext_resource type="Script" path="res://scripts/ColoredPlatforms.cs" id="9_uevfq"]
 [ext_resource type="Shader" path="res://shaders/color_platform.gdshader" id="10_mtd1h"]
+[ext_resource type="Script" path="res://scripts/TextTriggers.cs" id="11_5gg6m"]
 [ext_resource type="PackedScene" uid="uid://duam5f5qbghn7" path="res://actors/Card.tscn" id="13_q0uwx"]
 [ext_resource type="Texture2D" uid="uid://ctj0qmqqsmiq3" path="res://sprites/orange_card.png" id="14_5gc7s"]
 [ext_resource type="Script" path="res://scripts/DeathFloor.cs" id="14_e33w6"]
@@ -25,10 +26,10 @@
 [ext_resource type="Texture2D" uid="uid://dbxolldm7hode" path="res://tilesets/Child's_Play_TileSet_Castle_Window-03.png" id="21_yufcp"]
 [ext_resource type="Texture2D" uid="uid://d4jkx06lf1gr7" path="res://sprites/stainedglass.png" id="22_i3ctk"]
 [ext_resource type="Script" path="res://scripts/DisperseTrigger.cs" id="22_sj1f2"]
-[ext_resource type="PackedScene" path="res://global/DynamicMusic.tscn" id="26_dkwr1"]
-[ext_resource type="PackedScene" uid="uid://i4otxtrfu7yh" path="res://actors/RedDroplet.tscn" id="26_si5v2"]
-[ext_resource type="PackedScene" uid="uid://bqtj3u7qtdwj4" path="res://actors/GreenDroplet.tscn" id="27_uwww5"]
-[ext_resource type="PackedScene" uid="uid://xu7wlc0kappq" path="res://actors/OrangeDroplet.tscn" id="27_x0xjj"]
+[ext_resource type="PackedScene" uid="uid://c2bu8c7go0jhx" path="res://global/DynamicMusic.tscn" id="26_dkwr1"]
+[ext_resource type="PackedScene" uid="uid://vjjvrv40250f" path="res://actors/RedDroplet.tscn" id="26_si5v2"]
+[ext_resource type="PackedScene" uid="uid://buftnxmpesmkc" path="res://actors/GreenDroplet.tscn" id="27_uwww5"]
+[ext_resource type="PackedScene" uid="uid://ch75sdvgpnjxy" path="res://actors/OrangeDroplet.tscn" id="27_x0xjj"]
 [ext_resource type="AudioStream" uid="uid://bfb8glcsmjg71" path="res://sounds/sfx/switch.ogg" id="30_vn31i"]
 [ext_resource type="AudioStream" uid="uid://bndcedipiuesl" path="res://sounds/sfx/chirp.ogg" id="31_w0pxm"]
 
@@ -125,6 +126,9 @@ sources/3 = SubResource("TileSetAtlasSource_qcn5q")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dk6or"]
 size = Vector2(2000, 50)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j67vv"]
+size = Vector2(586, 378)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ess3e"]
 size = Vector2(20000, 1000)
@@ -319,6 +323,30 @@ script = ExtResource("22_sj1f2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DisperseTrigger"]
 shape = SubResource("RectangleShape2D_dk6or")
+
+[node name="TextTriggers" type="Node2D" parent="."]
+script = ExtResource("11_5gg6m")
+
+[node name="MovementTutorial" type="Area2D" parent="TextTriggers"]
+position = Vector2(-4535, -3626)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TextTriggers/MovementTutorial"]
+position = Vector2(146, 18)
+shape = SubResource("RectangleShape2D_j67vv")
+
+[node name="JumpTutorial" type="Area2D" parent="TextTriggers"]
+position = Vector2(-737, -3626)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TextTriggers/JumpTutorial"]
+position = Vector2(146, 18)
+shape = SubResource("RectangleShape2D_j67vv")
+
+[node name="AttackTutorial" type="Area2D" parent="TextTriggers"]
+position = Vector2(-2760, 847)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TextTriggers/AttackTutorial"]
+position = Vector2(108, -47)
+shape = SubResource("RectangleShape2D_j67vv")
 
 [node name="DeathFloors" type="Node2D" parent="."]
 
@@ -575,3 +603,10 @@ volume_db = -4.217
 stream = ExtResource("31_w0pxm")
 volume_db = -23.892
 autoplay = true
+
+[connection signal="body_entered" from="TextTriggers/MovementTutorial" to="TextTriggers" method="OnBodyEntered" binds= ["MovementTutorial"]]
+[connection signal="body_exited" from="TextTriggers/MovementTutorial" to="TextTriggers" method="OnBodyExit"]
+[connection signal="body_entered" from="TextTriggers/JumpTutorial" to="TextTriggers" method="OnBodyEntered" binds= ["JumpTutorial"]]
+[connection signal="body_exited" from="TextTriggers/JumpTutorial" to="TextTriggers" method="OnBodyExit"]
+[connection signal="body_entered" from="TextTriggers/AttackTutorial" to="TextTriggers" method="OnBodyEntered" binds= ["AttackTutorial"]]
+[connection signal="body_exited" from="TextTriggers/AttackTutorial" to="TextTriggers" method="OnBodyExit"]
