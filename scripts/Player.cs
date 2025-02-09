@@ -164,6 +164,7 @@ public partial class Player : CharacterBody2D
 				{
 					ChangeAction(Action.Attack);
 				}
+
 				break;
 			case Action.Attack:
 				velocity.X = Mathf.MoveToward(Velocity.X, 0, (float)(xFriction*delta));
@@ -226,7 +227,11 @@ public partial class Player : CharacterBody2D
 
 	void _OnFootboxAreaEntered(Node2D body) {
 		if(body is Jumpbox) {
-			Enemy e = ((Jumpbox)body).parent;
+			Enemy e = (Enemy)((Jumpbox)body).parent;
+			if(((Jumpbox)body).parent is Droplet) {
+				GD.Print("yeah");
+				if((int)((Droplet)e).color != Global.currColorID) return;
+			}
 			e.OnJumpedOn();
 			Velocity = new Vector2(Velocity.X, EnemyBounceVelocity);
 		}

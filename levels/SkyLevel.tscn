@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=4 uid="uid://cx75o0oqspqql"]
+[gd_scene load_steps=50 format=4 uid="uid://cx75o0oqspqql"]
 
 [ext_resource type="Script" path="res://scripts/Level.cs" id="1_dmkto"]
 [ext_resource type="TileSet" uid="uid://ci51cqdpqm4y5" path="res://tilesets/SkyTiles.tres" id="2_i0ee6"]
@@ -27,6 +27,7 @@
 [ext_resource type="Texture2D" uid="uid://d4jkx06lf1gr7" path="res://sprites/stainedglass.png" id="22_i3ctk"]
 [ext_resource type="Script" path="res://scripts/DisperseTrigger.cs" id="22_sj1f2"]
 [ext_resource type="PackedScene" path="res://global/DynamicMusic.tscn" id="26_dkwr1"]
+[ext_resource type="PackedScene" uid="uid://i4otxtrfu7yh" path="res://actors/RedDroplet.tscn" id="26_si5v2"]
 [ext_resource type="AudioStream" uid="uid://bfb8glcsmjg71" path="res://sounds/sfx/switch.ogg" id="30_vn31i"]
 [ext_resource type="AudioStream" uid="uid://bndcedipiuesl" path="res://sounds/sfx/chirp.ogg" id="31_w0pxm"]
 
@@ -124,6 +125,18 @@ sources/3 = SubResource("TileSetAtlasSource_qcn5q")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dk6or"]
 size = Vector2(2000, 50)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ess3e"]
+size = Vector2(20000, 1000)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q53oc"]
+size = Vector2(1000, 200)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4du2b"]
+shader = ExtResource("6_qhkaq")
+shader_parameter/screen_color_bw = false
+shader_parameter/screen_color = Color(1, 0, 0, 1)
+shader_parameter/progress = 0.0
+
 [sub_resource type="Shader" id="Shader_t4j1t"]
 code = "shader_type canvas_item;
 uniform sampler2D dotted_tex;
@@ -179,18 +192,6 @@ shader = ExtResource("10_mtd1h")
 shader_parameter/target_color = Color(1, 1, 1, 1)
 shader_parameter/current_color = Color(1, 1, 1, 1)
 shader_parameter/dotted_tex = ExtResource("7_3rgll")
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ess3e"]
-size = Vector2(20000, 1000)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_q53oc"]
-size = Vector2(1000, 200)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_4du2b"]
-shader = ExtResource("6_qhkaq")
-shader_parameter/screen_color_bw = false
-shader_parameter/screen_color = Color(1, 0, 0, 1)
-shader_parameter/progress = 0.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dwk3h"]
 texture = ExtResource("19_5vwqj")
@@ -305,7 +306,7 @@ position = Vector2(-9, 0)
 script = ExtResource("3_arpdf")
 
 [node name="Player" parent="." instance=ExtResource("4_xeiba")]
-position = Vector2(-354, -3730)
+position = Vector2(48, 675)
 floor_max_angle = 1.39626
 floor_snap_length = 32.0
 
@@ -315,91 +316,6 @@ script = ExtResource("22_sj1f2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DisperseTrigger"]
 shape = SubResource("RectangleShape2D_dk6or")
-
-[node name="RedPlatforms" type="Node2D" parent="."]
-position = Vector2(1, 0)
-scale = Vector2(0.125, 0.125)
-
-[node name="RedPlatforms" type="TileMapLayer" parent="RedPlatforms"]
-material = SubResource("ShaderMaterial_4pjek")
-tile_map_data = PackedByteArray("AAAZAAEAAAAAAAIAAAAZAAIAAAAAAAMAAAAaAAEAAAABAAIAAAAaAAIAAAABAAMAAAAbAAEAAAACAAIAAAAbAAIAAAACAAMAAAD2/4L/AAAAAAIAAAD2/4P/AAAAAAMAAAD3/4L/AAABAAIAAAD3/4P/AAABAAMAAAD4/4L/AAACAAIAAAD4/4P/AAACAAMAAAA=")
-tile_set = ExtResource("8_oxa15")
-script = ExtResource("9_uevfq")
-
-[node name="OrangePlatforms" type="Node2D" parent="."]
-position = Vector2(1, 0)
-scale = Vector2(0.125, 0.125)
-
-[node name="OrangePlatform1" type="TileMapLayer" parent="OrangePlatforms"]
-material = SubResource("ShaderMaterial_21bru")
-position = Vector2(7376, 2008)
-tile_map_data = PackedByteArray("AAD+////AAAAAAAAAAD/////AAABAAAAAAAAAP//AAABAAAAAAABAP//AAACAAAAAAD+/wAAAAAAAAEAAAD//wAAAAABAAEAAAAAAAAAAAABAAEAAAABAAAAAAACAAEAAAA=")
-tile_set = ExtResource("8_oxa15")
-script = ExtResource("9_uevfq")
-targetColor = 1
-
-[node name="YellowPlatforms" type="Node2D" parent="."]
-position = Vector2(1, 0)
-scale = Vector2(0.125, 0.125)
-
-[node name="YellowPlatform1" type="TileMapLayer" parent="YellowPlatforms"]
-material = SubResource("ShaderMaterial_n6850")
-position = Vector2(10512, 1232)
-tile_map_data = PackedByteArray("AAD+////AAAAAAQAAAD/////AAABAAQAAAAAAP//AAABAAQAAAABAP//AAACAAQAAAD+/wAAAAAAAAUAAAD//wAAAAABAAUAAAAAAAAAAAABAAUAAAABAAAAAAACAAUAAAA=")
-tile_set = ExtResource("8_oxa15")
-script = ExtResource("9_uevfq")
-targetColor = 2
-
-[node name="YellowPlatform2" type="TileMapLayer" parent="YellowPlatforms"]
-material = SubResource("ShaderMaterial_n6850")
-position = Vector2(4856, -33584)
-tile_map_data = PackedByteArray("AAD+////AAAAAAQAAAD/////AAABAAQAAAAAAP//AAABAAQAAAABAP//AAACAAQAAAD+/wAAAAAAAAUAAAD//wAAAAABAAUAAAAAAAAAAAABAAUAAAABAAAAAAACAAUAAAA=")
-tile_set = ExtResource("8_oxa15")
-script = ExtResource("9_uevfq")
-targetColor = 2
-
-[node name="GreenPlatforms" type="Node2D" parent="."]
-position = Vector2(1, 0)
-scale = Vector2(0.125, 0.125)
-
-[node name="GreenPlatform1" type="TileMapLayer" parent="GreenPlatforms"]
-material = SubResource("ShaderMaterial_nnolk")
-position = Vector2(1352, -32432)
-tile_map_data = PackedByteArray("AAD+////AAAAAAYAAAD/////AAABAAYAAAAAAP//AAABAAYAAAABAP//AAACAAYAAAD+/wAAAAAAAAcAAAD//wAAAAABAAcAAAAAAAAAAAABAAcAAAABAAAAAAACAAcAAAA=")
-tile_set = ExtResource("8_oxa15")
-script = ExtResource("9_uevfq")
-targetColor = 3
-
-[node name="GreenPlatform2" type="TileMapLayer" parent="GreenPlatforms"]
-material = SubResource("ShaderMaterial_nnolk")
-position = Vector2(4424, 1816)
-tile_map_data = PackedByteArray("AAD+////AAAAAAYAAAD/////AAABAAYAAAAAAP//AAABAAYAAAABAP//AAACAAYAAAD+/wAAAAAAAAcAAAD//wAAAAABAAcAAAAAAAAAAAABAAcAAAABAAAAAAACAAcAAAA=")
-tile_set = ExtResource("8_oxa15")
-script = ExtResource("9_uevfq")
-targetColor = 3
-
-[node name="BluePlatforms" type="Node2D" parent="."]
-position = Vector2(1, 0)
-scale = Vector2(0.125, 0.125)
-
-[node name="BluePlatforms" type="TileMapLayer" parent="BluePlatforms"]
-material = SubResource("ShaderMaterial_ua316")
-tile_map_data = PackedByteArray("AAAZAAcAAAABAAgAAAAZAAgAAAABAAkAAAA=")
-tile_set = ExtResource("8_oxa15")
-script = ExtResource("9_uevfq")
-targetColor = 4
-
-[node name="PurplePlatforms" type="Node2D" parent="."]
-position = Vector2(1, 0)
-scale = Vector2(0.125, 0.125)
-
-[node name="PurplePlatforms" type="TileMapLayer" parent="PurplePlatforms"]
-material = SubResource("ShaderMaterial_cgf5k")
-position = Vector2(2824, 1216)
-tile_map_data = PackedByteArray("AAAJABMAAAAAAAoAAAAJABQAAAAAAAsAAAAKABMAAAABAAoAAAAKABQAAAABAAsAAAALABMAAAACAAoAAAALABQAAAACAAsAAAA=")
-tile_set = ExtResource("8_oxa15")
-script = ExtResource("9_uevfq")
-targetColor = 5
 
 [node name="Enemy" parent="." instance=ExtResource("11_pists")]
 position = Vector2(1779, 804)
@@ -466,6 +382,102 @@ color = 16
 position = Vector2(1892, 784)
 texture = ExtResource("18_0ugmc")
 color = 32
+
+[node name="Platforms" type="CanvasLayer" parent="."]
+layer = 5
+follow_viewport_enabled = true
+
+[node name="RedPlatforms" type="Node2D" parent="Platforms"]
+position = Vector2(1, 0)
+scale = Vector2(0.125, 0.125)
+
+[node name="RedPlatforms" type="TileMapLayer" parent="Platforms/RedPlatforms"]
+material = SubResource("ShaderMaterial_4pjek")
+tile_map_data = PackedByteArray("AAAZAAEAAAAAAAIAAAAZAAIAAAAAAAMAAAAaAAEAAAABAAIAAAAaAAIAAAABAAMAAAAbAAEAAAACAAIAAAAbAAIAAAACAAMAAAD2/4L/AAAAAAIAAAD2/4P/AAAAAAMAAAD3/4L/AAABAAIAAAD3/4P/AAABAAMAAAD4/4L/AAACAAIAAAD4/4P/AAACAAMAAAA=")
+tile_set = ExtResource("8_oxa15")
+script = ExtResource("9_uevfq")
+
+[node name="OrangePlatforms" type="Node2D" parent="Platforms"]
+position = Vector2(1, 0)
+scale = Vector2(0.125, 0.125)
+
+[node name="OrangePlatform1" type="TileMapLayer" parent="Platforms/OrangePlatforms"]
+material = SubResource("ShaderMaterial_21bru")
+position = Vector2(7376, 2008)
+tile_map_data = PackedByteArray("AAD+////AAAAAAAAAAD/////AAABAAAAAAAAAP//AAABAAAAAAABAP//AAACAAAAAAD+/wAAAAAAAAEAAAD//wAAAAABAAEAAAAAAAAAAAABAAEAAAABAAAAAAACAAEAAAA=")
+tile_set = ExtResource("8_oxa15")
+script = ExtResource("9_uevfq")
+targetColor = 1
+
+[node name="YellowPlatforms" type="Node2D" parent="Platforms"]
+position = Vector2(1, 0)
+scale = Vector2(0.125, 0.125)
+
+[node name="YellowPlatform1" type="TileMapLayer" parent="Platforms/YellowPlatforms"]
+material = SubResource("ShaderMaterial_n6850")
+position = Vector2(10512, 1232)
+tile_map_data = PackedByteArray("AAD+////AAAAAAQAAAD/////AAABAAQAAAAAAP//AAABAAQAAAABAP//AAACAAQAAAD+/wAAAAAAAAUAAAD//wAAAAABAAUAAAAAAAAAAAABAAUAAAABAAAAAAACAAUAAAA=")
+tile_set = ExtResource("8_oxa15")
+script = ExtResource("9_uevfq")
+targetColor = 2
+
+[node name="YellowPlatform2" type="TileMapLayer" parent="Platforms/YellowPlatforms"]
+material = SubResource("ShaderMaterial_n6850")
+position = Vector2(4856, -33584)
+tile_map_data = PackedByteArray("AAD+////AAAAAAQAAAD/////AAABAAQAAAAAAP//AAABAAQAAAABAP//AAACAAQAAAD+/wAAAAAAAAUAAAD//wAAAAABAAUAAAAAAAAAAAABAAUAAAABAAAAAAACAAUAAAA=")
+tile_set = ExtResource("8_oxa15")
+script = ExtResource("9_uevfq")
+targetColor = 2
+
+[node name="GreenPlatforms" type="Node2D" parent="Platforms"]
+position = Vector2(1, 0)
+scale = Vector2(0.125, 0.125)
+
+[node name="GreenPlatform1" type="TileMapLayer" parent="Platforms/GreenPlatforms"]
+material = SubResource("ShaderMaterial_nnolk")
+position = Vector2(1352, -32432)
+tile_map_data = PackedByteArray("AAD+////AAAAAAYAAAD/////AAABAAYAAAAAAP//AAABAAYAAAABAP//AAACAAYAAAD+/wAAAAAAAAcAAAD//wAAAAABAAcAAAAAAAAAAAABAAcAAAABAAAAAAACAAcAAAA=")
+tile_set = ExtResource("8_oxa15")
+script = ExtResource("9_uevfq")
+targetColor = 3
+
+[node name="GreenPlatform2" type="TileMapLayer" parent="Platforms/GreenPlatforms"]
+material = SubResource("ShaderMaterial_nnolk")
+position = Vector2(4424, 1816)
+tile_map_data = PackedByteArray("AAD+////AAAAAAYAAAD/////AAABAAYAAAAAAP//AAABAAYAAAABAP//AAACAAYAAAD+/wAAAAAAAAcAAAD//wAAAAABAAcAAAAAAAAAAAABAAcAAAABAAAAAAACAAcAAAA=")
+tile_set = ExtResource("8_oxa15")
+script = ExtResource("9_uevfq")
+targetColor = 3
+
+[node name="BluePlatforms" type="Node2D" parent="Platforms"]
+position = Vector2(1, 0)
+scale = Vector2(0.125, 0.125)
+
+[node name="BluePlatforms" type="TileMapLayer" parent="Platforms/BluePlatforms"]
+material = SubResource("ShaderMaterial_ua316")
+tile_map_data = PackedByteArray("AAAZAAcAAAABAAgAAAAZAAgAAAABAAkAAAA=")
+tile_set = ExtResource("8_oxa15")
+script = ExtResource("9_uevfq")
+targetColor = 4
+
+[node name="PurplePlatforms" type="Node2D" parent="Platforms"]
+position = Vector2(1, 0)
+scale = Vector2(0.125, 0.125)
+
+[node name="PurplePlatforms" type="TileMapLayer" parent="Platforms/PurplePlatforms"]
+material = SubResource("ShaderMaterial_cgf5k")
+position = Vector2(2824, 1216)
+tile_map_data = PackedByteArray("AAAJABMAAAAAAAoAAAAJABQAAAAAAAsAAAAKABMAAAABAAoAAAAKABQAAAABAAsAAAALABMAAAACAAoAAAALABQAAAACAAsAAAA=")
+tile_set = ExtResource("8_oxa15")
+script = ExtResource("9_uevfq")
+targetColor = 5
+
+[node name="Enemies" type="CanvasLayer" parent="."]
+layer = 5
+follow_viewport_enabled = true
+
+[node name="RedDroplet" parent="Enemies" instance=ExtResource("26_si5v2")]
+position = Vector2(660, 622)
 
 [node name="ForegroundDecos" type="Node2D" parent="."]
 position = Vector2(-3922, -3755)

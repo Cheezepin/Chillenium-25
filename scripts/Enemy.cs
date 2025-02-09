@@ -6,10 +6,10 @@ using Vector2 = Godot.Vector2;
 public partial class Enemy : AnimatableBody2D
 {
 
-	ShaderMaterial s;
-	private double flashTimer = 0;
+	protected ShaderMaterial s;
+	protected double flashTimer = 0;
 
-	private Vector2 velocity;
+	protected Vector2 velocity;
 
 	public const float gravity = 2500.0f;
 
@@ -19,8 +19,10 @@ public partial class Enemy : AnimatableBody2D
 
 	[Export] public AudioStreamPlayer ding;
 	[Export] public AudioStreamPlayer hitSound;
+	private RayCast2D ray;
 
-	private double timer = 0;
+	protected double timer = 0;
+	protected Player player;
 
 	public override void _Ready()
 	{
@@ -28,6 +30,8 @@ public partial class Enemy : AnimatableBody2D
 		velocity = Vector2.Zero;
 		velocity.X = 0;
 		velocity.Y = 0;
+		ray = GetNode<RayCast2D>("FloorCheck");
+		player = ((Level)Global.currentLevel).player;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -56,19 +60,29 @@ public partial class Enemy : AnimatableBody2D
 		timer += delta;
 	}
 
-	public override void _PhysicsProcess(double delta)
-	{
-		velocity.X = Mathf.MoveToward(velocity.X, 0, 3000.0f * (float)delta);
-		velocity.Y += gravity * (float)delta;
+	public virtual void Move(double delta) {
 		Vector2 xVelVec = new Vector2(velocity.X, 0)*(float)delta; //separation done so horizontal movement is applied without stopping in place
 		Vector2 yVelVec = new Vector2(0, velocity.Y)*(float)delta;
 		MoveAndCollide(xVelVec);
 		MoveAndCollide(yVelVec);
-		
+
+		var collider = ray.GetCollider();
+		if(collider != null && collider is StaticBody2D) {
+			velocity.Y = 0;
+		}
+
 		base._PhysicsProcess(delta);
 	}
 
-	private void TakeDamage(float dmg) {
+	public override void _PhysicsProcess(double delta)
+	{
+		velocity.X = Mathf.MoveToward(velocity.X, 0, 3000.0f * (float)delta);
+		velocity.Y += gravity * (float)delta;
+
+		Move(delta);
+	}
+
+	protected void TakeDamage(float dmg) {
 		ding.Play();
 		hitSound.Play();
 		health -= dmg;
@@ -90,7 +104,7 @@ public partial class Enemy : AnimatableBody2D
 		GlobalScale = new Vector2(GlobalScale.X, 0.5f);
 	}
 
-	public void _OnHurtboxAreaEntered(Node2D body) {
+	public virtual void _OnHurtboxAreaEntered(Node2D body) {
 		if(timer < 0.2) return;
 		if(body is Hitbox) {
 			flashTimer = 0.04;
