@@ -20,6 +20,7 @@ public partial class Level : Node2D
 		Global.colorsUnlocked = 0;
 		Global.currColorID = 0;
 		Global.switchSound = GetNode<AudioStreamPlayer>("Switch");
+		Global.endScreenTriggered = false;
 
 		//DEBUG REMOVE LATER
 		// Global.allColors = false;
