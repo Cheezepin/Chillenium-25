@@ -9,7 +9,7 @@ public partial class FlyCard : Sprite2D
 
 	[Export]public int id;
 	private double timer = 0;
-	private float speed = 1000.0f;
+	private float speed = 1500.0f;
 
 	public override void _Ready()
 	{
@@ -28,6 +28,7 @@ public partial class FlyCard : Sprite2D
 			case 5: velocity = new Vector2(-0.5f, -0.866025404f); break;
 		}
 		Position += velocity*speed*(float)delta;
+		speed -= (float)(delta*200.0);
 		timer += delta;
 		if(timer > 3.0) {QueueFree();}
 	}

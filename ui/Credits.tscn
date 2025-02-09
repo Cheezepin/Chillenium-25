@@ -16,10 +16,11 @@ script = ExtResource("1_17mrq")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 layout_mode = 0
-offset_left = 915.0
-offset_top = 46.0
-offset_right = 1915.0
-offset_bottom = 946.0
+offset_left = 1121.0
+offset_top = 42.0
+offset_right = 1921.0
+offset_bottom = 942.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/normal_font_size = 30
 text = "XIII Studios: Kayla McHaney, Karen Lopez, Kyle Lev, Jason Lev
 

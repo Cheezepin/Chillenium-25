@@ -1,4 +1,4 @@
-[gd_scene load_steps=112 format=4 uid="uid://cx75o0oqspqql"]
+[gd_scene load_steps=96 format=4 uid="uid://cx75o0oqspqql"]
 
 [ext_resource type="Script" path="res://scripts/Level.cs" id="1_dmkto"]
 [ext_resource type="PackedScene" uid="uid://brhxin3wl51k" path="res://actors/Intro.tscn" id="2_5ly7j"]
@@ -32,6 +32,7 @@
 [ext_resource type="PackedScene" uid="uid://vjjvrv40250f" path="res://actors/RedDroplet.tscn" id="26_si5v2"]
 [ext_resource type="PackedScene" uid="uid://bqtj3u7qtdwj4" path="res://actors/GreenDroplet.tscn" id="27_uwww5"]
 [ext_resource type="PackedScene" uid="uid://ch75sdvgpnjxy" path="res://actors/OrangeDroplet.tscn" id="27_x0xjj"]
+[ext_resource type="Shader" path="res://shaders/droplet_shader.gdshader" id="29_1jufe"]
 [ext_resource type="AudioStream" uid="uid://bfb8glcsmjg71" path="res://sounds/sfx/switch.ogg" id="30_vn31i"]
 [ext_resource type="PackedScene" uid="uid://45aj0e4kcquh" path="res://actors/BlueDroplet.tscn" id="31_a2cgn"]
 [ext_resource type="AudioStream" uid="uid://bndcedipiuesl" path="res://sounds/sfx/chirp.ogg" id="31_w0pxm"]
@@ -149,7 +150,13 @@ size = Vector2(586, 378)
 size = Vector2(924, 514)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ess3e"]
-size = Vector2(14944, 1000)
+size = Vector2(43272, 1000)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2tbk8"]
+size = Vector2(14429, 1000)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gr7iy"]
+size = Vector2(1617, 3760)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qa20w"]
 size = Vector2(203, 4864)
@@ -192,6 +199,9 @@ size = Vector2(769, 203)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hf1ci"]
 size = Vector2(1570, 203)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0ecj2"]
+size = Vector2(1131, 203)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4du2b"]
 shader = ExtResource("6_qhkaq")
@@ -255,583 +265,103 @@ shader_parameter/target_color = Color(1, 1, 1, 1)
 shader_parameter/current_color = Color(1, 1, 1, 1)
 shader_parameter/dotted_tex = ExtResource("7_3rgll")
 
-[sub_resource type="Shader" id="Shader_k3a72"]
-code = "shader_type canvas_item;
-
-uniform bool flash;
-uniform bool trans;
-
-void vertex() {
-	// Called for every vertex the material is visible on.
-}
-
-void fragment() {
-	// Called for every pixel the material is visible on.
-	if(flash && COLOR.a > 0.0) COLOR = vec4(1,1,1,1);
-	if(trans/* && (COLOR.r > 0.05 || COLOR.g > 0.05 || COLOR.b > 0.05)*/) {
-		COLOR *= vec4(1,1,1,0.25);
-	}
-}
-
-//void light() {
-	// Called for every pixel for every light affecting the CanvasItem.
-	// Uncomment to replace the default light processing function with this one.
-//}
-"
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2dn4i"]
-shader = SubResource("Shader_k3a72")
+shader = ExtResource("29_1jufe")
 shader_parameter/flash = false
 shader_parameter/trans = false
-
-[sub_resource type="Shader" id="Shader_ghfrg"]
-code = "shader_type canvas_item;
-
-uniform bool flash;
-uniform bool trans;
-
-void vertex() {
-	// Called for every vertex the material is visible on.
-}
-
-void fragment() {
-	// Called for every pixel the material is visible on.
-	if(flash && COLOR.a > 0.0) COLOR = vec4(1,1,1,1);
-	if(trans/* && (COLOR.r > 0.05 || COLOR.g > 0.05 || COLOR.b > 0.05)*/) {
-		COLOR *= vec4(1,1,1,0.25);
-	}
-}
-
-//void light() {
-	// Called for every pixel for every light affecting the CanvasItem.
-	// Uncomment to replace the default light processing function with this one.
-//}
-"
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bmo5p"]
-shader = SubResource("Shader_ghfrg")
+shader = ExtResource("29_1jufe")
 shader_parameter/flash = false
 shader_parameter/trans = false
-
-[sub_resource type="Shader" id="Shader_wqjhl"]
-code = "shader_type canvas_item;
-
-uniform bool flash;
-uniform bool trans;
-
-void vertex() {
-	// Called for every vertex the material is visible on.
-}
-
-void fragment() {
-	// Called for every pixel the material is visible on.
-	if(flash && COLOR.a > 0.0) COLOR = vec4(1,1,1,1);
-	if(trans/* && (COLOR.r > 0.05 || COLOR.g > 0.05 || COLOR.b > 0.05)*/) {
-		COLOR *= vec4(1,1,1,0.25);
-	}
-}
-
-//void light() {
-	// Called for every pixel for every light affecting the CanvasItem.
-	// Uncomment to replace the default light processing function with this one.
-//}
-"
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hcitg"]
-shader = SubResource("Shader_wqjhl")
+shader = ExtResource("29_1jufe")
 shader_parameter/flash = false
 shader_parameter/trans = false
-
-[sub_resource type="Shader" id="Shader_qgegp"]
-code = "shader_type canvas_item;
-
-uniform bool flash;
-uniform bool trans;
-
-void vertex() {
-	// Called for every vertex the material is visible on.
-}
-
-void fragment() {
-	// Called for every pixel the material is visible on.
-	if(flash && COLOR.a > 0.0) COLOR = vec4(1,1,1,1);
-	if(trans/* && (COLOR.r > 0.05 || COLOR.g > 0.05 || COLOR.b > 0.05)*/) {
-		COLOR *= vec4(1,1,1,0.25);
-	}
-}
-
-//void light() {
-	// Called for every pixel for every light affecting the CanvasItem.
-	// Uncomment to replace the default light processing function with this one.
-//}
-"
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tx4fh"]
-shader = SubResource("Shader_qgegp")
+shader = ExtResource("29_1jufe")
 shader_parameter/flash = false
 shader_parameter/trans = false
-
-[sub_resource type="Shader" id="Shader_ynuca"]
-code = "shader_type canvas_item;
-
-uniform bool flash;
-uniform bool trans;
-
-void vertex() {
-	// Called for every vertex the material is visible on.
-}
-
-void fragment() {
-	// Called for every pixel the material is visible on.
-	if(flash && COLOR.a > 0.0) COLOR = vec4(1,1,1,1);
-	if(trans/* && (COLOR.r > 0.05 || COLOR.g > 0.05 || COLOR.b > 0.05)*/) {
-		COLOR *= vec4(1,1,1,0.25);
-	}
-}
-
-//void light() {
-	// Called for every pixel for every light affecting the CanvasItem.
-	// Uncomment to replace the default light processing function with this one.
-//}
-"
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8xbre"]
-shader = SubResource("Shader_ynuca")
+shader = ExtResource("29_1jufe")
 shader_parameter/flash = false
 shader_parameter/trans = false
-
-[sub_resource type="Shader" id="Shader_g15p0"]
-code = "shader_type canvas_item;
-
-uniform bool flash;
-uniform bool trans;
-
-void vertex() {
-	// Called for every vertex the material is visible on.
-}
-
-void fragment() {
-	// Called for every pixel the material is visible on.
-	if(flash && COLOR.a > 0.0) COLOR = vec4(1,1,1,1);
-	if(trans/* && (COLOR.r > 0.05 || COLOR.g > 0.05 || COLOR.b > 0.05)*/) {
-		COLOR *= vec4(1,1,1,0.25);
-	}
-}
-
-//void light() {
-	// Called for every pixel for every light affecting the CanvasItem.
-	// Uncomment to replace the default light processing function with this one.
-//}
-"
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_v3cg5"]
-shader = SubResource("Shader_g15p0")
+shader = ExtResource("29_1jufe")
 shader_parameter/flash = false
 shader_parameter/trans = false
-
-[sub_resource type="Shader" id="Shader_chv6n"]
-code = "shader_type canvas_item;
-
-uniform bool flash;
-uniform bool trans;
-
-void vertex() {
-	// Called for every vertex the material is visible on.
-}
-
-void fragment() {
-	// Called for every pixel the material is visible on.
-	if(flash && COLOR.a > 0.0) COLOR = vec4(1,1,1,1);
-	if(trans/* && (COLOR.r > 0.05 || COLOR.g > 0.05 || COLOR.b > 0.05)*/) {
-		COLOR *= vec4(1,1,1,0.25);
-	}
-}
-
-//void light() {
-	// Called for every pixel for every light affecting the CanvasItem.
-	// Uncomment to replace the default light processing function with this one.
-//}
-"
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_e8yqv"]
-shader = SubResource("Shader_chv6n")
+shader = ExtResource("29_1jufe")
 shader_parameter/flash = false
 shader_parameter/trans = false
-
-[sub_resource type="Shader" id="Shader_g1hy0"]
-code = "shader_type canvas_item;
-
-uniform bool flash;
-uniform bool trans;
-
-void vertex() {
-	// Called for every vertex the material is visible on.
-}
-
-void fragment() {
-	// Called for every pixel the material is visible on.
-	if(flash && COLOR.a > 0.0) COLOR = vec4(1,1,1,1);
-	if(trans/* && (COLOR.r > 0.05 || COLOR.g > 0.05 || COLOR.b > 0.05)*/) {
-		COLOR *= vec4(1,1,1,0.25);
-	}
-}
-
-//void light() {
-	// Called for every pixel for every light affecting the CanvasItem.
-	// Uncomment to replace the default light processing function with this one.
-//}
-"
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jin70"]
-shader = SubResource("Shader_g1hy0")
+shader = ExtResource("29_1jufe")
 shader_parameter/flash = false
 shader_parameter/trans = false
-
-[sub_resource type="Shader" id="Shader_nis5o"]
-code = "shader_type canvas_item;
-
-uniform bool flash;
-uniform bool trans;
-
-void vertex() {
-	// Called for every vertex the material is visible on.
-}
-
-void fragment() {
-	// Called for every pixel the material is visible on.
-	if(flash && COLOR.a > 0.0) COLOR = vec4(1,1,1,1);
-	if(trans/* && (COLOR.r > 0.05 || COLOR.g > 0.05 || COLOR.b > 0.05)*/) {
-		COLOR *= vec4(1,1,1,0.25);
-	}
-}
-
-//void light() {
-	// Called for every pixel for every light affecting the CanvasItem.
-	// Uncomment to replace the default light processing function with this one.
-//}
-"
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mnjne"]
-shader = SubResource("Shader_nis5o")
+shader = ExtResource("29_1jufe")
 shader_parameter/flash = false
 shader_parameter/trans = false
-
-[sub_resource type="Shader" id="Shader_7mpw1"]
-code = "shader_type canvas_item;
-
-uniform bool flash;
-uniform bool trans;
-
-void vertex() {
-	// Called for every vertex the material is visible on.
-}
-
-void fragment() {
-	// Called for every pixel the material is visible on.
-	if(flash && COLOR.a > 0.0) COLOR = vec4(1,1,1,1);
-	if(trans/* && (COLOR.r > 0.05 || COLOR.g > 0.05 || COLOR.b > 0.05)*/) {
-		COLOR *= vec4(1,1,1,0.25);
-	}
-}
-
-//void light() {
-	// Called for every pixel for every light affecting the CanvasItem.
-	// Uncomment to replace the default light processing function with this one.
-//}
-"
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_d82lv"]
-shader = SubResource("Shader_7mpw1")
+shader = ExtResource("29_1jufe")
 shader_parameter/flash = false
 shader_parameter/trans = false
-
-[sub_resource type="Shader" id="Shader_wvmpv"]
-code = "shader_type canvas_item;
-
-uniform bool flash;
-uniform bool trans;
-
-void vertex() {
-	// Called for every vertex the material is visible on.
-}
-
-void fragment() {
-	// Called for every pixel the material is visible on.
-	if(flash && COLOR.a > 0.0) COLOR = vec4(1,1,1,1);
-	if(trans/* && (COLOR.r > 0.05 || COLOR.g > 0.05 || COLOR.b > 0.05)*/) {
-		COLOR *= vec4(1,1,1,0.25);
-	}
-}
-
-//void light() {
-	// Called for every pixel for every light affecting the CanvasItem.
-	// Uncomment to replace the default light processing function with this one.
-//}
-"
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3m4a0"]
-shader = SubResource("Shader_wvmpv")
+shader = ExtResource("29_1jufe")
 shader_parameter/flash = false
 shader_parameter/trans = false
-
-[sub_resource type="Shader" id="Shader_dxn61"]
-code = "shader_type canvas_item;
-
-uniform bool flash;
-uniform bool trans;
-
-void vertex() {
-	// Called for every vertex the material is visible on.
-}
-
-void fragment() {
-	// Called for every pixel the material is visible on.
-	if(flash && COLOR.a > 0.0) COLOR = vec4(1,1,1,1);
-	if(trans/* && (COLOR.r > 0.05 || COLOR.g > 0.05 || COLOR.b > 0.05)*/) {
-		COLOR *= vec4(1,1,1,0.25);
-	}
-}
-
-//void light() {
-	// Called for every pixel for every light affecting the CanvasItem.
-	// Uncomment to replace the default light processing function with this one.
-//}
-"
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wlenu"]
-shader = SubResource("Shader_dxn61")
+shader = ExtResource("29_1jufe")
 shader_parameter/flash = false
 shader_parameter/trans = false
-
-[sub_resource type="Shader" id="Shader_jkxl5"]
-code = "shader_type canvas_item;
-
-uniform bool flash;
-uniform bool trans;
-
-void vertex() {
-	// Called for every vertex the material is visible on.
-}
-
-void fragment() {
-	// Called for every pixel the material is visible on.
-	if(flash && COLOR.a > 0.0) COLOR = vec4(1,1,1,1);
-	if(trans/* && (COLOR.r > 0.05 || COLOR.g > 0.05 || COLOR.b > 0.05)*/) {
-		COLOR *= vec4(1,1,1,0.25);
-	}
-}
-
-//void light() {
-	// Called for every pixel for every light affecting the CanvasItem.
-	// Uncomment to replace the default light processing function with this one.
-//}
-"
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bym0u"]
-shader = SubResource("Shader_jkxl5")
+shader = ExtResource("29_1jufe")
 shader_parameter/flash = false
 shader_parameter/trans = false
-
-[sub_resource type="Shader" id="Shader_7e5mg"]
-code = "shader_type canvas_item;
-
-uniform bool flash;
-uniform bool trans;
-
-void vertex() {
-	// Called for every vertex the material is visible on.
-}
-
-void fragment() {
-	// Called for every pixel the material is visible on.
-	if(flash && COLOR.a > 0.0) COLOR = vec4(1,1,1,1);
-	if(trans/* && (COLOR.r > 0.05 || COLOR.g > 0.05 || COLOR.b > 0.05)*/) {
-		COLOR *= vec4(1,1,1,0.25);
-	}
-}
-
-//void light() {
-	// Called for every pixel for every light affecting the CanvasItem.
-	// Uncomment to replace the default light processing function with this one.
-//}
-"
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_w02n5"]
-shader = SubResource("Shader_7e5mg")
+shader = ExtResource("29_1jufe")
 shader_parameter/flash = false
 shader_parameter/trans = false
 
-[sub_resource type="Shader" id="Shader_rxv5w"]
-code = "shader_type canvas_item;
-
-uniform bool flash;
-uniform bool trans;
-
-void vertex() {
-	// Called for every vertex the material is visible on.
-}
-
-void fragment() {
-	// Called for every pixel the material is visible on.
-	if(flash && COLOR.a > 0.0) COLOR = vec4(1,1,1,1);
-	if(trans/* && (COLOR.r > 0.05 || COLOR.g > 0.05 || COLOR.b > 0.05)*/) {
-		COLOR *= vec4(1,1,1,0.25);
-	}
-}
-
-//void light() {
-	// Called for every pixel for every light affecting the CanvasItem.
-	// Uncomment to replace the default light processing function with this one.
-//}
-"
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_noy5y"]
-shader = SubResource("Shader_rxv5w")
+shader = ExtResource("29_1jufe")
 shader_parameter/flash = false
 shader_parameter/trans = true
-
-[sub_resource type="Shader" id="Shader_p052f"]
-code = "shader_type canvas_item;
-
-uniform bool flash;
-uniform bool trans;
-
-void vertex() {
-	// Called for every vertex the material is visible on.
-}
-
-void fragment() {
-	// Called for every pixel the material is visible on.
-	if(flash && COLOR.a > 0.0) COLOR = vec4(1,1,1,1);
-	if(trans/* && (COLOR.r > 0.05 || COLOR.g > 0.05 || COLOR.b > 0.05)*/) {
-		COLOR *= vec4(1,1,1,0.25);
-	}
-}
-
-//void light() {
-	// Called for every pixel for every light affecting the CanvasItem.
-	// Uncomment to replace the default light processing function with this one.
-//}
-"
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ilbb1"]
-shader = SubResource("Shader_p052f")
+shader = ExtResource("29_1jufe")
 shader_parameter/flash = false
 shader_parameter/trans = true
-
-[sub_resource type="Shader" id="Shader_6sxkv"]
-code = "shader_type canvas_item;
-
-uniform bool flash;
-uniform bool trans;
-
-void vertex() {
-	// Called for every vertex the material is visible on.
-}
-
-void fragment() {
-	// Called for every pixel the material is visible on.
-	if(flash && COLOR.a > 0.0) COLOR = vec4(1,1,1,1);
-	if(trans/* && (COLOR.r > 0.05 || COLOR.g > 0.05 || COLOR.b > 0.05)*/) {
-		COLOR *= vec4(1,1,1,0.25);
-	}
-}
-
-//void light() {
-	// Called for every pixel for every light affecting the CanvasItem.
-	// Uncomment to replace the default light processing function with this one.
-//}
-"
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_f0fv8"]
-shader = SubResource("Shader_6sxkv")
+shader = ExtResource("29_1jufe")
 shader_parameter/flash = false
 shader_parameter/trans = true
-
-[sub_resource type="Shader" id="Shader_k4cxb"]
-code = "shader_type canvas_item;
-
-uniform bool flash;
-uniform bool trans;
-
-void vertex() {
-	// Called for every vertex the material is visible on.
-}
-
-void fragment() {
-	// Called for every pixel the material is visible on.
-	if(flash && COLOR.a > 0.0) COLOR = vec4(1,1,1,1);
-	if(trans/* && (COLOR.r > 0.05 || COLOR.g > 0.05 || COLOR.b > 0.05)*/) {
-		COLOR *= vec4(1,1,1,0.25);
-	}
-}
-
-//void light() {
-	// Called for every pixel for every light affecting the CanvasItem.
-	// Uncomment to replace the default light processing function with this one.
-//}
-"
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_oq80i"]
-shader = SubResource("Shader_k4cxb")
+shader = ExtResource("29_1jufe")
 shader_parameter/flash = false
 shader_parameter/trans = true
-
-[sub_resource type="Shader" id="Shader_sglj6"]
-code = "shader_type canvas_item;
-
-uniform bool flash;
-uniform bool trans;
-
-void vertex() {
-	// Called for every vertex the material is visible on.
-}
-
-void fragment() {
-	// Called for every pixel the material is visible on.
-	if(flash && COLOR.a > 0.0) COLOR = vec4(1,1,1,1);
-	if(trans/* && (COLOR.r > 0.05 || COLOR.g > 0.05 || COLOR.b > 0.05)*/) {
-		COLOR *= vec4(1,1,1,0.25);
-	}
-}
-
-//void light() {
-	// Called for every pixel for every light affecting the CanvasItem.
-	// Uncomment to replace the default light processing function with this one.
-//}
-"
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ficsr"]
-shader = SubResource("Shader_sglj6")
+shader = ExtResource("29_1jufe")
 shader_parameter/flash = false
 shader_parameter/trans = true
 
-[sub_resource type="Shader" id="Shader_ncb4g"]
-code = "shader_type canvas_item;
-
-uniform bool flash;
-uniform bool trans;
-
-void vertex() {
-	// Called for every vertex the material is visible on.
-}
-
-void fragment() {
-	// Called for every pixel the material is visible on.
-	if(flash && COLOR.a > 0.0) COLOR = vec4(1,1,1,1);
-	if(trans/* && (COLOR.r > 0.05 || COLOR.g > 0.05 || COLOR.b > 0.05)*/) {
-		COLOR *= vec4(1,1,1,0.25);
-	}
-}
-
-//void light() {
-	// Called for every pixel for every light affecting the CanvasItem.
-	// Uncomment to replace the default light processing function with this one.
-//}
-"
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xgrph"]
-shader = SubResource("Shader_ncb4g")
+shader = ExtResource("29_1jufe")
 shader_parameter/flash = false
 shader_parameter/trans = true
 
@@ -912,7 +442,6 @@ sources/3 = SubResource("TileSetAtlasSource_pwg3w")
 script = ExtResource("1_dmkto")
 
 [node name="Camera" type="Camera2D" parent="."]
-position = Vector2(-9, 0)
 script = ExtResource("3_arpdf")
 
 [node name="Sprite2D" type="Sprite2D" parent="Camera"]
@@ -943,11 +472,11 @@ scale = Vector2(0.188, 0.188)
 
 [node name="Collision" type="TileMapLayer" parent="."]
 scale = Vector2(0.25, 0.25)
-tile_map_data = PackedByteArray("AAD+/wUAAQABAAAAAAD+/wYAAQABAAEAAAD+/wcAAQABAAIAAAD//wUAAQACAAAAAAD//wYAAQACAAEAAAD//wcAAQACAAIAAAAAAAUAAQACAAAAAAAAAAYAAQACAAEAAAAAAAcAAQACAAIAAAABAAUAAQACAAAAAAABAAYAAQACAAEAAAABAAcAAQACAAIAAAACAAUAAQACAAAAAAACAAYAAQACAAEAAAACAAcAAQACAAIAAAADAAUAAQACAAAAAAADAAYAAQACAAEAAAADAAcAAQACAAIAAAAEAAUAAQADAAAAAAAEAAYAAQADAAEAAAAEAAcAAQADAAIAAAAFAAUAAQAEAAAAAAAFAAYAAQAEAAEAAAAFAAcAAQAEAAIAAAD5/+T/AQADAAAAAAD5/+X/AQADAAEAAAD5/+b/AQADAAIAAAD6/+T/AQABAAAAAAD6/+X/AQABAAEAAAD6/+b/AQABAAIAAAD7/+T/AQACAAAAAAD7/+X/AQACAAEAAAD7/+b/AQACAAIAAAD8/+T/AQADAAAAAAD8/+X/AQADAAEAAAD8/+b/AQADAAIAAAD9/+T/AQAEAAAAAAD9/+X/AQAEAAEAAAD9/+b/AQAEAAIAAAD3/+T/AQABAAAAAAD3/+X/AQABAAEAAAD3/+b/AQABAAIAAAD4/+T/AQACAAAAAAD4/+X/AQACAAEAAAD4/+b/AQACAAIAAAD0/+T/AQABAAAAAAD0/+X/AQABAAEAAAD0/+b/AQABAAIAAAD1/+T/AQACAAAAAAD1/+X/AQACAAEAAAD1/+b/AQACAAIAAAD2/+T/AQADAAAAAAD2/+X/AQADAAEAAAD2/+b/AQADAAIAAADx/+T/AQABAAAAAADx/+X/AQABAAEAAADx/+b/AQABAAIAAADy/+T/AQACAAAAAADy/+X/AQACAAEAAADy/+b/AQACAAIAAADz/+T/AQADAAAAAADz/+X/AQADAAEAAADz/+b/AQADAAIAAADu/+T/AQABAAAAAADu/+X/AQABAAEAAADu/+b/AQABAAIAAADv/+T/AQACAAAAAADv/+X/AQACAAEAAADv/+b/AQACAAIAAADw/+T/AQADAAAAAADw/+X/AQADAAEAAADw/+b/AQADAAIAAADr/+T/AQABAAAAAADr/+X/AQABAAEAAADr/+b/AQABAAIAAADs/+T/AQACAAAAAADs/+X/AQACAAEAAADs/+b/AQACAAIAAADt/+T/AQADAAAAAADt/+X/AQADAAEAAADt/+b/AQADAAIAAADq/+T/AQADAAAAAADq/+X/AQADAAEAAADq/+b/AQADAAIAAADo/+T/AQABAAAAAADo/+X/AQABAAEAAADo/+b/AQABAAIAAADp/+T/AQACAAAAAADp/+X/AQACAAEAAADp/+b/AQACAAIAAADl/+T/AQABAAAAAADl/+X/AQABAAEAAADl/+b/AQABAAIAAADm/+T/AQACAAAAAADm/+X/AQACAAEAAADm/+b/AQACAAIAAADn/+T/AQADAAAAAADn/+X/AQADAAEAAADn/+b/AQADAAIAAADi/+T/AQABAAAAAADi/+X/AQABAAEAAADi/+b/AQABAAIAAADj/+T/AQACAAAAAADj/+X/AQACAAEAAADj/+b/AQACAAIAAADk/+T/AQADAAAAAADk/+X/AQADAAEAAADk/+b/AQADAAIAAADf/+T/AQABAAAAAADf/+X/AQABAAEAAADf/+b/AQABAAIAAADg/+T/AQACAAAAAADg/+X/AQACAAEAAADg/+b/AQACAAIAAADh/+T/AQADAAAAAADh/+X/AQADAAEAAADh/+b/AQADAAIAAADc/+T/AQABAAAAAADc/+X/AQABAAEAAADc/+b/AQABAAIAAADd/+T/AQACAAAAAADd/+X/AQACAAEAAADd/+b/AQACAAIAAADe/+T/AQADAAAAAADe/+X/AQADAAEAAADe/+b/AQADAAIAAADb/+T/AQAAAAAAAADb/+X/AQAAAAEAAADb/+b/AQAAAAIAAADa/+L/AwAEAAAAAADa/+P/AwAEAAAAAADa/+T/AwAEAAAAAADa/9//AwAEAAAAAADa/+D/AwAEAAAAAADa/+H/AwAEAAAAAADZ/9//AwAEAAAAAADZ/+D/AwAEAAAAAADZ/+H/AwAEAAAAAADZ/+L/AwAEAAAAAADZ/+P/AwAEAAAAAADZ/+T/AwAEAAAAAADZ/97/AwAEAAAAAADZ/93/AwAEAAAAAADZ/9z/AwAEAAAAAADa/9z/AwAEAAAAAADa/93/AwAEAAAAAADa/97/AwAEAAAAAADa/+X/AwAEAAAAAADa/+b/AwAEAAAAAADZ/+b/AwAEAAAAAADZ/+X/AwAEAAAAAAD9/+f/AwAEAAAAAAD9/+j/AwAEAAAAAAD9/+n/AwAEAAAAAAD9/+r/AwAEAAAAAAD9/+v/AwAEAAAAAAD9/+z/AwAEAAAAAAD9/+3/AwAEAAAAAAD9/+7/AwAEAAAAAAD9/+//AwAEAAAAAAD9//D/AwAEAAAAAAD9//H/AwAEAAAAAAD9//L/AwAEAAAAAAD9//P/AwAEAAAAAAD9//T/AwAEAAAAAAD9//X/AwAEAAAAAAD9//b/AwAEAAAAAAD9//f/AwAEAAAAAAD9//j/AwAEAAAAAAD9//n/AwAEAAAAAAD9//r/AwAEAAAAAAD9//v/AwAEAAAAAAD9//z/AwAEAAAAAAADAOH/AwAEAAAAAAADAOL/AwAEAAAAAAADAOP/AwAEAAAAAAADAOT/AwAEAAAAAAADAOX/AwAEAAAAAAADAOb/AwAEAAAAAAADAOf/AwAEAAAAAAADAOj/AwAEAAAAAAADAOn/AwAEAAAAAAADAOr/AwAEAAAAAAADAOv/AwAEAAAAAAADAOz/AwAEAAAAAAADAO3/AwAEAAAAAAADAO7/AwAEAAAAAAADAO//AwAEAAAAAAADAPD/AwAEAAAAAAADAPH/AwAEAAAAAAADAPL/AwAEAAAAAAADAPP/AwAEAAAAAAADAPT/AwAEAAAAAAADAPX/AwAEAAAAAAADAPb/AwAEAAAAAAADAPf/AwAEAAAAAAADAPj/AwAEAAAAAAADAPn/AwAEAAAAAAADAPr/AwAEAAAAAAADAPv/AwAEAAAAAAADAPz/AwAEAAAAAAADAP3/AwAEAAAAAAADAP7/AwAEAAAAAAADAP//AwAEAAAAAAADAAAAAwAEAAAAAAD8/wUAAQABAAAAAAD8/wYAAQABAAEAAAD8/wcAAQABAAIAAAD9/wUAAQACAAAAAAD9/wYAAQACAAEAAAD9/wcAAQACAAIAAAD7/wUAAQAAAAAAAAD7/wYAAQAAAAEAAAD7/wcAAQAAAAIAAAD4/wQAAQAAAAAAAAD4/wUAAQAAAAEAAAD4/wYAAQAAAAIAAAD5/wQAAQAEAAAAAAD5/wUAAQAEAAEAAAD5/wYAAQAEAAIAAADx/wcAAQACAAAAAADx/wgAAQACAAEAAAD1/wcAAQAEAAAAAAD1/wgAAQAEAAEAAAD1/wkAAQAEAAIAAADz/wcAAQACAAAAAADz/wgAAQACAAEAAADz/wkAAQACAAIAAAD0/wcAAQADAAAAAAD0/wgAAQADAAEAAAD0/wkAAQADAAIAAADx/wkAAQACAAIAAADy/wcAAQADAAAAAADy/wgAAQADAAEAAADy/wkAAQADAAIAAADw/wcAAQAAAAAAAADw/wgAAQAAAAEAAADw/wkAAQAAAAIAAADq/wcAAQACAAAAAADq/wgAAQACAAEAAADq/wkAAQACAAIAAADr/wcAAQACAAAAAADr/wgAAQACAAEAAADr/wkAAQACAAIAAADs/wcAAQAEAAAAAADs/wgAAQAEAAEAAADs/wkAAQAEAAIAAADp/wcAAQAAAAAAAADp/wgAAQAAAAEAAADp/wkAAQAAAAIAAADd/wYAAQACAAAAAADd/wcAAQACAAEAAADd/wgAAQACAAIAAADe/wYAAQABAAAAAADe/wcAAQABAAEAAADe/wgAAQABAAIAAADf/wYAAQACAAAAAADf/wcAAQACAAEAAADf/wgAAQACAAIAAADg/wYAAQADAAAAAADg/wcAAQADAAEAAADg/wgAAQADAAIAAADh/wYAAQAEAAAAAADh/wcAAQAEAAEAAADh/wgAAQAEAAIAAADc/wYAAQAAAAAAAADc/wcAAQAAAAEAAADc/wgAAQAAAAIAAADr/wEAAQAAAAAAAADr/wIAAQAAAAEAAADr/wMAAQAAAAIAAADs/wEAAQABAAAAAADs/wIAAQABAAEAAADs/wMAAQABAAIAAADt/wEAAQAEAAAAAADt/wIAAQAEAAEAAADt/wMAAQAEAAIAAADV/wUAAQAAAAAAAADV/wYAAQAAAAEAAADW/wUAAQACAAAAAADW/wYAAQACAAEAAADX/wUAAQACAAAAAADX/wYAAQACAAEAAADY/wUAAQACAAAAAADY/wYAAQACAAEAAADZ/wUAAQACAAAAAADZ/wYAAQACAAEAAADa/wUAAQAEAAAAAADa/wYAAQAEAAEAAADV/wcAAQAAAAIAAADW/wcAAQACAAIAAADX/wcAAQACAAIAAADY/wcAAQACAAIAAADZ/wcAAQACAAIAAADa/wcAAQAEAAIAAAANAAUAAQAAAAAAAAANAAYAAQAAAAEAAAANAAcAAQAAAAIAAAAOAAUAAQABAAAAAAAOAAYAAQABAAEAAAAOAAcAAQABAAIAAAAPAAUAAQACAAAAAAAPAAYAAQACAAEAAAAPAAcAAQACAAIAAAAQAAUAAQADAAAAAAAQAAYAAQADAAEAAAAQAAcAAQADAAIAAAARAAUAAQAEAAAAAAARAAYAAQAEAAEAAAARAAcAAQAEAAIAAAAaAAcAAAAAAAAAAAAaAAgAAAAAAAEAAAAbAAcAAAACAAAAAAAbAAgAAAACAAEAAAAaAA8AAQACAAAAAAAaABAAAQACAAEAAAAaABEAAQACAAIAAAAbAA8AAQABAAAAAAAbABAAAQABAAEAAAAbABEAAQABAAIAAAAcAA8AAQACAAAAAAAcABAAAQACAAEAAAAcABEAAQACAAIAAAAdAA8AAQADAAAAAAAdABAAAQADAAEAAAAdABEAAQADAAIAAAAeAA8AAQAEAAAAAAAeABAAAQAEAAEAAAAeABEAAQAEAAIAAAAXAA8AAQACAAAAAAAXABAAAQACAAEAAAAXABEAAQACAAIAAAAYAA8AAQABAAAAAAAYABAAAQABAAEAAAAYABEAAQABAAIAAAAZAA8AAQACAAAAAAAZABAAAQACAAEAAAAZABEAAQACAAIAAAAWAA8AAQACAAAAAAAWABAAAQACAAEAAAAWABEAAQACAAIAAAAVAA8AAQABAAAAAAAVABAAAQABAAEAAAAVABEAAQABAAIAAAAUAA8AAQAAAAAAAAAUABAAAQAAAAEAAAAUABEAAQAAAAIAAAASAAAAAAAAAAAAAAASAAEAAAAAAAEAAAATAAAAAAABAAAAAAATAAEAAAABAAEAAAAUAAAAAAACAAAAAAAUAAEAAAACAAEAAAAKAP//AQACAAAAAAAKAAAAAQACAAEAAAALAP//AQADAAAAAAALAAAAAQADAAEAAAAMAP//AQAEAAAAAAAMAAAAAQAEAAEAAAAIAP//AQAAAAAAAAAIAAAAAQAAAAEAAAAIAAEAAQAAAAIAAAAJAP//AQABAAAAAAAJAAAAAQABAAEAAAAJAAEAAQABAAIAAAAKAAEAAQACAAIAAAALAAEAAQADAAIAAAAMAAEAAQAEAAIAAAAFAP7/AAAAAAAAAAAFAP//AAAAAAEAAAAGAP7/AAABAAAAAAAGAP//AAABAAEAAAAHAP7/AAACAAAAAAAHAP//AAACAAEAAAAOAPv/AAAAAAAAAAAOAPz/AAAAAAEAAAAPAPv/AAABAAAAAAAPAPz/AAABAAEAAAAQAPv/AAACAAAAAAAQAPz/AAACAAEAAAATAPr/AAAAAAAAAAATAPv/AAAAAAEAAAAUAPr/AAABAAAAAAAUAPv/AAABAAEAAAAVAPr/AAACAAAAAAAVAPv/AAACAAEAAAAlAPr/AQAAAAAAAAAlAPv/AQAAAAEAAAAlAPz/AQAAAAIAAAAmAPr/AQABAAAAAAAmAPv/AQABAAEAAAAmAPz/AQABAAIAAAAnAPr/AQACAAAAAAAnAPv/AQACAAEAAAAnAPz/AQACAAIAAAAoAPr/AQACAAAAAAAoAPv/AQACAAEAAAAoAPz/AQACAAIAAAApAPr/AQADAAAAAAApAPv/AQADAAEAAAApAPz/AQADAAIAAAAqAPr/AQACAAAAAAAqAPv/AQACAAEAAAAqAPz/AQACAAIAAAArAPr/AQADAAAAAAArAPv/AQADAAEAAAArAPz/AQADAAIAAAAsAPr/AQACAAAAAAAsAPv/AQACAAEAAAAsAPz/AQACAAIAAAAtAPr/AQADAAAAAAAtAPv/AQADAAEAAAAtAPz/AQADAAIAAAAuAPr/AQACAAAAAAAuAPv/AQACAAEAAAAuAPz/AQACAAIAAAAvAPr/AQADAAAAAAAvAPv/AQADAAEAAAAvAPz/AQADAAIAAAAwAPr/AQAEAAAAAAAwAPv/AQAEAAEAAAAwAPz/AQAEAAIAAAA9APj/AQAAAAAAAAA9APn/AQAAAAEAAAA9APr/AQAAAAIAAAA+APj/AQABAAAAAAA+APn/AQABAAEAAAA+APr/AQABAAIAAAA/APj/AQACAAAAAAA/APn/AQACAAEAAAA/APr/AQACAAIAAABAAPj/AQADAAAAAABAAPn/AQADAAEAAABAAPr/AQADAAIAAABBAPj/AQAEAAAAAABBAPn/AQAEAAEAAABBAPr/AQAEAAIAAAA6AP3/AAAAAAAAAAA6AP7/AAAAAAEAAAA7AP3/AAABAAAAAAA7AP7/AAABAAEAAAA8AP3/AAACAAAAAAA8AP7/AAACAAEAAAAxAAMAAAAAAAAAAAAxAAQAAAAAAAEAAAAyAAMAAAABAAAAAAAyAAQAAAABAAEAAAAzAAMAAAACAAAAAAAzAAQAAAACAAEAAAA6AAkAAAAAAAAAAAA6AAoAAAAAAAEAAAA7AAkAAAABAAAAAAA7AAoAAAABAAEAAAA8AAkAAAACAAAAAAA8AAoAAAACAAEAAAAwAA8AAQAAAAAAAAAwABAAAQAAAAEAAAAwABEAAQAAAAIAAAAxAA8AAQABAAAAAAAxABAAAQABAAEAAAAxABEAAQABAAIAAAAyAA8AAQACAAAAAAAyABAAAQACAAEAAAAyABEAAQACAAIAAAA8AA8AAQADAAAAAAA8ABAAAQADAAEAAAA8ABEAAQADAAIAAAA9AA8AAQAEAAAAAAA9ABAAAQAEAAEAAAA9ABEAAQAEAAIAAAAzAA8AAQACAAAAAAAzABAAAQACAAEAAAAzABEAAQACAAIAAAA0AA8AAQACAAAAAAA0ABAAAQACAAEAAAA0ABEAAQACAAIAAAA1AA8AAQACAAAAAAA1ABAAAQACAAEAAAA1ABEAAQACAAIAAAA2AA8AAQABAAAAAAA2ABAAAQABAAEAAAA2ABEAAQABAAIAAAA3AA8AAQACAAAAAAA3ABAAAQACAAEAAAA3ABEAAQACAAIAAAA4AA8AAQACAAAAAAA4ABAAAQACAAEAAAA4ABEAAQACAAIAAAA5AA8AAQABAAAAAAA5ABAAAQABAAEAAAA5ABEAAQABAAIAAAA6AA8AAQACAAAAAAA6ABAAAQACAAEAAAA6ABEAAQACAAIAAAA7AA8AAQACAAAAAAA7ABAAAQACAAEAAAA7ABEAAQACAAIAAABBAPv/AQAEAAAAAABBAPz/AQAEAAEAAABBAP3/AQAEAAIAAABBAP7/AQAEAAAAAABBAP//AQAEAAEAAABBAAAAAQAEAAIAAABBAAEAAQAEAAAAAABBAAIAAQAEAAEAAABBAAMAAQAEAAIAAABBAAQAAQAEAAAAAABBAAUAAQAEAAEAAABBAAYAAQAEAAIAAABBAAcAAQAEAAAAAABBAAgAAQAEAAEAAABBAAkAAQAEAAIAAABBAAoAAQAEAAAAAABBAAsAAQAEAAEAAABBAAwAAQAEAAIAAABBAA0AAQAEAAAAAABBAA4AAQAEAAEAAABBAA8AAQAEAAIAAABAAA0AAQAAAAAAAABAAA4AAQAAAAEAAABAAA8AAQAAAAIAAABAAAoAAQAAAAAAAABAAAsAAQAAAAEAAABAAAwAAQAAAAIAAABAAAcAAQAAAAAAAABAAAgAAQAAAAEAAABAAAkAAQAAAAIAAABAAAQAAQAAAAAAAABAAAUAAQAAAAEAAABAAAYAAQAAAAIAAABAAAEAAQAAAAAAAABAAAIAAQAAAAEAAABAAAMAAQAAAAIAAABAAP7/AQAAAAAAAABAAP//AQAAAAEAAABAAAAAAQAAAAIAAABAAPv/AQAAAAAAAABAAPz/AQAAAAEAAABAAP3/AQAAAAIAAABDAA8AAQACAAAAAABDABAAAQACAAEAAABDABEAAQACAAIAAABEAA8AAQABAAAAAABEABAAAQABAAEAAABEABEAAQABAAIAAABFAA8AAQACAAAAAABFABAAAQACAAEAAABFABEAAQACAAIAAABGAA8AAQADAAAAAABGABAAAQADAAEAAABGABEAAQADAAIAAABHAA8AAQABAAAAAABHABAAAQABAAEAAABHABEAAQABAAIAAABIAA8AAQACAAAAAABIABAAAQACAAEAAABIABEAAQACAAIAAABJAA8AAQADAAAAAABJABAAAQADAAEAAABJABEAAQADAAIAAABKAA8AAQABAAAAAABKABAAAQABAAEAAABKABEAAQABAAIAAABLAA8AAQACAAAAAABLABAAAQACAAEAAABLABEAAQACAAIAAABMAA8AAQADAAAAAABMABAAAQADAAEAAABMABEAAQADAAIAAABNAA8AAQAEAAAAAABNABAAAQAEAAEAAABNABEAAQAEAAIAAABOAA0AAQAAAAAAAABOAA4AAQAAAAEAAABOAA8AAQAAAAIAAABOAAoAAQAAAAAAAABOAAsAAQAAAAEAAABOAAwAAQAAAAIAAABOAAcAAQAAAAAAAABOAAgAAQAAAAEAAABOAAkAAQAAAAIAAABOAAQAAQAAAAAAAABOAAUAAQAAAAEAAABOAAYAAQAAAAIAAABOAAEAAQAAAAAAAABOAAIAAQAAAAEAAABOAAMAAQAAAAIAAABOAP7/AQAAAAAAAABOAP//AQAAAAEAAABOAAAAAQAAAAIAAABOAPv/AQAAAAAAAABOAPz/AQAAAAEAAABOAP3/AQAAAAIAAABPAPv/AQAEAAAAAABPAPz/AQAEAAEAAABPAP3/AQAEAAIAAABPAP7/AQAEAAAAAABPAP//AQAEAAEAAABPAAAAAQAEAAIAAABPAAEAAQAEAAAAAABPAAIAAQAEAAEAAABPAAMAAQAEAAIAAABPAAQAAQAEAAAAAABPAAUAAQAEAAEAAABPAAYAAQAEAAIAAABPAAcAAQAEAAAAAABPAAgAAQAEAAEAAABPAAkAAQAEAAIAAABPAAoAAQAEAAAAAABPAAsAAQAEAAEAAABPAAwAAQAEAAIAAABPAA0AAQAEAAAAAABPAA4AAQAEAAEAAABPAA8AAQAEAAIAAABCAA8AAQAAAAAAAABCABAAAQAAAAEAAABCABEAAQAAAAIAAABOAPj/AQADAAAAAABOAPn/AQADAAEAAABOAPr/AQADAAIAAABPAPj/AQAEAAAAAABPAPn/AQAEAAEAAABPAPr/AQAEAAIAAABNAPj/AQACAAAAAABNAPn/AQACAAEAAABNAPr/AQACAAIAAABLAPj/AQACAAAAAABLAPn/AQACAAEAAABLAPr/AQACAAIAAABMAPj/AQADAAAAAABMAPn/AQADAAEAAABMAPr/AQADAAIAAABKAPj/AQAAAAAAAABKAPn/AQAAAAEAAABKAPr/AQAAAAIAAAA=")
+tile_map_data = PackedByteArray("AAD+/wUAAQABAAAAAAD+/wYAAQABAAEAAAD+/wcAAQABAAIAAAD//wUAAQACAAAAAAD//wYAAQACAAEAAAD//wcAAQACAAIAAAAAAAUAAQACAAAAAAAAAAYAAQACAAEAAAAAAAcAAQACAAIAAAABAAUAAQACAAAAAAABAAYAAQACAAEAAAABAAcAAQACAAIAAAACAAUAAQACAAAAAAACAAYAAQACAAEAAAACAAcAAQACAAIAAAADAAUAAQACAAAAAAADAAYAAQACAAEAAAADAAcAAQACAAIAAAAEAAUAAQADAAAAAAAEAAYAAQADAAEAAAAEAAcAAQADAAIAAAAFAAUAAQAEAAAAAAAFAAYAAQAEAAEAAAAFAAcAAQAEAAIAAAD5/+T/AQADAAAAAAD5/+X/AQADAAEAAAD5/+b/AQADAAIAAAD6/+T/AQABAAAAAAD6/+X/AQABAAEAAAD6/+b/AQABAAIAAAD7/+T/AQACAAAAAAD7/+X/AQACAAEAAAD7/+b/AQACAAIAAAD8/+T/AQADAAAAAAD8/+X/AQADAAEAAAD8/+b/AQADAAIAAAD9/+T/AQAEAAAAAAD9/+X/AQAEAAEAAAD9/+b/AQAEAAIAAAD3/+T/AQABAAAAAAD3/+X/AQABAAEAAAD3/+b/AQABAAIAAAD4/+T/AQACAAAAAAD4/+X/AQACAAEAAAD4/+b/AQACAAIAAAD0/+T/AQABAAAAAAD0/+X/AQABAAEAAAD0/+b/AQABAAIAAAD1/+T/AQACAAAAAAD1/+X/AQACAAEAAAD1/+b/AQACAAIAAAD2/+T/AQADAAAAAAD2/+X/AQADAAEAAAD2/+b/AQADAAIAAADx/+T/AQABAAAAAADx/+X/AQABAAEAAADx/+b/AQABAAIAAADy/+T/AQACAAAAAADy/+X/AQACAAEAAADy/+b/AQACAAIAAADz/+T/AQADAAAAAADz/+X/AQADAAEAAADz/+b/AQADAAIAAADu/+T/AQABAAAAAADu/+X/AQABAAEAAADu/+b/AQABAAIAAADv/+T/AQACAAAAAADv/+X/AQACAAEAAADv/+b/AQACAAIAAADw/+T/AQADAAAAAADw/+X/AQADAAEAAADw/+b/AQADAAIAAADr/+T/AQABAAAAAADr/+X/AQABAAEAAADr/+b/AQABAAIAAADs/+T/AQACAAAAAADs/+X/AQACAAEAAADs/+b/AQACAAIAAADt/+T/AQADAAAAAADt/+X/AQADAAEAAADt/+b/AQADAAIAAADq/+T/AQADAAAAAADq/+X/AQADAAEAAADq/+b/AQADAAIAAADo/+T/AQABAAAAAADo/+X/AQABAAEAAADo/+b/AQABAAIAAADp/+T/AQACAAAAAADp/+X/AQACAAEAAADp/+b/AQACAAIAAADl/+T/AQABAAAAAADl/+X/AQABAAEAAADl/+b/AQABAAIAAADm/+T/AQACAAAAAADm/+X/AQACAAEAAADm/+b/AQACAAIAAADn/+T/AQADAAAAAADn/+X/AQADAAEAAADn/+b/AQADAAIAAADi/+T/AQABAAAAAADi/+X/AQABAAEAAADi/+b/AQABAAIAAADj/+T/AQACAAAAAADj/+X/AQACAAEAAADj/+b/AQACAAIAAADk/+T/AQADAAAAAADk/+X/AQADAAEAAADk/+b/AQADAAIAAADf/+T/AQABAAAAAADf/+X/AQABAAEAAADf/+b/AQABAAIAAADg/+T/AQACAAAAAADg/+X/AQACAAEAAADg/+b/AQACAAIAAADh/+T/AQADAAAAAADh/+X/AQADAAEAAADh/+b/AQADAAIAAADc/+T/AQABAAAAAADc/+X/AQABAAEAAADc/+b/AQABAAIAAADd/+T/AQACAAAAAADd/+X/AQACAAEAAADd/+b/AQACAAIAAADe/+T/AQADAAAAAADe/+X/AQADAAEAAADe/+b/AQADAAIAAADb/+T/AQAAAAAAAADb/+X/AQAAAAEAAADb/+b/AQAAAAIAAADa/+L/AwAEAAAAAADa/+P/AwAEAAAAAADa/+T/AwAEAAAAAADa/9//AwAEAAAAAADa/+D/AwAEAAAAAADa/+H/AwAEAAAAAADZ/9//AwAEAAAAAADZ/+D/AwAEAAAAAADZ/+H/AwAEAAAAAADZ/+L/AwAEAAAAAADZ/+P/AwAEAAAAAADZ/+T/AwAEAAAAAADZ/97/AwAEAAAAAADZ/93/AwAEAAAAAADZ/9z/AwAEAAAAAADa/9z/AwAEAAAAAADa/93/AwAEAAAAAADa/97/AwAEAAAAAADa/+X/AwAEAAAAAADa/+b/AwAEAAAAAADZ/+b/AwAEAAAAAADZ/+X/AwAEAAAAAAD9/+f/AwAEAAAAAAD9/+j/AwAEAAAAAAD9/+n/AwAEAAAAAAD9/+r/AwAEAAAAAAD9/+v/AwAEAAAAAAD9/+z/AwAEAAAAAAD9/+3/AwAEAAAAAAD9/+7/AwAEAAAAAAD9/+//AwAEAAAAAAD9//D/AwAEAAAAAAD9//H/AwAEAAAAAAD9//L/AwAEAAAAAAD9//P/AwAEAAAAAAD9//T/AwAEAAAAAAD9//X/AwAEAAAAAAD9//b/AwAEAAAAAAD9//f/AwAEAAAAAAD9//j/AwAEAAAAAAD9//n/AwAEAAAAAAD9//r/AwAEAAAAAAD9//v/AwAEAAAAAAD9//z/AwAEAAAAAAADAOH/AwAEAAAAAAADAOL/AwAEAAAAAAADAOP/AwAEAAAAAAADAOT/AwAEAAAAAAADAOX/AwAEAAAAAAADAOb/AwAEAAAAAAADAOf/AwAEAAAAAAADAOj/AwAEAAAAAAADAOn/AwAEAAAAAAADAOr/AwAEAAAAAAADAOv/AwAEAAAAAAADAOz/AwAEAAAAAAADAO3/AwAEAAAAAAADAO7/AwAEAAAAAAADAO//AwAEAAAAAAADAPD/AwAEAAAAAAADAPH/AwAEAAAAAAADAPL/AwAEAAAAAAADAPP/AwAEAAAAAAADAPT/AwAEAAAAAAADAPX/AwAEAAAAAAADAPb/AwAEAAAAAAADAPf/AwAEAAAAAAADAPj/AwAEAAAAAAADAPn/AwAEAAAAAAADAPr/AwAEAAAAAAADAPv/AwAEAAAAAAADAPz/AwAEAAAAAAADAP3/AwAEAAAAAAADAP7/AwAEAAAAAAADAP//AwAEAAAAAAADAAAAAwAEAAAAAAD8/wUAAQABAAAAAAD8/wYAAQABAAEAAAD8/wcAAQABAAIAAAD9/wUAAQACAAAAAAD9/wYAAQACAAEAAAD9/wcAAQACAAIAAAD7/wUAAQAAAAAAAAD7/wYAAQAAAAEAAAD7/wcAAQAAAAIAAAD4/wQAAQAAAAAAAAD4/wUAAQAAAAEAAAD4/wYAAQAAAAIAAAD5/wQAAQAEAAAAAAD5/wUAAQAEAAEAAAD5/wYAAQAEAAIAAADx/wcAAQACAAAAAADx/wgAAQACAAEAAAD1/wcAAQAEAAAAAAD1/wgAAQAEAAEAAAD1/wkAAQAEAAIAAADz/wcAAQACAAAAAADz/wgAAQACAAEAAADz/wkAAQACAAIAAAD0/wcAAQADAAAAAAD0/wgAAQADAAEAAAD0/wkAAQADAAIAAADx/wkAAQACAAIAAADy/wcAAQADAAAAAADy/wgAAQADAAEAAADy/wkAAQADAAIAAADw/wcAAQAAAAAAAADw/wgAAQAAAAEAAADw/wkAAQAAAAIAAADq/wcAAQACAAAAAADq/wgAAQACAAEAAADq/wkAAQACAAIAAADr/wcAAQACAAAAAADr/wgAAQACAAEAAADr/wkAAQACAAIAAADs/wcAAQAEAAAAAADs/wgAAQAEAAEAAADs/wkAAQAEAAIAAADp/wcAAQAAAAAAAADp/wgAAQAAAAEAAADp/wkAAQAAAAIAAADd/wYAAQACAAAAAADd/wcAAQACAAEAAADd/wgAAQACAAIAAADe/wYAAQABAAAAAADe/wcAAQABAAEAAADe/wgAAQABAAIAAADf/wYAAQACAAAAAADf/wcAAQACAAEAAADf/wgAAQACAAIAAADg/wYAAQADAAAAAADg/wcAAQADAAEAAADg/wgAAQADAAIAAADh/wYAAQAEAAAAAADh/wcAAQAEAAEAAADh/wgAAQAEAAIAAADc/wYAAQAAAAAAAADc/wcAAQAAAAEAAADc/wgAAQAAAAIAAADr/wEAAQAAAAAAAADr/wIAAQAAAAEAAADr/wMAAQAAAAIAAADs/wEAAQABAAAAAADs/wIAAQABAAEAAADs/wMAAQABAAIAAADt/wEAAQAEAAAAAADt/wIAAQAEAAEAAADt/wMAAQAEAAIAAADV/wUAAQAAAAAAAADV/wYAAQAAAAEAAADW/wUAAQACAAAAAADW/wYAAQACAAEAAADX/wUAAQACAAAAAADX/wYAAQACAAEAAADY/wUAAQACAAAAAADY/wYAAQACAAEAAADZ/wUAAQACAAAAAADZ/wYAAQACAAEAAADa/wUAAQAEAAAAAADa/wYAAQAEAAEAAADV/wcAAQAAAAIAAADW/wcAAQACAAIAAADX/wcAAQACAAIAAADY/wcAAQACAAIAAADZ/wcAAQACAAIAAADa/wcAAQAEAAIAAAANAAUAAQAAAAAAAAANAAYAAQAAAAEAAAANAAcAAQAAAAIAAAAOAAUAAQABAAAAAAAOAAYAAQABAAEAAAAOAAcAAQABAAIAAAAPAAUAAQACAAAAAAAPAAYAAQACAAEAAAAPAAcAAQACAAIAAAAQAAUAAQADAAAAAAAQAAYAAQADAAEAAAAQAAcAAQADAAIAAAARAAUAAQAEAAAAAAARAAYAAQAEAAEAAAARAAcAAQAEAAIAAAAaAAcAAAAAAAAAAAAaAAgAAAAAAAEAAAAbAAcAAAACAAAAAAAbAAgAAAACAAEAAAAaAA8AAQACAAAAAAAaABAAAQACAAEAAAAaABEAAQACAAIAAAAbAA8AAQABAAAAAAAbABAAAQABAAEAAAAbABEAAQABAAIAAAAcAA8AAQACAAAAAAAcABAAAQACAAEAAAAcABEAAQACAAIAAAAdAA8AAQADAAAAAAAdABAAAQADAAEAAAAdABEAAQADAAIAAAAeAA8AAQAEAAAAAAAeABAAAQAEAAEAAAAeABEAAQAEAAIAAAAXAA8AAQACAAAAAAAXABAAAQACAAEAAAAXABEAAQACAAIAAAAYAA8AAQABAAAAAAAYABAAAQABAAEAAAAYABEAAQABAAIAAAAZAA8AAQACAAAAAAAZABAAAQACAAEAAAAZABEAAQACAAIAAAAWAA8AAQACAAAAAAAWABAAAQACAAEAAAAWABEAAQACAAIAAAAVAA8AAQABAAAAAAAVABAAAQABAAEAAAAVABEAAQABAAIAAAAUAA8AAQAAAAAAAAAUABAAAQAAAAEAAAAUABEAAQAAAAIAAAASAAAAAAAAAAAAAAASAAEAAAAAAAEAAAATAAAAAAABAAAAAAATAAEAAAABAAEAAAAUAAAAAAACAAAAAAAUAAEAAAACAAEAAAAKAP//AQACAAAAAAAKAAAAAQACAAEAAAALAP//AQADAAAAAAALAAAAAQADAAEAAAAMAP//AQAEAAAAAAAMAAAAAQAEAAEAAAAIAP//AQAAAAAAAAAIAAAAAQAAAAEAAAAIAAEAAQAAAAIAAAAJAP//AQABAAAAAAAJAAAAAQABAAEAAAAJAAEAAQABAAIAAAAKAAEAAQACAAIAAAALAAEAAQADAAIAAAAMAAEAAQAEAAIAAAAFAP7/AAAAAAAAAAAFAP//AAAAAAEAAAAGAP7/AAABAAAAAAAGAP//AAABAAEAAAAHAP7/AAACAAAAAAAHAP//AAACAAEAAAAOAPv/AAAAAAAAAAAOAPz/AAAAAAEAAAAPAPv/AAABAAAAAAAPAPz/AAABAAEAAAAQAPv/AAACAAAAAAAQAPz/AAACAAEAAAATAPr/AAAAAAAAAAATAPv/AAAAAAEAAAAUAPr/AAABAAAAAAAUAPv/AAABAAEAAAAVAPr/AAACAAAAAAAVAPv/AAACAAEAAAAlAPr/AQAAAAAAAAAlAPv/AQAAAAEAAAAlAPz/AQAAAAIAAAAmAPr/AQABAAAAAAAmAPv/AQABAAEAAAAmAPz/AQABAAIAAAAnAPr/AQACAAAAAAAnAPv/AQACAAEAAAAnAPz/AQACAAIAAAAoAPr/AQACAAAAAAAoAPv/AQACAAEAAAAoAPz/AQACAAIAAAApAPr/AQADAAAAAAApAPv/AQADAAEAAAApAPz/AQADAAIAAAAqAPr/AQACAAAAAAAqAPv/AQACAAEAAAAqAPz/AQACAAIAAAArAPr/AQADAAAAAAArAPv/AQADAAEAAAArAPz/AQADAAIAAAAsAPr/AQACAAAAAAAsAPv/AQACAAEAAAAsAPz/AQACAAIAAAAtAPr/AQADAAAAAAAtAPv/AQADAAEAAAAtAPz/AQADAAIAAAAuAPr/AQACAAAAAAAuAPv/AQACAAEAAAAuAPz/AQACAAIAAAAvAPr/AQADAAAAAAAvAPv/AQADAAEAAAAvAPz/AQADAAIAAAAwAPr/AQAEAAAAAAAwAPv/AQAEAAEAAAAwAPz/AQAEAAIAAAA9APj/AQAAAAAAAAA9APn/AQAAAAEAAAA9APr/AQAAAAIAAAA+APj/AQABAAAAAAA+APn/AQABAAEAAAA+APr/AQABAAIAAAA/APj/AQACAAAAAAA/APn/AQACAAEAAAA/APr/AQACAAIAAABAAPj/AQADAAAAAABAAPn/AQADAAEAAABAAPr/AQADAAIAAABBAPj/AQAEAAAAAABBAPn/AQAEAAEAAABBAPr/AQAEAAIAAAA6AP3/AAAAAAAAAAA6AP7/AAAAAAEAAAA7AP3/AAABAAAAAAA7AP7/AAABAAEAAAA8AP3/AAACAAAAAAA8AP7/AAACAAEAAAAxAAMAAAAAAAAAAAAxAAQAAAAAAAEAAAAyAAMAAAABAAAAAAAyAAQAAAABAAEAAAAzAAMAAAACAAAAAAAzAAQAAAACAAEAAAA6AAkAAAAAAAAAAAA6AAoAAAAAAAEAAAA7AAkAAAABAAAAAAA7AAoAAAABAAEAAAA8AAkAAAACAAAAAAA8AAoAAAACAAEAAAAwAA8AAQAAAAAAAAAwABAAAQAAAAEAAAAwABEAAQAAAAIAAAAxAA8AAQABAAAAAAAxABAAAQABAAEAAAAxABEAAQABAAIAAAAyAA8AAQACAAAAAAAyABAAAQACAAEAAAAyABEAAQACAAIAAAA8AA8AAQADAAAAAAA8ABAAAQADAAEAAAA8ABEAAQADAAIAAAA9AA8AAQAEAAAAAAA9ABAAAQAEAAEAAAA9ABEAAQAEAAIAAAAzAA8AAQACAAAAAAAzABAAAQACAAEAAAAzABEAAQACAAIAAAA0AA8AAQACAAAAAAA0ABAAAQACAAEAAAA0ABEAAQACAAIAAAA1AA8AAQACAAAAAAA1ABAAAQACAAEAAAA1ABEAAQACAAIAAAA2AA8AAQABAAAAAAA2ABAAAQABAAEAAAA2ABEAAQABAAIAAAA3AA8AAQACAAAAAAA3ABAAAQACAAEAAAA3ABEAAQACAAIAAAA4AA8AAQACAAAAAAA4ABAAAQACAAEAAAA4ABEAAQACAAIAAAA5AA8AAQABAAAAAAA5ABAAAQABAAEAAAA5ABEAAQABAAIAAAA6AA8AAQACAAAAAAA6ABAAAQACAAEAAAA6ABEAAQACAAIAAAA7AA8AAQACAAAAAAA7ABAAAQACAAEAAAA7ABEAAQACAAIAAABBAPv/AQAEAAAAAABBAPz/AQAEAAEAAABBAP3/AQAEAAIAAABBAP7/AQAEAAAAAABBAP//AQAEAAEAAABBAAAAAQAEAAIAAABBAAEAAQAEAAAAAABBAAIAAQAEAAEAAABBAAMAAQAEAAIAAABBAAQAAQAEAAAAAABBAAUAAQAEAAEAAABBAAYAAQAEAAIAAABBAAcAAQAEAAAAAABBAAgAAQAEAAEAAABBAAkAAQAEAAIAAABBAAoAAQAEAAAAAABBAAsAAQAEAAEAAABBAAwAAQAEAAIAAABBAA0AAQAEAAAAAABBAA4AAQAEAAEAAABBAA8AAQAEAAIAAABAAA0AAQAAAAAAAABAAA4AAQAAAAEAAABAAA8AAQAAAAIAAABAAAoAAQAAAAAAAABAAAsAAQAAAAEAAABAAAwAAQAAAAIAAABAAAcAAQAAAAAAAABAAAgAAQAAAAEAAABAAAkAAQAAAAIAAABAAAQAAQAAAAAAAABAAAUAAQAAAAEAAABAAAYAAQAAAAIAAABAAAEAAQAAAAAAAABAAAIAAQAAAAEAAABAAAMAAQAAAAIAAABAAP7/AQAAAAAAAABAAP//AQAAAAEAAABAAAAAAQAAAAIAAABAAPv/AQAAAAAAAABAAPz/AQAAAAEAAABAAP3/AQAAAAIAAABDAA8AAQACAAAAAABDABAAAQACAAEAAABDABEAAQACAAIAAABEAA8AAQABAAAAAABEABAAAQABAAEAAABEABEAAQABAAIAAABFAA8AAQACAAAAAABFABAAAQACAAEAAABFABEAAQACAAIAAABGAA8AAQADAAAAAABGABAAAQADAAEAAABGABEAAQADAAIAAABHAA8AAQABAAAAAABHABAAAQABAAEAAABHABEAAQABAAIAAABIAA8AAQACAAAAAABIABAAAQACAAEAAABIABEAAQACAAIAAABJAA8AAQADAAAAAABJABAAAQADAAEAAABJABEAAQADAAIAAABKAA8AAQABAAAAAABKABAAAQABAAEAAABKABEAAQABAAIAAABLAA8AAQACAAAAAABLABAAAQACAAEAAABLABEAAQACAAIAAABMAA8AAQADAAAAAABMABAAAQADAAEAAABMABEAAQADAAIAAABNAA8AAQAEAAAAAABNABAAAQAEAAEAAABNABEAAQAEAAIAAABOAA0AAQAAAAAAAABOAA4AAQAAAAEAAABOAA8AAQAAAAIAAABOAAoAAQAAAAAAAABOAAsAAQAAAAEAAABOAAwAAQAAAAIAAABOAAcAAQAAAAAAAABOAAgAAQAAAAEAAABOAAkAAQAAAAIAAABOAAQAAQAAAAAAAABOAAUAAQAAAAEAAABOAAYAAQAAAAIAAABOAAEAAQAAAAAAAABOAAIAAQAAAAEAAABOAAMAAQAAAAIAAABOAP7/AQAAAAAAAABOAP//AQAAAAEAAABOAAAAAQAAAAIAAABOAPv/AQAAAAAAAABOAPz/AQAAAAEAAABOAP3/AQAAAAIAAABPAPv/AQAEAAAAAABPAPz/AQAEAAEAAABPAP3/AQAEAAIAAABPAP7/AQAEAAAAAABPAP//AQAEAAEAAABPAAAAAQAEAAIAAABPAAEAAQAEAAAAAABPAAIAAQAEAAEAAABPAAMAAQAEAAIAAABPAAQAAQAEAAAAAABPAAUAAQAEAAEAAABPAAYAAQAEAAIAAABPAAcAAQAEAAAAAABPAAgAAQAEAAEAAABPAAkAAQAEAAIAAABPAAoAAQAEAAAAAABPAAsAAQAEAAEAAABPAAwAAQAEAAIAAABPAA0AAQAEAAAAAABPAA4AAQAEAAEAAABPAA8AAQAEAAIAAABCAA8AAQAAAAAAAABCABAAAQAAAAEAAABCABEAAQAAAAIAAABOAPj/AQADAAAAAABOAPn/AQADAAEAAABOAPr/AQADAAIAAABPAPj/AQAEAAAAAABPAPn/AQAEAAEAAABPAPr/AQAEAAIAAABNAPj/AQACAAAAAABNAPn/AQACAAEAAABNAPr/AQACAAIAAABLAPj/AQACAAAAAABLAPn/AQACAAEAAABLAPr/AQACAAIAAABMAPj/AQADAAAAAABMAPn/AQADAAEAAABMAPr/AQADAAIAAABKAPj/AQAAAAAAAABKAPn/AQAAAAEAAABKAPr/AQAAAAIAAABYAPj/AQAAAAAAAABYAPn/AQAAAAEAAABYAPr/AQAAAAIAAABZAPj/AQABAAAAAABZAPn/AQABAAEAAABZAPr/AQABAAIAAABaAPj/AQACAAAAAABaAPn/AQACAAEAAABaAPr/AQACAAIAAABbAPj/AQADAAAAAABbAPn/AQADAAEAAABbAPr/AQADAAIAAABcAPj/AQABAAAAAABcAPn/AQABAAEAAABcAPr/AQABAAIAAABdAPj/AQACAAAAAABdAPn/AQACAAEAAABdAPr/AQACAAIAAABeAPj/AQADAAAAAABeAPn/AQADAAEAAABeAPr/AQADAAIAAABfAPj/AQADAAAAAABfAPn/AQADAAEAAABfAPr/AQADAAIAAABgAPj/AQAEAAAAAABgAPn/AQAEAAEAAABgAPr/AQAEAAIAAABuAPj/AQAAAAAAAABuAPn/AQAAAAEAAABuAPr/AQAAAAIAAABvAPj/AQABAAAAAABvAPn/AQABAAEAAABvAPr/AQABAAIAAABwAPj/AQACAAAAAABwAPn/AQACAAEAAABwAPr/AQACAAIAAABxAPj/AQADAAAAAABxAPn/AQADAAEAAABxAPr/AQADAAIAAAByAPj/AQABAAAAAAByAPn/AQABAAEAAAByAPr/AQABAAIAAABzAPj/AQACAAAAAABzAPn/AQACAAEAAABzAPr/AQACAAIAAAB0APj/AQADAAAAAAB0APn/AQADAAEAAAB0APr/AQADAAIAAAB1APj/AQABAAAAAAB1APn/AQABAAEAAAB1APr/AQABAAIAAAB2APj/AQACAAAAAAB2APn/AQACAAEAAAB2APr/AQACAAIAAAB3APj/AQADAAAAAAB3APn/AQADAAEAAAB3APr/AQADAAIAAAB4APj/AQAEAAAAAAB4APn/AQAEAAEAAAB4APr/AQAEAAIAAAA=")
 tile_set = ExtResource("2_i0ee6")
 
 [node name="Player" parent="." instance=ExtResource("4_xeiba")]
-position = Vector2(7948, -1167)
+position = Vector2(-4539, -4307)
 floor_max_angle = 1.39626
 floor_snap_length = 32.0
 
@@ -989,8 +518,24 @@ position = Vector2(0, 4000)
 script = ExtResource("14_e33w6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DeathFloors/DeathFloor"]
-position = Vector2(-2528, 0)
+position = Vector2(11636, 0)
 shape = SubResource("RectangleShape2D_ess3e")
+
+[node name="DeathFloor3" type="Area2D" parent="DeathFloors"]
+position = Vector2(0, 4000)
+script = ExtResource("14_e33w6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeathFloors/DeathFloor3"]
+position = Vector2(17782.5, -3860)
+shape = SubResource("RectangleShape2D_2tbk8")
+
+[node name="DeathFloor4" type="Area2D" parent="DeathFloors"]
+position = Vector2(0, 4000)
+script = ExtResource("14_e33w6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeathFloors/DeathFloor4"]
+position = Vector2(24994.5, -5240)
+shape = SubResource("RectangleShape2D_gr7iy")
 
 [node name="DeathFloor2" type="Area2D" parent="DeathFloors"]
 position = Vector2(0, 4000)
@@ -1122,6 +667,22 @@ script = ExtResource("15_qxhjv")
 position = Vector2(-19, 24)
 shape = SubResource("RectangleShape2D_hf1ci")
 
+[node name="Checkpoint16" type="Area2D" parent="Checkpoints"]
+position = Vector2(11636, -1032)
+script = ExtResource("15_qxhjv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Checkpoints/Checkpoint16"]
+position = Vector2(200.5, 24)
+shape = SubResource("RectangleShape2D_0ecj2")
+
+[node name="Checkpoint17" type="Area2D" parent="Checkpoints"]
+position = Vector2(14437, -1045)
+script = ExtResource("15_qxhjv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Checkpoints/Checkpoint17"]
+position = Vector2(200.5, 24)
+shape = SubResource("RectangleShape2D_0ecj2")
+
 [node name="PostProcessing" type="CanvasLayer" parent="."]
 script = ExtResource("5_j8p5i")
 
@@ -1161,7 +722,7 @@ texture = ExtResource("17_b42hd")
 color = 16
 
 [node name="PurpleCard" parent="Cards" instance=ExtResource("13_q0uwx")]
-position = Vector2(12612, -1376)
+position = Vector2(11414, -1000)
 texture = ExtResource("18_0ugmc")
 color = 32
 
@@ -1175,7 +736,7 @@ scale = Vector2(0.125, 0.125)
 
 [node name="RedPlatforms" type="TileMapLayer" parent="Platforms/RedPlatforms"]
 material = SubResource("ShaderMaterial_4pjek")
-tile_map_data = PackedByteArray("AAD2/4L/AAAAAAIAAAD2/4P/AAAAAAMAAAD3/4L/AAABAAIAAAD3/4P/AAABAAMAAAD4/4L/AAACAAIAAAD4/4P/AAACAAMAAADc/x0AAAABAAIAAADc/x4AAAABAAMAAADd/x0AAAABAAIAAADd/x4AAAABAAMAAADb/x0AAAAAAAIAAADb/x4AAAAAAAMAAADe/x0AAAACAAIAAADe/x4AAAACAAMAAADO/x0AAAAAAAIAAADO/x4AAAAAAAMAAADP/x0AAAABAAIAAADP/x4AAAABAAMAAADQ/x0AAAACAAIAAADQ/x4AAAACAAMAAADK/xwAAAAAAAIAAADK/x0AAAAAAAMAAADL/xwAAAABAAIAAADL/x0AAAABAAMAAADM/xwAAAACAAIAAADM/x0AAAACAAMAAADG/xsAAAAAAAIAAADG/xwAAAAAAAMAAADH/xsAAAABAAIAAADH/xwAAAABAAMAAADI/xsAAAACAAIAAADI/xwAAAACAAMAAADB/xIAAAAAAAIAAADB/xMAAAAAAAMAAADC/xIAAAABAAIAAADC/xMAAAABAAMAAADD/xIAAAACAAIAAADD/xMAAAACAAMAAADF/w8AAAAAAAIAAADF/xAAAAAAAAMAAADG/w8AAAABAAIAAADG/xAAAAABAAMAAADH/w8AAAACAAIAAADH/xAAAAACAAMAAADJ/wwAAAAAAAIAAADJ/w0AAAAAAAMAAADK/wwAAAABAAIAAADK/w0AAAABAAMAAADL/wwAAAACAAIAAADL/w0AAAACAAMAAADN/wkAAAAAAAIAAADN/woAAAAAAAMAAADO/wkAAAABAAIAAADO/woAAAABAAMAAADP/wkAAAACAAIAAADP/woAAAACAAMAAADR/wcAAAAAAAIAAADR/wgAAAAAAAMAAADS/wcAAAABAAIAAADS/wgAAAABAAMAAADT/wcAAAACAAIAAADT/wgAAAACAAMAAADe/wcAAAAAAAIAAADe/wgAAAAAAAMAAADf/wcAAAABAAIAAADf/wgAAAABAAMAAADg/wcAAAACAAIAAADg/wgAAAACAAMAAADj/wcAAAAAAAIAAADj/wgAAAAAAAMAAADk/wcAAAABAAIAAADk/wgAAAABAAMAAADl/wcAAAACAAIAAADl/wgAAAACAAMAAADo/wcAAAAAAAIAAADo/wgAAAAAAAMAAADp/wcAAAABAAIAAADp/wgAAAABAAMAAADq/wcAAAACAAIAAADq/wgAAAACAAMAAADs/woAAAAAAAIAAADs/wsAAAAAAAMAAADt/woAAAABAAIAAADt/wsAAAABAAMAAADu/woAAAACAAIAAADu/wsAAAACAAMAAAC7/xIAAAAAAAIAAAC7/xMAAAAAAAMAAAC8/xIAAAABAAIAAAC8/xMAAAABAAMAAAC9/xIAAAACAAIAAAC9/xMAAAACAAMAAAANABUAAAAAAAIAAAANABYAAAAAAAMAAAAOABUAAAABAAIAAAAOABYAAAABAAMAAAAPABUAAAACAAIAAAAPABYAAAACAAMAAAARABUAAAAAAAIAAAARABYAAAAAAAMAAAASABUAAAABAAIAAAASABYAAAABAAMAAAATABUAAAACAAIAAAATABYAAAACAAMAAAAVABUAAAAAAAIAAAAVABYAAAAAAAMAAAAWABUAAAABAAIAAAAWABYAAAABAAMAAAAXABUAAAACAAIAAAAXABYAAAACAAMAAAAfABEAAAAAAAIAAAAfABIAAAAAAAMAAAAgABEAAAABAAIAAAAgABIAAAABAAMAAAAhABEAAAACAAIAAAAhABIAAAACAAMAAAAbAAwAAAAAAAMAAAAcAAwAAAABAAMAAAAdAAwAAAACAAMAAAAlABcAAAAAAAIAAAAlABgAAAAAAAMAAAAmABcAAAABAAIAAAAmABgAAAABAAMAAAAnABcAAAACAAIAAAAnABgAAAACAAMAAAAtABcAAAAAAAIAAAAtABgAAAAAAAMAAAAuABcAAAABAAIAAAAuABgAAAABAAMAAAAvABcAAAACAAIAAAAvABgAAAACAAMAAAAkADwAAAAAAAIAAAAkAD0AAAAAAAMAAAAlADwAAAABAAIAAAAlAD0AAAABAAMAAAAmADwAAAACAAIAAAAmAD0AAAACAAMAAAAgADgAAAAAAAIAAAAgADkAAAAAAAMAAAAhADgAAAABAAIAAAAhADkAAAABAAMAAAAiADgAAAACAAIAAAAiADkAAAACAAMAAAATAPX/AAAAAAIAAAATAPb/AAAAAAMAAAAUAPX/AAABAAIAAAAUAPb/AAABAAMAAAAVAPX/AAACAAIAAAAVAPb/AAACAAMAAAAXAPL/AAAAAAIAAAAXAPP/AAAAAAMAAAAYAPL/AAABAAIAAAAYAPP/AAABAAMAAAAZAPL/AAACAAIAAAAZAPP/AAACAAMAAAAjAOv/AAABAAIAAAAjAOz/AAABAAMAAAAkAOv/AAABAAIAAAAkAOz/AAABAAMAAAAlAOv/AAACAAIAAAAlAOz/AAACAAMAAAAiAOv/AAAAAAIAAAAiAOz/AAAAAAMAAAAbAAsAAAAAAAIAAAAcAAsAAAABAAIAAAAdAAsAAAACAAIAAAAfAAYAAAAAAAIAAAAfAAcAAAAAAAMAAAAgAAYAAAABAAIAAAAgAAcAAAABAAMAAAAhAAYAAAACAAIAAAAhAAcAAAACAAMAAAAbAAAAAAAAAAIAAAAbAAEAAAAAAAMAAAAcAAAAAAABAAIAAAAcAAEAAAABAAMAAAAdAAAAAAACAAIAAAAdAAEAAAACAAMAAAAhAPz/AAAAAAIAAAAhAP3/AAAAAAMAAAAiAPz/AAABAAIAAAAiAP3/AAABAAMAAAAjAPz/AAACAAIAAAAjAP3/AAACAAMAAABkAOn/AAAAAAIAAABkAOr/AAAAAAMAAABlAOn/AAABAAIAAABlAOr/AAABAAMAAABmAOn/AAACAAIAAABmAOr/AAACAAMAAABqAOj/AAAAAAIAAABqAOn/AAAAAAMAAABrAOj/AAABAAIAAABrAOn/AAABAAMAAABsAOj/AAACAAIAAABsAOn/AAACAAMAAABwAOb/AAAAAAIAAABwAOf/AAAAAAMAAABxAOb/AAABAAIAAABxAOf/AAABAAMAAAByAOb/AAACAAIAAAByAOf/AAACAAMAAAB2AOX/AAAAAAIAAAB2AOb/AAAAAAMAAAB3AOX/AAABAAIAAAB3AOb/AAABAAMAAAB4AOX/AAACAAIAAAB4AOb/AAACAAMAAACGAOP/AAAAAAIAAACGAOT/AAAAAAMAAACHAOP/AAABAAIAAACHAOT/AAABAAMAAACIAOP/AAACAAIAAACIAOT/AAACAAMAAACOACgAAAAAAAIAAACOACkAAAAAAAMAAACPACgAAAABAAIAAACPACkAAAABAAMAAACQACgAAAACAAIAAACQACkAAAACAAMAAACTACcAAAAAAAIAAACTACgAAAAAAAMAAACUACcAAAABAAIAAACUACgAAAABAAMAAACVACcAAAACAAIAAACVACgAAAACAAMAAACNABQAAAAAAAIAAACNABUAAAAAAAMAAACOABQAAAABAAIAAACOABUAAAABAAMAAACPABQAAAACAAIAAACPABUAAAACAAMAAACSABQAAAAAAAIAAACSABUAAAAAAAMAAACTABQAAAABAAIAAACTABUAAAABAAMAAACUABQAAAACAAIAAACUABUAAAACAAMAAACPAPz/AAAAAAIAAACPAP3/AAAAAAMAAACQAPz/AAABAAIAAACQAP3/AAABAAMAAACRAPz/AAACAAIAAACRAP3/AAACAAMAAAA=")
+tile_map_data = PackedByteArray("AAD2/4L/AAAAAAIAAAD2/4P/AAAAAAMAAAD3/4L/AAABAAIAAAD3/4P/AAABAAMAAAD4/4L/AAACAAIAAAD4/4P/AAACAAMAAADc/x0AAAABAAIAAADc/x4AAAABAAMAAADd/x0AAAABAAIAAADd/x4AAAABAAMAAADb/x0AAAAAAAIAAADb/x4AAAAAAAMAAADe/x0AAAACAAIAAADe/x4AAAACAAMAAADO/x0AAAAAAAIAAADO/x4AAAAAAAMAAADP/x0AAAABAAIAAADP/x4AAAABAAMAAADQ/x0AAAACAAIAAADQ/x4AAAACAAMAAADK/xwAAAAAAAIAAADK/x0AAAAAAAMAAADL/xwAAAABAAIAAADL/x0AAAABAAMAAADM/xwAAAACAAIAAADM/x0AAAACAAMAAADG/xsAAAAAAAIAAADG/xwAAAAAAAMAAADH/xsAAAABAAIAAADH/xwAAAABAAMAAADI/xsAAAACAAIAAADI/xwAAAACAAMAAADB/xIAAAAAAAIAAADB/xMAAAAAAAMAAADC/xIAAAABAAIAAADC/xMAAAABAAMAAADD/xIAAAACAAIAAADD/xMAAAACAAMAAADF/w8AAAAAAAIAAADF/xAAAAAAAAMAAADG/w8AAAABAAIAAADG/xAAAAABAAMAAADH/w8AAAACAAIAAADH/xAAAAACAAMAAADJ/wwAAAAAAAIAAADJ/w0AAAAAAAMAAADK/wwAAAABAAIAAADK/w0AAAABAAMAAADL/wwAAAACAAIAAADL/w0AAAACAAMAAADN/wkAAAAAAAIAAADN/woAAAAAAAMAAADO/wkAAAABAAIAAADO/woAAAABAAMAAADP/wkAAAACAAIAAADP/woAAAACAAMAAADR/wcAAAAAAAIAAADR/wgAAAAAAAMAAADS/wcAAAABAAIAAADS/wgAAAABAAMAAADT/wcAAAACAAIAAADT/wgAAAACAAMAAADe/wcAAAAAAAIAAADe/wgAAAAAAAMAAADf/wcAAAABAAIAAADf/wgAAAABAAMAAADg/wcAAAACAAIAAADg/wgAAAACAAMAAADj/wcAAAAAAAIAAADj/wgAAAAAAAMAAADk/wcAAAABAAIAAADk/wgAAAABAAMAAADl/wcAAAACAAIAAADl/wgAAAACAAMAAADo/wcAAAAAAAIAAADo/wgAAAAAAAMAAADp/wcAAAABAAIAAADp/wgAAAABAAMAAADq/wcAAAACAAIAAADq/wgAAAACAAMAAADs/woAAAAAAAIAAADs/wsAAAAAAAMAAADt/woAAAABAAIAAADt/wsAAAABAAMAAADu/woAAAACAAIAAADu/wsAAAACAAMAAAC7/xIAAAAAAAIAAAC7/xMAAAAAAAMAAAC8/xIAAAABAAIAAAC8/xMAAAABAAMAAAC9/xIAAAACAAIAAAC9/xMAAAACAAMAAAANABUAAAAAAAIAAAANABYAAAAAAAMAAAAOABUAAAABAAIAAAAOABYAAAABAAMAAAAPABUAAAACAAIAAAAPABYAAAACAAMAAAARABUAAAAAAAIAAAARABYAAAAAAAMAAAASABUAAAABAAIAAAASABYAAAABAAMAAAATABUAAAACAAIAAAATABYAAAACAAMAAAAVABUAAAAAAAIAAAAVABYAAAAAAAMAAAAWABUAAAABAAIAAAAWABYAAAABAAMAAAAXABUAAAACAAIAAAAXABYAAAACAAMAAAAfABEAAAAAAAIAAAAfABIAAAAAAAMAAAAgABEAAAABAAIAAAAgABIAAAABAAMAAAAhABEAAAACAAIAAAAhABIAAAACAAMAAAAbAAwAAAAAAAMAAAAcAAwAAAABAAMAAAAdAAwAAAACAAMAAAAlABcAAAAAAAIAAAAlABgAAAAAAAMAAAAmABcAAAABAAIAAAAmABgAAAABAAMAAAAnABcAAAACAAIAAAAnABgAAAACAAMAAAAtABcAAAAAAAIAAAAtABgAAAAAAAMAAAAuABcAAAABAAIAAAAuABgAAAABAAMAAAAvABcAAAACAAIAAAAvABgAAAACAAMAAAAkADwAAAAAAAIAAAAkAD0AAAAAAAMAAAAlADwAAAABAAIAAAAlAD0AAAABAAMAAAAmADwAAAACAAIAAAAmAD0AAAACAAMAAAAgADgAAAAAAAIAAAAgADkAAAAAAAMAAAAhADgAAAABAAIAAAAhADkAAAABAAMAAAAiADgAAAACAAIAAAAiADkAAAACAAMAAAATAPX/AAAAAAIAAAATAPb/AAAAAAMAAAAUAPX/AAABAAIAAAAUAPb/AAABAAMAAAAVAPX/AAACAAIAAAAVAPb/AAACAAMAAAAXAPL/AAAAAAIAAAAXAPP/AAAAAAMAAAAYAPL/AAABAAIAAAAYAPP/AAABAAMAAAAZAPL/AAACAAIAAAAZAPP/AAACAAMAAAAjAOv/AAABAAIAAAAjAOz/AAABAAMAAAAkAOv/AAABAAIAAAAkAOz/AAABAAMAAAAlAOv/AAACAAIAAAAlAOz/AAACAAMAAAAiAOv/AAAAAAIAAAAiAOz/AAAAAAMAAAAbAAsAAAAAAAIAAAAcAAsAAAABAAIAAAAdAAsAAAACAAIAAAAfAAYAAAAAAAIAAAAfAAcAAAAAAAMAAAAgAAYAAAABAAIAAAAgAAcAAAABAAMAAAAhAAYAAAACAAIAAAAhAAcAAAACAAMAAAAbAAAAAAAAAAIAAAAbAAEAAAAAAAMAAAAcAAAAAAABAAIAAAAcAAEAAAABAAMAAAAdAAAAAAACAAIAAAAdAAEAAAACAAMAAAAhAPz/AAAAAAIAAAAhAP3/AAAAAAMAAAAiAPz/AAABAAIAAAAiAP3/AAABAAMAAAAjAPz/AAACAAIAAAAjAP3/AAACAAMAAABkAOn/AAAAAAIAAABkAOr/AAAAAAMAAABlAOn/AAABAAIAAABlAOr/AAABAAMAAABmAOn/AAACAAIAAABmAOr/AAACAAMAAABqAOj/AAAAAAIAAABqAOn/AAAAAAMAAABrAOj/AAABAAIAAABrAOn/AAABAAMAAABsAOj/AAACAAIAAABsAOn/AAACAAMAAABwAOb/AAAAAAIAAABwAOf/AAAAAAMAAABxAOb/AAABAAIAAABxAOf/AAABAAMAAAByAOb/AAACAAIAAAByAOf/AAACAAMAAAB2AOX/AAAAAAIAAAB2AOb/AAAAAAMAAAB3AOX/AAABAAIAAAB3AOb/AAABAAMAAAB4AOX/AAACAAIAAAB4AOb/AAACAAMAAACGAOP/AAAAAAIAAACGAOT/AAAAAAMAAACHAOP/AAABAAIAAACHAOT/AAABAAMAAACIAOP/AAACAAIAAACIAOT/AAACAAMAAACOACgAAAAAAAIAAACOACkAAAAAAAMAAACPACgAAAABAAIAAACPACkAAAABAAMAAACQACgAAAACAAIAAACQACkAAAACAAMAAACTACcAAAAAAAIAAACTACgAAAAAAAMAAACUACcAAAABAAIAAACUACgAAAABAAMAAACVACcAAAACAAIAAACVACgAAAACAAMAAACNABQAAAAAAAIAAACNABUAAAAAAAMAAACOABQAAAABAAIAAACOABUAAAABAAMAAACPABQAAAACAAIAAACPABUAAAACAAMAAACSABQAAAAAAAIAAACSABUAAAAAAAMAAACTABQAAAABAAIAAACTABUAAAABAAMAAACUABQAAAACAAIAAACUABUAAAACAAMAAACPAPz/AAAAAAIAAACPAP3/AAAAAAMAAACQAPz/AAABAAIAAACQAP3/AAABAAMAAACRAPz/AAACAAIAAACRAP3/AAACAAMAAADPAOD/AAABAAIAAADPAOH/AAABAAMAAADQAOD/AAABAAIAAADQAOH/AAABAAMAAADRAOD/AAABAAIAAADRAOH/AAABAAMAAADSAOD/AAABAAIAAADSAOH/AAABAAMAAADTAOD/AAABAAIAAADTAOH/AAABAAMAAADUAOD/AAABAAIAAADUAOH/AAABAAMAAADVAOD/AAABAAIAAADVAOH/AAABAAMAAADMAOD/AAAAAAIAAADMAOH/AAAAAAMAAADNAOD/AAABAAIAAADNAOH/AAABAAMAAADOAOD/AAABAAIAAADOAOH/AAABAAMAAADWAOD/AAABAAIAAADWAOH/AAABAAMAAADXAOD/AAABAAIAAADXAOH/AAABAAMAAADYAOD/AAACAAIAAADYAOH/AAACAAMAAABgAZz/AAAAAAIAAABgAZ3/AAAAAAMAAABhAZz/AAABAAIAAABhAZ3/AAABAAMAAABiAZz/AAACAAIAAABiAZ3/AAACAAMAAABlAZz/AAAAAAIAAABlAZ3/AAAAAAMAAABmAZz/AAABAAIAAABmAZ3/AAABAAMAAABnAZz/AAACAAIAAABnAZ3/AAACAAMAAABqAZz/AAAAAAIAAABqAZ3/AAAAAAMAAABrAZz/AAABAAIAAABrAZ3/AAABAAMAAABsAZz/AAACAAIAAABsAZ3/AAACAAMAAABvAZz/AAAAAAIAAABvAZ3/AAAAAAMAAABwAZz/AAABAAIAAABwAZ3/AAABAAMAAABxAZz/AAACAAIAAABxAZ3/AAACAAMAAAA=")
 tile_set = ExtResource("8_oxa15")
 script = ExtResource("9_uevfq")
 
@@ -1274,7 +835,26 @@ script = ExtResource("9_uevfq")
 targetColor = 1
 phase = 1.0
 speed = 2.0
-range = 2.5
+range = 3.0
+
+[node name="OrangePlatform12" type="TileMapLayer" parent="Platforms/OrangePlatforms"]
+material = SubResource("ShaderMaterial_21bru")
+position = Vector2(175688, -19528)
+tile_map_data = PackedByteArray("AAD+////AAAAAAAAAAD/////AAABAAAAAAAAAP//AAABAAAAAAABAP//AAACAAAAAAD+/wAAAAAAAAEAAAD//wAAAAABAAEAAAAAAAAAAAABAAEAAAABAAAAAAACAAEAAAA=")
+tile_set = ExtResource("8_oxa15")
+script = ExtResource("9_uevfq")
+targetColor = 1
+phase = 1.0
+range = 1.5
+
+[node name="OrangePlatform13" type="TileMapLayer" parent="Platforms/OrangePlatforms"]
+material = SubResource("ShaderMaterial_21bru")
+position = Vector2(178088, -24688)
+tile_map_data = PackedByteArray("AAD+////AAAAAAAAAAD/////AAABAAAAAAAAAP//AAABAAAAAAABAP//AAACAAAAAAD+/wAAAAAAAAEAAAD//wAAAAABAAEAAAAAAAAAAAABAAEAAAABAAAAAAACAAEAAAA=")
+tile_set = ExtResource("8_oxa15")
+script = ExtResource("9_uevfq")
+targetColor = 1
+range = 1.5
 
 [node name="YellowPlatforms" type="Node2D" parent="Platforms"]
 position = Vector2(1, 0)
@@ -1282,7 +862,7 @@ scale = Vector2(0.125, 0.125)
 
 [node name="YellowPlatform1" type="TileMapLayer" parent="Platforms/YellowPlatforms"]
 material = SubResource("ShaderMaterial_n6850")
-position = Vector2(3008, -3872)
+position = Vector2(4432, -6448)
 tile_map_data = PackedByteArray("AAD+////AAAAAAQAAAD/////AAABAAQAAAAAAP//AAABAAQAAAABAP//AAACAAQAAAD+/wAAAAAAAAUAAAD//wAAAAABAAUAAAAAAAAAAAABAAUAAAABAAAAAAACAAUAAAA=")
 tile_set = ExtResource("8_oxa15")
 script = ExtResource("9_uevfq")
@@ -1340,6 +920,25 @@ script = ExtResource("9_uevfq")
 targetColor = 2
 range = 0.25
 
+[node name="YellowPlatform8" type="TileMapLayer" parent="Platforms/YellowPlatforms"]
+material = SubResource("ShaderMaterial_n6850")
+position = Vector2(166056, -18696)
+tile_map_data = PackedByteArray("AAD+////AAAAAAQAAAD/////AAABAAQAAAAAAP//AAABAAQAAAABAP//AAACAAQAAAD+/wAAAAAAAAUAAAD//wAAAAABAAUAAAAAAAAAAAABAAUAAAABAAAAAAACAAUAAAA=")
+tile_set = ExtResource("8_oxa15")
+script = ExtResource("9_uevfq")
+targetColor = 2
+range = 1.5
+
+[node name="YellowPlatform9" type="TileMapLayer" parent="Platforms/YellowPlatforms"]
+material = SubResource("ShaderMaterial_n6850")
+position = Vector2(173024, -19640)
+tile_map_data = PackedByteArray("AAD+////AAAAAAQAAAD/////AAABAAQAAAAAAP//AAABAAQAAAABAP//AAACAAQAAAD+/wAAAAAAAAUAAAD//wAAAAABAAUAAAAAAAAAAAABAAUAAAABAAAAAAACAAUAAAA=")
+tile_set = ExtResource("8_oxa15")
+script = ExtResource("9_uevfq")
+targetColor = 2
+phase = 1.0
+range = 1.5
+
 [node name="GreenPlatforms" type="Node2D" parent="Platforms"]
 position = Vector2(1, 0)
 scale = Vector2(0.125, 0.125)
@@ -1354,7 +953,7 @@ targetColor = 3
 
 [node name="GreenPlatform2" type="TileMapLayer" parent="Platforms/GreenPlatforms"]
 material = SubResource("ShaderMaterial_nnolk")
-position = Vector2(-1288, -1208)
+position = Vector2(-3528, -1952)
 tile_map_data = PackedByteArray("AAD+////AAAAAAYAAAD/////AAABAAYAAAAAAP//AAABAAYAAAABAP//AAACAAYAAAD+/wAAAAAAAAcAAAD//wAAAAABAAcAAAAAAAAAAAABAAcAAAABAAAAAAACAAcAAAA=")
 tile_set = ExtResource("8_oxa15")
 script = ExtResource("9_uevfq")
@@ -1445,13 +1044,38 @@ script = ExtResource("9_uevfq")
 targetColor = 3
 speed = -1.5
 
+[node name="GreenPlatform13" type="TileMapLayer" parent="Platforms/GreenPlatforms"]
+material = SubResource("ShaderMaterial_nnolk")
+position = Vector2(158464, -15648)
+tile_map_data = PackedByteArray("AAD+////AAAAAAYAAAD/////AAABAAYAAAAAAP//AAABAAYAAAABAP//AAACAAYAAAD+/wAAAAAAAAcAAAD//wAAAAABAAcAAAAAAAAAAAABAAcAAAABAAAAAAACAAcAAAA=")
+tile_set = ExtResource("8_oxa15")
+script = ExtResource("9_uevfq")
+targetColor = 3
+
+[node name="GreenPlatform14" type="TileMapLayer" parent="Platforms/GreenPlatforms"]
+material = SubResource("ShaderMaterial_nnolk")
+position = Vector2(160544, -17048)
+tile_map_data = PackedByteArray("AAD+////AAAAAAYAAAD/////AAABAAYAAAAAAP//AAABAAYAAAABAP//AAACAAYAAAD+/wAAAAAAAAcAAAD//wAAAAABAAcAAAAAAAAAAAABAAcAAAABAAAAAAACAAcAAAA=")
+tile_set = ExtResource("8_oxa15")
+script = ExtResource("9_uevfq")
+targetColor = 3
+speed = -1.0
+
+[node name="GreenPlatform15" type="TileMapLayer" parent="Platforms/GreenPlatforms"]
+material = SubResource("ShaderMaterial_nnolk")
+position = Vector2(162856, -18432)
+tile_map_data = PackedByteArray("AAD+////AAAAAAYAAAD/////AAABAAYAAAAAAP//AAABAAYAAAABAP//AAACAAYAAAD+/wAAAAAAAAcAAAD//wAAAAABAAcAAAAAAAAAAAABAAcAAAABAAAAAAACAAcAAAA=")
+tile_set = ExtResource("8_oxa15")
+script = ExtResource("9_uevfq")
+targetColor = 3
+
 [node name="BluePlatforms" type="Node2D" parent="Platforms"]
 position = Vector2(1, 0)
 scale = Vector2(0.125, 0.125)
 
 [node name="BluePlatforms" type="TileMapLayer" parent="Platforms/BluePlatforms"]
 material = SubResource("ShaderMaterial_ua316")
-tile_map_data = PackedByteArray("AAAZAAcAAAABAAgAAAAZAAgAAAABAAkAAAD7/9//AAABAAgAAAD7/+D/AAABAAkAAAAJAJv/AAABAAgAAAAJAJz/AAABAAkAAABkAAgAAAABAAgAAABkAAkAAAABAAkAAABmAPX/AAABAAgAAABmAPb/AAABAAkAAACLAPD/AAABAAgAAACLAPH/AAABAAkAAACTAPr/AAABAAgAAACTAPv/AAABAAkAAACPAAcAAAABAAgAAACPAAgAAAABAAkAAACKABMAAAABAAgAAACKABQAAAABAAkAAACXACYAAAABAAgAAACXACcAAAABAAkAAACKADgAAAABAAgAAACKADkAAAABAAkAAAA=")
+tile_map_data = PackedByteArray("AAAZAAcAAAABAAgAAAAZAAgAAAABAAkAAAD7/9//AAABAAgAAAD7/+D/AAABAAkAAAAJAJv/AAABAAgAAAAJAJz/AAABAAkAAABkAAgAAAABAAgAAABkAAkAAAABAAkAAABmAPX/AAABAAgAAABmAPb/AAABAAkAAACLAPD/AAABAAgAAACLAPH/AAABAAkAAACTAPr/AAABAAgAAACTAPv/AAABAAkAAACPAAcAAAABAAgAAACPAAgAAAABAAkAAACKABMAAAABAAgAAACKABQAAAABAAkAAACXACYAAAABAAgAAACXACcAAAABAAkAAACKADgAAAABAAgAAACKADkAAAABAAkAAAAmAdf/AAABAAgAAAAmAdj/AAABAAkAAAAnAdf/AAABAAgAAAAnAdj/AAABAAkAAAAoAdf/AAABAAgAAAAoAdj/AAABAAkAAAApAdf/AAABAAgAAAApAdj/AAABAAkAAAAqAdf/AAABAAgAAAAqAdj/AAABAAkAAAArAdf/AAABAAgAAAArAdj/AAABAAkAAAAsAdf/AAABAAgAAAAsAdj/AAABAAkAAAAtAdf/AAABAAgAAAAtAdj/AAABAAkAAAAuAdf/AAABAAgAAAAuAdj/AAABAAkAAAAvAdf/AAABAAgAAAAvAdj/AAABAAkAAAAwAdf/AAABAAgAAAAwAdj/AAABAAkAAAAxAdf/AAABAAgAAAAxAdj/AAABAAkAAAAyAdf/AAABAAgAAAAyAdj/AAABAAkAAAAzAdf/AAABAAgAAAAzAdj/AAABAAkAAAA0Adf/AAABAAgAAAA0Adj/AAABAAkAAAA=")
 tile_set = ExtResource("8_oxa15")
 script = ExtResource("9_uevfq")
 targetColor = 4
@@ -1463,7 +1087,7 @@ scale = Vector2(0.125, 0.125)
 [node name="PurplePlatforms" type="TileMapLayer" parent="Platforms/PurplePlatforms"]
 material = SubResource("ShaderMaterial_cgf5k")
 position = Vector2(2824, 1216)
-tile_map_data = PackedByteArray("AAAJABMAAAAAAAoAAAAJABQAAAAAAAsAAAAKABMAAAABAAoAAAAKABQAAAABAAsAAAALABMAAAACAAoAAAALABQAAAACAAsAAADx/7j/AAAAAAoAAADx/7n/AAAAAAsAAADy/7j/AAABAAoAAADy/7n/AAABAAsAAADz/7j/AAACAAoAAADz/7n/AAACAAsAAADz//7/AAAAAAoAAADz////AAAAAAsAAAD0//7/AAABAAoAAAD0////AAABAAsAAAD1//7/AAACAAoAAAD1////AAACAAsAAAA=")
+tile_map_data = PackedByteArray("AAAJABMAAAAAAAoAAAAJABQAAAAAAAsAAAAKABMAAAABAAoAAAAKABQAAAABAAsAAAALABMAAAACAAoAAAALABQAAAACAAsAAADx/7j/AAAAAAoAAADx/7n/AAAAAAsAAADy/7j/AAABAAoAAADy/7n/AAABAAsAAADz/7j/AAACAAoAAADz/7n/AAACAAsAAADz//7/AAAAAAoAAADz////AAAAAAsAAAD0//7/AAABAAoAAAD0////AAABAAsAAAD1//7/AAACAAoAAAD1////AAACAAsAAACzANv/AAAAAAoAAACzANz/AAAAAAsAAAC0ANv/AAABAAoAAAC0ANz/AAABAAsAAAC1ANv/AAABAAoAAAC1ANz/AAABAAsAAAC2ANv/AAABAAoAAAC2ANz/AAABAAsAAAC3ANv/AAABAAoAAAC3ANz/AAABAAsAAAC4ANv/AAABAAoAAAC4ANz/AAABAAsAAAC5ANv/AAABAAoAAAC5ANz/AAABAAsAAAC6ANv/AAABAAoAAAC6ANz/AAABAAsAAAC7ANv/AAACAAoAAAC7ANz/AAACAAsAAADdANv/AAAAAAoAAADdANz/AAAAAAsAAADeANv/AAABAAoAAADeANz/AAABAAsAAADfANv/AAABAAoAAADfANz/AAABAAsAAADgANv/AAABAAoAAADgANz/AAABAAsAAADhANv/AAABAAoAAADhANz/AAABAAsAAADiANv/AAABAAoAAADiANz/AAABAAsAAADjANv/AAABAAoAAADjANz/AAABAAsAAADkANv/AAABAAoAAADkANz/AAABAAsAAADlANv/AAABAAoAAADlANz/AAABAAsAAADmANv/AAABAAoAAADmANz/AAABAAsAAADnANv/AAABAAoAAADnANz/AAABAAsAAADoANv/AAABAAoAAADoANz/AAABAAsAAADpANv/AAABAAoAAADpANz/AAABAAsAAADqANv/AAABAAoAAADqANz/AAABAAsAAADrANv/AAABAAoAAADrANz/AAABAAsAAADxANv/AAACAAoAAADxANz/AAACAAsAAADsANv/AAABAAoAAADsANz/AAABAAsAAADtANv/AAABAAoAAADtANz/AAABAAsAAADuANv/AAABAAoAAADuANz/AAABAAsAAADvANv/AAABAAoAAADvANz/AAABAAsAAADwANv/AAABAAoAAADwANz/AAABAAsAAADzANf/AAAAAAoAAADzANj/AAAAAAsAAAD0ANf/AAABAAoAAAD0ANj/AAABAAsAAAD1ANf/AAABAAoAAAD1ANj/AAABAAsAAAD2ANf/AAABAAoAAAD2ANj/AAABAAsAAAD3ANf/AAABAAoAAAD3ANj/AAABAAsAAAD4ANf/AAABAAoAAAD4ANj/AAABAAsAAAD5ANf/AAABAAoAAAD5ANj/AAABAAsAAAD6ANf/AAABAAoAAAD6ANj/AAABAAsAAAD7ANf/AAABAAoAAAD7ANj/AAABAAsAAAD8ANf/AAABAAoAAAD8ANj/AAABAAsAAAD9ANf/AAABAAoAAAD9ANj/AAABAAsAAAD+ANf/AAABAAoAAAD+ANj/AAABAAsAAAD/ANf/AAABAAoAAAD/ANj/AAABAAsAAAAAAdf/AAABAAoAAAAAAdj/AAABAAsAAAABAdf/AAABAAoAAAABAdj/AAABAAsAAAACAdf/AAABAAoAAAACAdj/AAABAAsAAAADAdf/AAABAAoAAAADAdj/AAABAAsAAAAEAdf/AAABAAoAAAAEAdj/AAABAAsAAAAFAdf/AAABAAoAAAAFAdj/AAABAAsAAAAGAdf/AAABAAoAAAAGAdj/AAABAAsAAAAHAdf/AAACAAoAAAAHAdj/AAACAAsAAAALAdP/AAAAAAoAAAALAdT/AAAAAAsAAAAMAdP/AAABAAoAAAAMAdT/AAABAAsAAAANAdP/AAABAAoAAAANAdT/AAABAAsAAAAOAdP/AAABAAoAAAAOAdT/AAABAAsAAAAPAdP/AAABAAoAAAAPAdT/AAABAAsAAAAQAdP/AAABAAoAAAAQAdT/AAABAAsAAAARAdP/AAABAAoAAAARAdT/AAABAAsAAAASAdP/AAABAAoAAAASAdT/AAABAAsAAAATAdP/AAABAAoAAAATAdT/AAABAAsAAAAUAdP/AAABAAoAAAAUAdT/AAABAAsAAAAVAdP/AAABAAoAAAAVAdT/AAABAAsAAAAWAdP/AAABAAoAAAAWAdT/AAABAAsAAAAXAdP/AAABAAoAAAAXAdT/AAABAAsAAAAYAdP/AAABAAoAAAAYAdT/AAABAAsAAAAZAdP/AAABAAoAAAAZAdT/AAABAAsAAAAaAdP/AAACAAoAAAAaAdT/AAACAAsAAABwAZf/AAAAAAoAAABwAZj/AAAAAAsAAABxAZf/AAABAAoAAABxAZj/AAABAAsAAAByAZf/AAABAAoAAAByAZj/AAABAAsAAABzAZf/AAABAAoAAABzAZj/AAABAAsAAAB0AZf/AAABAAoAAAB0AZj/AAABAAsAAAB1AZf/AAABAAoAAAB1AZj/AAABAAsAAAB2AZf/AAABAAoAAAB2AZj/AAABAAsAAAB3AZf/AAABAAoAAAB3AZj/AAABAAsAAAB4AZf/AAABAAoAAAB4AZj/AAABAAsAAAB5AZf/AAABAAoAAAB5AZj/AAABAAsAAAB6AZf/AAABAAoAAAB6AZj/AAABAAsAAAB7AZf/AAABAAoAAAB7AZj/AAABAAsAAAB8AZf/AAABAAoAAAB8AZj/AAABAAsAAAB9AZf/AAABAAoAAAB9AZj/AAABAAsAAAB+AZf/AAABAAoAAAB+AZj/AAABAAsAAAB/AZf/AAABAAoAAAB/AZj/AAABAAsAAACAAZf/AAABAAoAAACAAZj/AAABAAsAAACBAZf/AAABAAoAAACBAZj/AAABAAsAAACCAZf/AAABAAoAAACCAZj/AAABAAsAAACDAZf/AAABAAoAAACDAZj/AAABAAsAAACEAZf/AAABAAoAAACEAZj/AAABAAsAAACFAZf/AAABAAoAAACFAZj/AAABAAsAAACGAZf/AAABAAoAAACGAZj/AAABAAsAAACHAZf/AAABAAoAAACHAZj/AAABAAsAAACIAZf/AAABAAoAAACIAZj/AAABAAsAAACJAZf/AAABAAoAAACJAZj/AAABAAsAAACKAZf/AAABAAoAAACKAZj/AAABAAsAAACLAZf/AAABAAoAAACLAZj/AAABAAsAAACMAZf/AAABAAoAAACMAZj/AAABAAsAAACNAZf/AAABAAoAAACNAZj/AAABAAsAAACOAZf/AAABAAoAAACOAZj/AAABAAsAAACPAZf/AAABAAoAAACPAZj/AAABAAsAAACQAZf/AAABAAoAAACQAZj/AAABAAsAAACRAZf/AAABAAoAAACRAZj/AAABAAsAAAA=")
 tile_set = ExtResource("8_oxa15")
 script = ExtResource("9_uevfq")
 targetColor = 5
@@ -1474,7 +1098,7 @@ follow_viewport_enabled = true
 
 [node name="RedDroplet" parent="Enemies" instance=ExtResource("26_si5v2")]
 material = SubResource("ShaderMaterial_2dn4i")
-position = Vector2(-2688, 971)
+position = Vector2(-2687, 971)
 
 [node name="RedDroplet2" parent="Enemies" instance=ExtResource("26_si5v2")]
 material = SubResource("ShaderMaterial_bmo5p")

@@ -9,6 +9,8 @@ public partial class Camera : Camera2D
 	private float shakeMagnitude = 0.0f;
 	private double shakeTimer = 0.0;
 
+	private bool warped = false;
+
 	private Random r;
 	public override void _Ready()
 	{
@@ -30,6 +32,9 @@ public partial class Camera : Camera2D
 			shakeTimer = Math.Clamp(shakeTimer-delta, 0, Mathf.Inf);
 		}
 		Global.AsymptoticApproach(ref position, intendedPos, 12.5f*(float)delta);
+		if(position.X > 25000f) {position.X = 25000f; 
+		if(!warped) {Global.transitions.ChangeLevel("Test"); warped = true;}
+		}
 		GlobalPosition = position; //wtf
 		// GlobalPosition = intendedPos;
 	}

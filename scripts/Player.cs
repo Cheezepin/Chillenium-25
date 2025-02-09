@@ -8,7 +8,7 @@ public partial class Player : CharacterBody2D
 	public const float JumpVelocity = -1000.0f;
 	public const float EnemyBounceVelocity = -600.0f;
 	public const float RedBounceVelocity = -1000.0f;
-	public const float BlueBounceVelocity = -2500.0f;
+	public const float BlueBounceVelocity = -1900.0f;
 
 	public const double xAcceleration = 5500.0f;
 	public const double xFriction = 3500.0f;
@@ -123,7 +123,7 @@ public partial class Player : CharacterBody2D
 				if(IsOnFloor() && currPlatform != null && currPlatform.targetColor == Global.ColorNames.Purple)
 				{
 					sprite.Play("run");
-					velocity.X = Mathf.MoveToward(Velocity.X, GlobalScale.Y*MaxSpeed*2, (float)(xAcceleration*1.0*delta));
+					velocity.X = Mathf.MoveToward(Velocity.X, GlobalScale.Y*MaxSpeed*2.5f, (float)(xAcceleration*1.0*delta));
 					slideSound.Play();
 					hasPurpleSpeed = true;
 				}
@@ -249,11 +249,13 @@ public partial class Player : CharacterBody2D
 			{
 				Velocity = new Vector2(Velocity.X, RedBounceVelocity);
 				springSound.Play();
+				hasPurpleSpeed = false;
 			}
 			if (plat.targetColor == Global.ColorNames.Blue)
 			{
 				Velocity = new Vector2(Velocity.X, BlueBounceVelocity);
 				springSound.Play();
+				hasPurpleSpeed = false;
 			}
 		}
 	}

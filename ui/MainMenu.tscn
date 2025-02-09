@@ -392,10 +392,10 @@ texture_hover = ExtResource("9_4mp5e")
 
 [node name="Logo" type="TextureRect" parent="MainMenuItems"]
 layout_mode = 0
-offset_left = -624.0
-offset_top = -316.0
-offset_right = 3216.0
-offset_bottom = 1844.0
+offset_left = 366.0
+offset_top = -319.0
+offset_right = 2264.0
+offset_bottom = 930.0
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("14_gavn6")
 

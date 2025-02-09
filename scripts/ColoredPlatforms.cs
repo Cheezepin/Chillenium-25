@@ -62,7 +62,7 @@ public partial class ColoredPlatforms : TileMapLayer
 				GlobalPosition = new Vector2(home.X, 10f*(float)Math.Sin((timer*speed)*20.0));
 				break;
 			case Global.ColorNames.Purple:
-				GlobalPosition = new Vector2(home.X + 10f*(float)Math.Sin((timer*speed)*20.0), home.Y);
+				// GlobalPosition = new Vector2(home.X + 10f*(float)Math.Sin((timer*speed)*20.0), home.Y);
 				break;
 			default:
 				break;
