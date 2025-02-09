@@ -52,7 +52,7 @@ public partial class TextTriggers : Node2D
 				case "SwitchTutorial":
 					if (!switchT)
 					{
-						tutorialLabel.Text = "[center]Use K and L to switch between colors![/center]";
+						tutorialLabel.Text = "[center]Use J and L to switch between colors![/center]";
 						tutorialPos = 182;
 						//switchT = true;
 					}
@@ -60,7 +60,7 @@ public partial class TextTriggers : Node2D
 				case "AttackTutorial":
 					if(!attack)
                     {
-						tutorialLabel.Text = "[center]Use J or jump to attack enemies of your color![/center]";
+						tutorialLabel.Text = "[center]Use K or jump to attack enemies of your color![/center]";
 						tutorialPos = 182;
 						//attack = true;
 					}

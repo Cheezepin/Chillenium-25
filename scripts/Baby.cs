@@ -28,6 +28,7 @@ public partial class Baby : AnimatedSprite2D
 				Play("eat");
 			}
 		} else {
+			Play("die");
 			velY += 800.0f*(float)delta;
 			Position += new Vector2(0, velY)*(float)delta;
 		}
