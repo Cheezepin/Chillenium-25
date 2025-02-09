@@ -7,7 +7,7 @@ public partial class Droplet : Enemy
 	[Export]public Global.ColorNames color;
 	private Random r;
 	private double phase;
-	private float terminalY = 400.0f;
+	private float terminalY = 1600.0f;
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 
@@ -36,6 +36,7 @@ public partial class Droplet : Enemy
 		} else {
 			GetNode<AnimatedSprite2D>("AnimatedSprite2D").SpeedScale = 1.0f;
 		}
+		if(cooldown > 0) targetVel = 0;
 		velocity.X = Mathf.MoveToward(velocity.X, targetVel, 1000.0f * (float)delta);
 		velocity.Y += gravity * (float)delta;
 

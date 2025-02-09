@@ -25,6 +25,7 @@ public partial class Enemy : AnimatableBody2D
 
 	protected double timer = 0;
 	protected Player player;
+	public double cooldown = 0;
 
 	public override void _Ready()
 	{
@@ -55,6 +56,11 @@ public partial class Enemy : AnimatableBody2D
 			s.SetShaderParameter("flash", true);
 			flashTimer -= delta;
 			if(flashTimer < 0) {flashTimer = 0; s.SetShaderParameter("flash", false);}
+		}
+		
+		if(cooldown > 0) {
+			cooldown -= delta;
+			if(cooldown < 0) {cooldown = 0;}
 		}
 
 		ApproachScale(delta);
