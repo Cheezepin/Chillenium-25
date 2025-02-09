@@ -17,16 +17,7 @@ public partial class RotateSlides : Control
 		switch(state) {
 			case 0:
 				if(currColor != Global.currColorID) {
-					int neg = (((currColor - 1) + 12) % 6);
-					int pos = (currColor + 1) % 6;
-					while(neg != Global.currColorID && pos != Global.currColorID) {
-						neg--;
-						pos++;
-						neg += 12;
-						neg %= 6;
-						pos %= 6;
-					}
-					if(neg == Global.currColorID) {
+					if(!Global.transitionLeft) {
 						state = 1;
 					} else {
 						state = 2;
