@@ -10,6 +10,7 @@ public partial class Intro : Node2D
 	private int introState = 0;
 	private double timer = 0;
 	private Player player;
+	[Export] public AudioStreamPlayer whistleSound;
 	public override void _Ready()
 	{
 		hand = GetNode<AnimatedSprite2D>("Hand");
@@ -39,6 +40,7 @@ public partial class Intro : Node2D
 				Global.AsymptoticApproach(ref handPos, new Vector2(home.X, handPos.Y), 5.5f*(float)delta);
 				if(timer >= 0.8) {
 					girl.Play("snatch");
+					whistleSound.Play();
 					introState++;
 				}
 				break;
