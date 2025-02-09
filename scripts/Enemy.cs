@@ -20,6 +20,7 @@ public partial class Enemy : AnimatableBody2D
 	[Export] public AudioStreamPlayer ding;
 	[Export] public AudioStreamPlayer hitSound;
 	private RayCast2D ray;
+	[Export] public AudioStream splatSound;
 
 	protected double timer = 0;
 	protected Player player;
@@ -87,6 +88,9 @@ public partial class Enemy : AnimatableBody2D
 		hitSound.Play();
 		health -= dmg;
 		if(health <= 0) {
+			AudioStreamPlayer splat = new() { Stream = splatSound, VolumeDb = -5  };
+			GetParent().AddChild(splat);
+			splat.Play();
 			QueueFree();
 		}
 	}

@@ -154,6 +154,7 @@ public partial class Player : CharacterBody2D
 				}
 				else
 				{
+					footstepSound.Stop();
 					if(IsOnFloor()) {sprite.Play("idle"); hasPurpleSpeed = false;}
 					if(!hasPurpleSpeed) velocity.X = Mathf.MoveToward(Velocity.X, 0, (float)(xFriction*delta));
 				}
