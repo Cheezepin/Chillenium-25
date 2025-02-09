@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=4 uid="uid://cx75o0oqspqql"]
+[gd_scene load_steps=48 format=4 uid="uid://cx75o0oqspqql"]
 
 [ext_resource type="Script" path="res://scripts/Level.cs" id="1_dmkto"]
 [ext_resource type="Texture2D" uid="uid://cbtnj0s7e3gv0" path="res://sprites/sky.png" id="2_gey6x"]
@@ -12,27 +12,20 @@
 [ext_resource type="Script" path="res://scripts/ColoredPlatforms.cs" id="9_uevfq"]
 [ext_resource type="Shader" path="res://shaders/color_platform.gdshader" id="10_mtd1h"]
 [ext_resource type="PackedScene" uid="uid://djsi2ionjyiqf" path="res://actors/Enemy.tscn" id="11_pists"]
-[ext_resource type="PackedScene" uid="uid://duam5f5qbghn7" path="res://actors/Card.tscn" id="13_q0uwx"]
+[ext_resource type="PackedScene" uid="uid://b4aqnmp3wx4t1" path="res://actors/Card.tscn" id="13_q0uwx"]
 [ext_resource type="Texture2D" uid="uid://ctj0qmqqsmiq3" path="res://sprites/orange_card.png" id="14_5gc7s"]
 [ext_resource type="Script" path="res://scripts/DeathFloor.cs" id="14_e33w6"]
-[ext_resource type="Script" path="res://scripts/DynamicMusic.cs" id="14_iud5m"]
 [ext_resource type="Texture2D" uid="uid://b71vu60fbs6vc" path="res://sprites/yellow_card.png" id="15_g3a2c"]
-[ext_resource type="AudioStream" uid="uid://cokd8sk37wbln" path="res://sounds/music/maingameplay1.ogg" id="15_kbpyu"]
 [ext_resource type="Script" path="res://scripts/Checkpoint.cs" id="15_qxhjv"]
-[ext_resource type="AudioStream" uid="uid://cq8hdjb4s4jey" path="res://sounds/music/maingameplay2.ogg" id="16_1tpcf"]
 [ext_resource type="Texture2D" uid="uid://bekp31i6wmh5" path="res://sprites/green_card.png" id="16_q3j1f"]
 [ext_resource type="Texture2D" uid="uid://dx6emxhk5cafs" path="res://sprites/blue_card.png" id="17_b42hd"]
-[ext_resource type="AudioStream" uid="uid://ca30ud811l5qg" path="res://sounds/music/maingameplay3.ogg" id="17_msvi8"]
 [ext_resource type="Texture2D" uid="uid://blkudepji16vm" path="res://sprites/purple_card.png" id="18_0ugmc"]
-[ext_resource type="AudioStream" uid="uid://c6di047wag7f8" path="res://sounds/music/maingameplay4.ogg" id="18_5h2xe"]
 [ext_resource type="Texture2D" uid="uid://bjfxw4ybw0dte" path="res://tilesets/Child's_Play_TileSet_Platform-02.png" id="19_5vwqj"]
-[ext_resource type="AudioStream" uid="uid://cfgrug1s3rf7k" path="res://sounds/music/maingameplay5.ogg" id="19_8fxjf"]
-[ext_resource type="AudioStream" uid="uid://dwwa1e32g0rbk" path="res://sounds/music/maingameplay6.ogg" id="20_mtavr"]
 [ext_resource type="Texture2D" uid="uid://hc7hkj01bg1b" path="res://tilesets/Child's_Play_TileSet_Castle_Bricks-03.png" id="20_qgckr"]
-[ext_resource type="AudioStream" uid="uid://dg75t5v3d6r4m" path="res://sounds/music/maingameplay7.ogg" id="21_waec8"]
 [ext_resource type="Texture2D" uid="uid://dbxolldm7hode" path="res://tilesets/Child's_Play_TileSet_Castle_Window-03.png" id="21_yufcp"]
 [ext_resource type="Texture2D" uid="uid://d4jkx06lf1gr7" path="res://sprites/stainedglass.png" id="22_i3ctk"]
 [ext_resource type="Script" path="res://scripts/DisperseTrigger.cs" id="22_sj1f2"]
+[ext_resource type="PackedScene" uid="uid://c2bu8c7go0jhx" path="res://global/DynamicMusic.tscn" id="26_dkwr1"]
 [ext_resource type="AudioStream" uid="uid://bfb8glcsmjg71" path="res://sounds/sfx/switch.ogg" id="30_vn31i"]
 [ext_resource type="AudioStream" uid="uid://bndcedipiuesl" path="res://sounds/sfx/chirp.ogg" id="31_w0pxm"]
 
@@ -501,37 +494,7 @@ scale = Vector2(0.25, 0.25)
 tile_map_data = PackedByteArray("AADe/+H/AgABAAAAAADe/+L/AgABAAEAAADe/+P/AgABAAIAAADe/+T/AgABAAMAAADf/+H/AgABAAAAAADf/+L/AgABAAEAAADf/+P/AgABAAIAAADf/+T/AgABAAMAAADg/+H/AwABAAAAAADg/+L/AwABAAEAAADg/+P/AwABAAIAAADg/+T/AwABAAMAAADh/+H/AwACAAAAAADh/+L/AwACAAEAAADh/+P/AwACAAIAAADh/+T/AwACAAMAAADi/+H/AwADAAAAAADi/+L/AwADAAEAAADi/+P/AwADAAIAAADi/+T/AwADAAMAAADj/+H/AgABAAAAAADj/+L/AgABAAEAAADj/+P/AgABAAIAAADj/+T/AgABAAMAAADk/+H/AwABAAAAAADk/+L/AwABAAEAAADk/+P/AwABAAIAAADk/+T/AwABAAMAAADl/+H/AwACAAAAAADl/+L/AwACAAEAAADl/+P/AwACAAIAAADl/+T/AwACAAMAAADm/+H/AwADAAAAAADm/+L/AwADAAEAAADm/+P/AwADAAIAAADm/+T/AwADAAMAAADn/+H/AgABAAAAAADn/+L/AgABAAEAAADn/+P/AgABAAIAAADn/+T/AgABAAMAAADo/+H/AwABAAAAAADo/+L/AwABAAEAAADo/+P/AwABAAIAAADo/+T/AwABAAMAAADp/+H/AwACAAAAAADp/+L/AwACAAEAAADp/+P/AwACAAIAAADp/+T/AwACAAMAAADq/+H/AwADAAAAAADq/+L/AwADAAEAAADq/+P/AwADAAIAAADq/+T/AwADAAMAAADr/+H/AgABAAAAAADr/+L/AgABAAEAAADr/+P/AgABAAIAAADr/+T/AgABAAMAAADs/+H/AwABAAAAAADs/+L/AwABAAEAAADs/+P/AwABAAIAAADs/+T/AwABAAMAAADt/+H/AwACAAAAAADt/+L/AwACAAEAAADt/+P/AwACAAIAAADt/+T/AwACAAMAAADu/+H/AwADAAAAAADu/+L/AwADAAEAAADu/+P/AwADAAIAAADu/+T/AwADAAMAAADv/+H/AgABAAAAAADv/+L/AgABAAEAAADv/+P/AgABAAIAAADv/+T/AgABAAMAAADw/+H/AwABAAAAAADw/+L/AwABAAEAAADw/+P/AwABAAIAAADw/+T/AwABAAMAAADx/+H/AwACAAAAAADx/+L/AwACAAEAAADx/+P/AwACAAIAAADx/+T/AwACAAMAAADy/+H/AwADAAAAAADy/+L/AwADAAEAAADy/+P/AwADAAIAAADy/+T/AwADAAMAAADz/+H/AgABAAAAAADz/+L/AgABAAEAAADz/+P/AgABAAIAAADz/+T/AgABAAMAAAD0/+H/AwABAAAAAAD0/+L/AwABAAEAAAD0/+P/AwABAAIAAAD0/+T/AwABAAMAAAD1/+H/AwACAAAAAAD1/+L/AwACAAEAAAD1/+P/AwACAAIAAAD1/+T/AwACAAMAAAD2/+H/AwADAAAAAAD2/+L/AwADAAEAAAD2/+P/AwADAAIAAAD2/+T/AwADAAMAAAD3/+H/AgABAAAAAAD3/+L/AgABAAEAAAD3/+P/AgABAAIAAAD3/+T/AgABAAMAAAD4/+H/AgABAAAAAAD4/+L/AgABAAEAAAD4/+P/AgABAAIAAAD4/+T/AgABAAMAAADe/93/AgABAAAAAADe/97/AgABAAEAAADe/9//AgABAAIAAADe/+D/AgABAAMAAADf/93/AgABAAAAAADf/97/AgABAAEAAADf/9//AgABAAIAAADf/+D/AgABAAMAAADg/93/AgABAAAAAADg/97/AgABAAEAAADg/9//AgABAAIAAADg/+D/AgABAAMAAADh/93/AgABAAAAAADh/97/AgABAAEAAADh/9//AgABAAIAAADh/+D/AgABAAMAAADi/93/AgABAAAAAADi/97/AgABAAEAAADi/9//AgABAAIAAADi/+D/AgABAAMAAADj/93/AgABAAAAAADj/97/AgABAAEAAADj/9//AgABAAIAAADj/+D/AgABAAMAAADk/93/AgABAAAAAADk/97/AgABAAEAAADk/9//AgABAAIAAADk/+D/AgABAAMAAADl/93/AgABAAAAAADl/97/AgABAAEAAADl/9//AgABAAIAAADl/+D/AgABAAMAAADm/93/AgABAAAAAADm/97/AgABAAEAAADm/9//AgABAAIAAADm/+D/AgABAAMAAADn/93/AgABAAAAAADn/97/AgABAAEAAADn/9//AgABAAIAAADn/+D/AgABAAMAAADo/93/AgABAAAAAADo/97/AgABAAEAAADo/9//AgABAAIAAADo/+D/AgABAAMAAADp/93/AgABAAAAAADp/97/AgABAAEAAADp/9//AgABAAIAAADp/+D/AgABAAMAAADq/93/AgABAAAAAADq/97/AgABAAEAAADq/9//AgABAAIAAADq/+D/AgABAAMAAADr/93/AgABAAAAAADr/97/AgABAAEAAADr/9//AgABAAIAAADr/+D/AgABAAMAAADs/93/AgABAAAAAADs/97/AgABAAEAAADs/9//AgABAAIAAADs/+D/AgABAAMAAADt/93/AgABAAAAAADt/97/AgABAAEAAADt/9//AgABAAIAAADt/+D/AgABAAMAAADu/93/AgABAAAAAADu/97/AgABAAEAAADu/9//AgABAAIAAADu/+D/AgABAAMAAADv/93/AgABAAAAAADv/97/AgABAAEAAADv/9//AgABAAIAAADv/+D/AgABAAMAAADw/93/AgABAAAAAADw/97/AgABAAEAAADw/9//AgABAAIAAADw/+D/AgABAAMAAADx/93/AgABAAAAAADx/97/AgABAAEAAADx/9//AgABAAIAAADx/+D/AgABAAMAAADy/93/AgABAAAAAADy/97/AgABAAEAAADy/9//AgABAAIAAADy/+D/AgABAAMAAADz/93/AgABAAAAAADz/97/AgABAAEAAADz/9//AgABAAIAAADz/+D/AgABAAMAAAD0/93/AgABAAAAAAD0/97/AgABAAEAAAD0/9//AgABAAIAAAD0/+D/AgABAAMAAAD1/93/AgABAAAAAAD1/97/AgABAAEAAAD1/9//AgABAAIAAAD1/+D/AgABAAMAAAD2/93/AgABAAAAAAD2/97/AgABAAEAAAD2/9//AgABAAIAAAD2/+D/AgABAAMAAAD3/93/AgABAAAAAAD3/97/AgABAAEAAAD3/9//AgABAAIAAAD3/+D/AgABAAMAAAD4/93/AgABAAAAAAD4/97/AgABAAEAAAD4/9//AgABAAIAAAD4/+D/AgABAAMAAAA=")
 tile_set = SubResource("TileSet_husks")
 
-[node name="DynamicMusic" type="Node" parent="." node_paths=PackedStringArray("musicTracks")]
-script = ExtResource("14_iud5m")
-musicTracks = [NodePath("Track1"), NodePath("Track2"), NodePath("Track3"), NodePath("Track4"), NodePath("Track5"), NodePath("Track6"), NodePath("Track7")]
-
-[node name="Track1" type="AudioStreamPlayer" parent="DynamicMusic"]
-stream = ExtResource("15_kbpyu")
-volume_db = -5.0
-
-[node name="Track2" type="AudioStreamPlayer" parent="DynamicMusic"]
-stream = ExtResource("16_1tpcf")
-volume_db = -16.0
-
-[node name="Track3" type="AudioStreamPlayer" parent="DynamicMusic"]
-stream = ExtResource("17_msvi8")
-volume_db = -18.515
-
-[node name="Track4" type="AudioStreamPlayer" parent="DynamicMusic"]
-stream = ExtResource("18_5h2xe")
-volume_db = -29.583
-
-[node name="Track5" type="AudioStreamPlayer" parent="DynamicMusic"]
-stream = ExtResource("19_8fxjf")
-volume_db = -14.0
-
-[node name="Track6" type="AudioStreamPlayer" parent="DynamicMusic"]
-stream = ExtResource("20_mtavr")
-volume_db = -15.847
-
-[node name="Track7" type="AudioStreamPlayer" parent="DynamicMusic"]
-stream = ExtResource("21_waec8")
-volume_db = -36.612
+[node name="DynamicMusic" parent="." instance=ExtResource("26_dkwr1")]
 
 [node name="Switch" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("30_vn31i")
