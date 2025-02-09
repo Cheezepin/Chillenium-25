@@ -30,15 +30,15 @@ public partial class Card : Sprite2D
 			Global.transitioningColor = true;
 			Global.transitionLeft = false;
 			Global.switchSound.Play();
-            AudioStreamPlayer get = new()
-            {
-                Stream = getSound,
+			AudioStreamPlayer get = new()
+			{
+				Stream = getSound,
 				VolumeDb = -16,
 				PitchScale = 1.2f
-            };
+			};
 			get.Finished += () => { get.QueueFree(); };
 			GetParent().AddChild(get);
-            get.Play();
+			get.Play();
 			GD.Print((int)color);
 			QueueFree();
 		}
