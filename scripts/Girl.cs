@@ -19,6 +19,8 @@ public partial class Girl : AnimatedSprite2D
 		pos.Y += velY*(float)delta;
 		if(pos.Y > 0.0f) {
 			pos.Y = 0.0f;
+			player.sprite.Play("catch2");
+			QueueFree();
 		}
 		pos.X = player.GlobalPosition.X;
 		GlobalPosition = pos;

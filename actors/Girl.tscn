@@ -1,20 +1,22 @@
 [gd_scene load_steps=4 format=3 uid="uid://cqfd54o78yib"]
 
-[ext_resource type="Texture2D" uid="uid://bi1qgsud2oci4" path="res://sprites/Intro_Sprites/Standing003.png" id="1_kyue5"]
+[ext_resource type="Texture2D" uid="uid://8jpqh876fxk" path="res://sprites/Ending_Sprites/Falling_Girl.png" id="1_6sttx"]
 [ext_resource type="Script" path="res://scripts/Girl.cs" id="2_d0lu6"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_370gw"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_kyue5")
+"texture": ExtResource("1_6sttx")
 }],
 "loop": true,
-"name": &"default",
+"name": &"fall",
 "speed": 5.0
 }]
 
 [node name="Girl" type="AnimatedSprite2D"]
 scale = Vector2(0.188, 0.188)
 sprite_frames = SubResource("SpriteFrames_370gw")
+animation = &"fall"
+autoplay = "fall"
 script = ExtResource("2_d0lu6")

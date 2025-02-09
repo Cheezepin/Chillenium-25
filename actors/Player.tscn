@@ -64,7 +64,7 @@ use_parent_material = true
 position = Vector2(9, -80)
 scale = Vector2(0.1, 0.1)
 sprite_frames = ExtResource("6_nupav")
-animation = &"faceplant"
+animation = &"catch2"
 
 [node name="Footbox" type="Area2D" parent="."]
 script = ExtResource("6_yyka5")

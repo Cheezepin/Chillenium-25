@@ -446,7 +446,7 @@ sources/1 = SubResource("TileSetAtlasSource_dwk3h")
 sources/2 = SubResource("TileSetAtlasSource_6p0t1")
 sources/3 = SubResource("TileSetAtlasSource_pwg3w")
 
-[node name="Test" type="Node2D"]
+[node name="SkyLevel" type="Node2D"]
 script = ExtResource("1_dmkto")
 
 [node name="Camera" type="Camera2D" parent="."]
@@ -484,7 +484,7 @@ tile_map_data = PackedByteArray("AAD+/wUAAQABAAAAAAD+/wYAAQABAAEAAAD+/wcAAQABAAI
 tile_set = ExtResource("2_i0ee6")
 
 [node name="Player" parent="." instance=ExtResource("4_xeiba")]
-position = Vector2(-4526, -4177)
+position = Vector2(-4503, -4133)
 floor_max_angle = 1.39626
 floor_snap_length = 32.0
 

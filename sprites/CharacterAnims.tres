@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=16 format=3 uid="uid://cldk1vdqkr8a8"]
+[gd_resource type="SpriteFrames" load_steps=18 format=3 uid="uid://cldk1vdqkr8a8"]
 
 [ext_resource type="Texture2D" uid="uid://duo51flgrf264" path="res://sprites/CharacterAttack/attack_0001.png" id="1_5uwtj"]
 [ext_resource type="Texture2D" uid="uid://ewwn1yhybsf5" path="res://sprites/CharacterRun/1.png" id="1_jqyab"]
@@ -9,9 +9,11 @@
 [ext_resource type="Texture2D" uid="uid://djrjqyd0p63nb" path="res://sprites/CharacterAttack/attack_0003.png" id="3_meu20"]
 [ext_resource type="Texture2D" uid="uid://dtx1l1vvxlpnu" path="res://sprites/CharacterRun/3.png" id="3_o3fap"]
 [ext_resource type="Texture2D" uid="uid://bxqug3s8hveam" path="res://sprites/CharacterJump/jump_0003.png" id="3_vgtv4"]
+[ext_resource type="Texture2D" uid="uid://cia2v2tvs425a" path="res://sprites/Ending_Sprites/Main_Holding.png" id="4_7a7m7"]
 [ext_resource type="Texture2D" uid="uid://b7kktyjje7770" path="res://sprites/CharacterJump/jump_0004.png" id="4_glexl"]
 [ext_resource type="Texture2D" uid="uid://7jputu6wi3tg" path="res://sprites/CharacterRun/4.png" id="4_icn1i"]
 [ext_resource type="Texture2D" uid="uid://sgi2lpr4psnu" path="res://sprites/Character_Down0.png" id="4_xcuvu"]
+[ext_resource type="Texture2D" uid="uid://cmmnimlb6v270" path="res://sprites/Ending_Sprites/Main_Catch_Woman.png" id="5_3ir57"]
 [ext_resource type="Texture2D" uid="uid://irt2k6bsgiwg" path="res://sprites/CharacterRun/5.png" id="5_o26ne"]
 [ext_resource type="Texture2D" uid="uid://b78tpwew3dyj8" path="res://sprites/CharacterDown.png" id="5_swwig"]
 [ext_resource type="Texture2D" uid="uid://k3rbh364b136" path="res://sprites/CharacterRun/6.png" id="6_4qkq0"]
@@ -34,6 +36,22 @@ animations = [{
 "loop": false,
 "name": &"attack",
 "speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_7a7m7")
+}],
+"loop": true,
+"name": &"catch",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_3ir57")
+}],
+"loop": true,
+"name": &"catch2",
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,

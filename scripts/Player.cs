@@ -47,7 +47,7 @@ public partial class Player : CharacterBody2D
 
 	private ColoredPlatforms currPlatform = null;
 
-	private AnimatedSprite2D sprite;
+	public AnimatedSprite2D sprite;
 	private bool hasPurpleSpeed = false;
 
 	[Export]public PackedScene flyCardSpawner;
@@ -191,6 +191,7 @@ public partial class Player : CharacterBody2D
 				if(actionTimer > 0.4) {
 					if(killedBaby) {
 						ChangeAction(Action.End);
+						sprite.Play("catch");
 					} else {
 						ChangeAction(Action.Move);
 					}
@@ -226,7 +227,10 @@ public partial class Player : CharacterBody2D
 				break;
 			case Action.End:
 				velocity.X = Mathf.MoveToward(velocity.X, 0, (float)(xFriction*delta));
-				sprite.Play("idle");
+				if(actionTimer > 3.0 && !Global.endScreenTriggered) {
+					splatSound.Play();
+					Global.endScreenTriggered = true;
+				}
 				break;
 		}
 
@@ -234,11 +238,11 @@ public partial class Player : CharacterBody2D
 			GlobalPosition += currPlatform.velocity;
 		}
 
-		float dLR = Input.GetAxis("debug_left", "debug_right");
-		float dUD = Input.GetAxis("debug_up", "debug_down");
-		if(dLR != 0 || dUD != 0) {
-			velocity = new Vector2(dLR, dUD)*150000.0f*(float)delta;
-		}
+		// float dLR = Input.GetAxis("debug_left", "debug_right");
+		// float dUD = Input.GetAxis("debug_up", "debug_down");
+		// if(dLR != 0 || dUD != 0) {
+			// velocity = new Vector2(dLR, dUD)*150000.0f*(float)delta;
+		// }
 
 		Velocity = velocity;
 		MoveAndSlide();
