@@ -10,9 +10,10 @@ config_version=5
 
 [application]
 
-config/name="Chillenium-25"
+config/name="Child's Play"
 run/main_scene="res://global/MainGame.tscn"
 config/features=PackedStringArray("4.3", "C#", "Forward Plus")
+config/icon="res://ui/game/Child's_Play_Health-05.png"
 
 [autoload]
 
