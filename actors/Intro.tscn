@@ -1,0 +1,58 @@
+[gd_scene load_steps=9 format=3 uid="uid://brhxin3wl51k"]
+
+[ext_resource type="Texture2D" uid="uid://bniwd6jye0q2q" path="res://sprites/Intro_Sprites/BabyHand.png" id="1_g5s4n"]
+[ext_resource type="Script" path="res://scripts/Intro.cs" id="1_niuiv"]
+[ext_resource type="Texture2D" uid="uid://b7av6alhdw3aa" path="res://sprites/Intro_Sprites/Standing002.png" id="2_jgykb"]
+[ext_resource type="Texture2D" uid="uid://dpq6jniaan2r5" path="res://sprites/Intro_Sprites/Standing006.png" id="3_tk1y5"]
+[ext_resource type="Texture2D" uid="uid://bi1qgsud2oci4" path="res://sprites/Intro_Sprites/Standing003.png" id="4_shvrt"]
+[ext_resource type="Texture2D" uid="uid://b11ksl561rg3n" path="res://sprites/Intro_Sprites/Standing004.png" id="5_yhsro"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_iwvr2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_g5s4n")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wbpqe"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_jgykb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_tk1y5")
+}],
+"loop": false,
+"name": &"snatch",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_shvrt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_yhsro")
+}],
+"loop": true,
+"name": &"wave",
+"speed": 5.0
+}]
+
+[node name="Intro" type="Node2D"]
+script = ExtResource("1_niuiv")
+
+[node name="Hand" type="AnimatedSprite2D" parent="."]
+position = Vector2(730, -175)
+sprite_frames = SubResource("SpriteFrames_iwvr2")
+autoplay = "default"
+
+[node name="Girl" type="AnimatedSprite2D" parent="."]
+position = Vector2(686, -148)
+sprite_frames = SubResource("SpriteFrames_wbpqe")
+animation = &"snatch"
+autoplay = "wave"

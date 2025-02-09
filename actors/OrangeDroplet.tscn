@@ -11,6 +11,7 @@
 [ext_resource type="Script" path="res://scripts/Hurtbox.cs" id="8_3ejw8"]
 [ext_resource type="Script" path="res://scripts/Jumpbox.cs" id="9_woy6j"]
 [ext_resource type="Script" path="res://scripts/Hitbox.cs" id="10_2fyjm"]
+[ext_resource type="Shape2D" uid="uid://d2eb8k1bxprf8" path="res://actors/hurtbox_droplet.tres" id="10_hk0df"]
 [ext_resource type="AudioStream" uid="uid://c8sst7b1o3sar" path="res://sounds/sfx/ding.ogg" id="11_l6vg7"]
 [ext_resource type="AudioStream" uid="uid://cmuiqv54frdno" path="res://sounds/sfx/hit.ogg" id="12_viw20"]
 [ext_resource type="PackedScene" uid="uid://dlmo8xhttnu2s" path="res://global/ExplosionPuff.tscn" id="14_va1s3"]
@@ -47,9 +48,6 @@ animations = [{
 radius = 18.0
 height = 36.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_o33fw"]
-size = Vector2(70.5, 79)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_esgsk"]
 size = Vector2(70, 27)
 
@@ -83,8 +81,8 @@ shape = SubResource("CapsuleShape2D_d4jjj")
 script = ExtResource("8_3ejw8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
-position = Vector2(-1, -42)
-shape = SubResource("RectangleShape2D_o33fw")
+position = Vector2(0.5, -42)
+shape = ExtResource("10_hk0df")
 
 [node name="Jumpbox" type="Area2D" parent="."]
 script = ExtResource("9_woy6j")

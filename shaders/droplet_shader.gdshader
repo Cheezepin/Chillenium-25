@@ -10,7 +10,7 @@ void vertex() {
 void fragment() {
 	// Called for every pixel the material is visible on.
 	if(flash && COLOR.a > 0.0) COLOR = vec4(1,1,1,1);
-	if(trans && (COLOR.r > 0.05 || COLOR.g > 0.05 || COLOR.b > 0.05)) {
+	if(trans/* && (COLOR.r > 0.05 || COLOR.g > 0.05 || COLOR.b > 0.05)*/) {
 		COLOR *= vec4(1,1,1,0.25);
 	}
 }

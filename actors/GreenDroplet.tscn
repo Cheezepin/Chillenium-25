@@ -1,6 +1,5 @@
-[gd_scene load_steps=21 format=3 uid="uid://buftnxmpesmkc"]
+[gd_scene load_steps=21 format=3 uid="uid://bqtj3u7qtdwj4"]
 
-[ext_resource type="Shader" path="res://shaders/droplet_shader.gdshader" id="1_ckf5k"]
 [ext_resource type="Script" path="res://scripts/Droplet.cs" id="2_uev7n"]
 [ext_resource type="Texture2D" uid="uid://bpcvnrv548hxs" path="res://sprites/Enemies/green_0002.png" id="3_jo533"]
 [ext_resource type="AudioStream" uid="uid://cn1t4hifmlndp" path="res://sounds/sfx/splat.ogg" id="3_kfm6g"]
@@ -13,10 +12,34 @@
 [ext_resource type="Script" path="res://scripts/Hitbox.cs" id="10_8eia4"]
 [ext_resource type="AudioStream" uid="uid://c8sst7b1o3sar" path="res://sounds/sfx/ding.ogg" id="11_j4ub6"]
 [ext_resource type="AudioStream" uid="uid://cmuiqv54frdno" path="res://sounds/sfx/hit.ogg" id="12_tt0h2"]
-[ext_resource type="PackedScene" uid="uid://dlmo8xhttnu2s" path="res://global/ExplosionPuff.tscn" id="14_6kosj"]
+[ext_resource type="PackedScene" path="res://global/ExplosionPuff.tscn" id="14_6kosj"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_trgev"]
-shader = ExtResource("1_ckf5k")
+[sub_resource type="Shader" id="Shader_f6p4k"]
+code = "shader_type canvas_item;
+
+uniform bool flash;
+uniform bool trans;
+
+void vertex() {
+	// Called for every vertex the material is visible on.
+}
+
+void fragment() {
+	// Called for every pixel the material is visible on.
+	if(flash && COLOR.a > 0.0) COLOR = vec4(1,1,1,1);
+	if(trans/* && (COLOR.r > 0.05 || COLOR.g > 0.05 || COLOR.b > 0.05)*/) {
+		COLOR *= vec4(1,1,1,0.25);
+	}
+}
+
+//void light() {
+	// Called for every pixel for every light affecting the CanvasItem.
+	// Uncomment to replace the default light processing function with this one.
+//}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_onmhw"]
+shader = SubResource("Shader_f6p4k")
 shader_parameter/flash = false
 shader_parameter/trans = true
 
@@ -57,7 +80,7 @@ size = Vector2(70, 27)
 size = Vector2(53, 47)
 
 [node name="GreenDroplet" type="AnimatableBody2D" node_paths=PackedStringArray("ding", "hitSound", "explosion")]
-material = SubResource("ShaderMaterial_trgev")
+material = SubResource("ShaderMaterial_onmhw")
 collision_layer = 2
 collision_mask = 4095
 sync_to_physics = false
