@@ -39,6 +39,7 @@ public partial class Player : CharacterBody2D
 		Faceplant,
 		Die,
 		Intro,
+		End,
 	};
 	
 	private Action action;
@@ -51,6 +52,8 @@ public partial class Player : CharacterBody2D
 
 	[Export]public PackedScene flyCardSpawner;
 	private bool hasSeenIntro = false;
+
+	public bool killedBaby = false;
 	public override void _Ready()
 	{
 		s = (ShaderMaterial)Material;
@@ -186,7 +189,11 @@ public partial class Player : CharacterBody2D
 					attackSound.Play();
 				}
 				if(actionTimer > 0.4) {
-					ChangeAction(Action.Move);
+					if(killedBaby) {
+						ChangeAction(Action.End);
+					} else {
+						ChangeAction(Action.Move);
+					}
 					hitbox.Disabled = true;
 				}
 				break;
@@ -216,6 +223,10 @@ public partial class Player : CharacterBody2D
 				velocity.X = Mathf.MoveToward(velocity.X, 0, (float)(xFriction*delta));
 				sprite.Play("idle");
 				if(actionTimer > 1.5) ChangeAction(Action.Move);
+				break;
+			case Action.End:
+				velocity.X = Mathf.MoveToward(velocity.X, 0, (float)(xFriction*delta));
+				sprite.Play("idle");
 				break;
 		}
 
