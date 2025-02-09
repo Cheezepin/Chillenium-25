@@ -26,6 +26,7 @@ public partial class Player : CharacterBody2D
 	[Export] public AudioStreamPlayer slideSound;
 	[Export] public AudioStreamPlayer attackSound;
 	[Export] public AudioStreamPlayer splatSound;
+	[Export] public AudioStreamPlayer springSound;
 
 	private CollisionShape2D hitbox;
 
@@ -244,8 +245,16 @@ public partial class Player : CharacterBody2D
 		if(body is ColoredPlatforms) {
 			ColoredPlatforms plat = (ColoredPlatforms)body;
 			currPlatform = plat;
-			if(plat.targetColor == Global.ColorNames.Red) Velocity = new Vector2(Velocity.X, RedBounceVelocity);
-			if(plat.targetColor == Global.ColorNames.Blue) Velocity = new Vector2(Velocity.X, BlueBounceVelocity);
+			if (plat.targetColor == Global.ColorNames.Red)
+			{
+				Velocity = new Vector2(Velocity.X, RedBounceVelocity);
+				springSound.Play();
+			}
+			if (plat.targetColor == Global.ColorNames.Blue)
+			{
+				Velocity = new Vector2(Velocity.X, BlueBounceVelocity);
+				springSound.Play();
+			}
 		}
 	}
 
