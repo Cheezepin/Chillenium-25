@@ -7,7 +7,7 @@ public partial class Intro : Node2D
 	private AnimatedSprite2D hand;
 	private AnimatedSprite2D girl;
 	private Vector2 home;
-	private int state = 0;
+	private int introState = 0;
 	private double timer = 0;
 	private Player player;
 	public override void _Ready()
@@ -15,7 +15,7 @@ public partial class Intro : Node2D
 		hand = GetNode<AnimatedSprite2D>("Hand");
 		girl = GetNode<AnimatedSprite2D>("Girl");
 		home = hand.Position;
-		hand.Position += new Vector2(500.0f, 0.0f);
+		hand.Position += new Vector2(5000.0f, 0.0f);
 		player = ((Level)Global.currentLevel).player;
 		girl.Show();
 		hand.Show();
@@ -24,26 +24,35 @@ public partial class Intro : Node2D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		switch(state) {
+		player = ((Level)Global.currentLevel).player;
+		GD.Print(player.GlobalPosition.X);
+		Vector2 handPos = hand.Position;
+		Vector2 girlPos = girl.Position;
+		switch(introState) {
 			case 0:
-				if(player.GlobalPosition.X > -600) {
-					state++;
+				if(player.GlobalPosition.X > -600.0) {
+					introState++;
 					timer = 0;
 				}
 				break;
 			case 1:
-				hand.Position += new Vector2(-500.0f*(float)delta, 0.0f);
+				Global.AsymptoticApproach(ref handPos, new Vector2(home.X, handPos.Y), 7.5f*(float)delta);
 				if(timer >= 0.8) {
 					girl.Play("snatch");
-					state++;
+					introState++;
 				}
 				break;
 			case 2:
+				Global.AsymptoticApproach(ref handPos, new Vector2(home.X, handPos.Y), 7.5f*(float)delta);
 				if(timer >= 1.0) {
 					hand.Hide();
-					girl.Position += new Vector2(500.0f*(float)delta, 0.0f);
+					Global.AsymptoticApproach(ref girlPos, new Vector2(home.X + 3000.0f, girlPos.Y), 1.5f*(float)delta);
 				}
+				if(timer >= 10.0) {Hide(); QueueFree();}
 				break;
 		}
+		hand.Position = handPos;
+		girl.Position = girlPos;
+		timer += delta;
 	}
 }
