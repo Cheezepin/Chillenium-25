@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://c8u3f54nsbp01"]
+[gd_scene load_steps=10 format=3 uid="uid://brhxin3wl51k"]
 
 [ext_resource type="Texture2D" uid="uid://bniwd6jye0q2q" path="res://sprites/Intro_Sprites/BabyHand.png" id="1_g5s4n"]
 [ext_resource type="Script" path="res://scripts/Intro.cs" id="1_niuiv"]
@@ -44,9 +44,8 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Intro" type="Node2D" node_paths=PackedStringArray("whistleSound")]
+[node name="Intro" type="Node2D"]
 script = ExtResource("1_niuiv")
-whistleSound = NodePath("Whistle")
 
 [node name="Hand" type="AnimatedSprite2D" parent="."]
 position = Vector2(730, -250)

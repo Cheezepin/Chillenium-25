@@ -33,7 +33,7 @@ public partial class Camera : Camera2D
 		}
 		Global.AsymptoticApproach(ref position, intendedPos, 12.5f*(float)delta);
 		if(position.X > 25000f) {position.X = 25000f; 
-		if(!warped) {Global.transitions.ChangeLevel("Test"); warped = true;}
+		if(!warped) {Global.transitions.ChangeLevel("BabyLevel"); warped = true;}
 		}
 		GlobalPosition = position; //wtf
 		// GlobalPosition = intendedPos;

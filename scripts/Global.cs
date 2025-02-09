@@ -69,9 +69,9 @@ public partial class Global : Node
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		if(Input.IsActionJustPressed("debug")) {
-			transitions.ExitToMainMenu();
-		}
+		// if(Input.IsActionJustPressed("debug")) {
+		// 	transitions.ExitToMainMenu();
+		// }
 
 		// if(Input.IsActionJustPressed("move_left")) {
 		// 	currColor = Color.Color8(255, 0, 0, 255);

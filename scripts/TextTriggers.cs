@@ -19,7 +19,7 @@ public partial class TextTriggers : Node2D
 	}
 
 	RichTextLabel tutorialLabel;
-	int tutorialPos = -150;
+	int tutorialPos = -250;
 
 	bool movement = false;
 	bool jump = false;
@@ -44,7 +44,7 @@ public partial class TextTriggers : Node2D
 				case "JumpTutorial":
 					if (!jump)
 					{
-						tutorialLabel.Text = "[center]Use W or k to jump![/center]";
+						tutorialLabel.Text = "[center]Use Space or K to jump![/center]";
 						tutorialPos = 182;
 						//jump = true;
 					}
