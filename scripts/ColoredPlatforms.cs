@@ -10,6 +10,8 @@ public partial class ColoredPlatforms : TileMapLayer
 
 	Vector2 home;
 	double timer = 0;
+	[Export]double phase = 0;
+	[Export]double speed = 1.0;
 
 	public Vector2 velocity;
 	
@@ -40,15 +42,15 @@ public partial class ColoredPlatforms : TileMapLayer
 	{
 		switch(targetColor) {
 			case Global.ColorNames.Red:
-				GlobalPosition = new Vector2(10f*(float)Math.Sin(timer*20.0), home.Y);
+				GlobalPosition = new Vector2(10f*(float)Math.Sin((timer*speed)*20.0), home.Y);
 				break;
 			case Global.ColorNames.Orange:
-				float yVel = (timer % 2.0) < 1.0 ? 200.0f : -200.0f;
+				float yVel = (((timer*speed) + phase) % 2.0) < 1.0 ? 200.0f : -200.0f;
 				velocity = new Vector2(0, yVel)*(float)delta;
 				GlobalPosition += velocity;
 				break;
 			case Global.ColorNames.Yellow:
-				float xVel = (timer % 2.0) < 1.0 ? 200.0f : -200.0f;
+				float xVel = (((timer*speed) + phase) % 2.0) < 1.0 ? 200.0f : -200.0f;
 				velocity = new Vector2(xVel, 0)*(float)delta;
 				GlobalPosition += velocity;
 				break;
@@ -56,10 +58,10 @@ public partial class ColoredPlatforms : TileMapLayer
 				GlobalRotation += (float)delta;
 				break;
 			case Global.ColorNames.Blue:
-				GlobalPosition = new Vector2(home.X, 10f*(float)Math.Sin(timer*20.0));
+				GlobalPosition = new Vector2(home.X, 10f*(float)Math.Sin((timer*speed)*20.0));
 				break;
 			case Global.ColorNames.Purple:
-				GlobalPosition = new Vector2(home.X + 10f*(float)Math.Sin(timer*20.0), home.Y);
+				GlobalPosition = new Vector2(home.X + 10f*(float)Math.Sin((timer*speed)*20.0), home.Y);
 				break;
 			default:
 				break;
