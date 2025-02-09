@@ -29,11 +29,13 @@ public partial class UICard : Control
 
 		switch(id) {
 			case 0:
+				if(totalColors < 1) {child.Hide(); return;}
+				child.Show();
 				child.Modulate = Global.colors[parent.currColor];
 				break;
 			case 1:
 			case -1:
-				if(totalColors < 2) {child.Hide();}
+				if(totalColors < 2) {child.Hide(); return;}
 				child.Show();
 				val =  id > 0 ? 1 : -1;
 				checkID = (parent.currColor + val + 12) % 6;
@@ -46,7 +48,7 @@ public partial class UICard : Control
 				break;
 			case 2:
 			case -2:
-				if(totalColors < 2) {child.Hide();}
+				if(totalColors < 2) {child.Hide(); return;}
 				child.Show();
 				val =  id > 0 ? 1 : -1;
 				checkID = (parent.currColor + val + 12) % 6;
@@ -60,7 +62,11 @@ public partial class UICard : Control
 					checkID += val;
 					checkID += 12;
 					checkID %= 6;
-				}}
+				}} else {
+					checkID += val;
+					checkID += 12;
+					checkID %= 6;
+				}
 				child.Modulate = Global.colors[checkID];
 				break;
 		}

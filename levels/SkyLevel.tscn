@@ -28,7 +28,7 @@
 [ext_resource type="Texture2D" uid="uid://dbxolldm7hode" path="res://tilesets/Child's_Play_TileSet_Castle_Window-03.png" id="21_yufcp"]
 [ext_resource type="Texture2D" uid="uid://d4jkx06lf1gr7" path="res://sprites/stainedglass.png" id="22_i3ctk"]
 [ext_resource type="Script" path="res://scripts/DisperseTrigger.cs" id="22_sj1f2"]
-[ext_resource type="PackedScene" path="res://global/DynamicMusic.tscn" id="26_dkwr1"]
+[ext_resource type="PackedScene" uid="uid://c2bu8c7go0jhx" path="res://global/DynamicMusic.tscn" id="26_dkwr1"]
 [ext_resource type="PackedScene" uid="uid://vjjvrv40250f" path="res://actors/RedDroplet.tscn" id="26_si5v2"]
 [ext_resource type="PackedScene" uid="uid://bqtj3u7qtdwj4" path="res://actors/GreenDroplet.tscn" id="27_uwww5"]
 [ext_resource type="PackedScene" uid="uid://ch75sdvgpnjxy" path="res://actors/OrangeDroplet.tscn" id="27_x0xjj"]
@@ -759,7 +759,6 @@ tile_map_data = PackedByteArray("AAD+////AAAAAAAAAAD/////AAABAAAAAAAAAP//AAABAAA
 tile_set = ExtResource("8_oxa15")
 script = ExtResource("9_uevfq")
 targetColor = 1
-phase = 1.0
 
 [node name="OrangePlatform2" type="TileMapLayer" parent="Platforms/OrangePlatforms"]
 material = SubResource("ShaderMaterial_21bru")
