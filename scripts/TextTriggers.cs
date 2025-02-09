@@ -60,7 +60,7 @@ public partial class TextTriggers : Node2D
 				case "AttackTutorial":
 					if(!attack)
                     {
-						tutorialLabel.Text = "[center]Use J or jump on enemies to attack enemies of your color![/center]";
+						tutorialLabel.Text = "[center]Use J or jump to attack enemies of your color![/center]";
 						tutorialPos = 182;
 						//attack = true;
 					}

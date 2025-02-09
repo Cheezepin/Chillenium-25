@@ -149,8 +149,8 @@ size = Vector2(586, 378)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_enoit"]
 size = Vector2(924, 514)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_3nqi7"]
-size = Vector2(871, 378)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dug12"]
+size = Vector2(293, 330)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xbl7u"]
 size = Vector2(251, 145)
@@ -514,11 +514,11 @@ position = Vector2(315, -50)
 shape = SubResource("RectangleShape2D_enoit")
 
 [node name="AttackTutorial" type="Area2D" parent="TextTriggers"]
-position = Vector2(-1844, -3625)
+position = Vector2(-1869, 865)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TextTriggers/AttackTutorial"]
-position = Vector2(250.5, -47)
-shape = SubResource("RectangleShape2D_3nqi7")
+position = Vector2(-38.5, -23)
+shape = SubResource("RectangleShape2D_dug12")
 
 [node name="SwitchTutorial" type="Area2D" parent="TextTriggers"]
 position = Vector2(3226, 816)
