@@ -19,6 +19,7 @@ public partial class DynamicMusic : Node
 	}
 
 	public bool startedPlaying = false;
+	private double timer = 0;
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
@@ -31,9 +32,12 @@ public partial class DynamicMusic : Node
 						+ ((Global.colorsUnlocked >> 5) & 1);
 
 		if(!startedPlaying && Global.currBW) {
-			startedPlaying = true;
-			for(int i = 0; i < musicTracks.Length; i++)
-			{musicTracks[i].Play();}
+			timer += delta;
+			if(timer >= 3.0) {
+				startedPlaying = true;
+				for(int i = 0; i < musicTracks.Length; i++)
+				{musicTracks[i].Play();}
+			}
 		} 
 
 		for(int i = 0; i < musicTracks.Length; i++)

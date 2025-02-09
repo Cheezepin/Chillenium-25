@@ -1,9 +1,10 @@
-[gd_scene load_steps=48 format=4 uid="uid://cx75o0oqspqql"]
+[gd_scene load_steps=49 format=4 uid="uid://cx75o0oqspqql"]
 
 [ext_resource type="Script" path="res://scripts/Level.cs" id="1_dmkto"]
-[ext_resource type="Texture2D" uid="uid://cbtnj0s7e3gv0" path="res://sprites/sky.png" id="2_gey6x"]
 [ext_resource type="TileSet" uid="uid://ci51cqdpqm4y5" path="res://tilesets/SkyTiles.tres" id="2_i0ee6"]
+[ext_resource type="Texture2D" uid="uid://cqn30tgiwwav6" path="res://sprites/Background/Child's_Play_Sky-10.png" id="2_xq8sx"]
 [ext_resource type="Script" path="res://scripts/Camera.cs" id="3_arpdf"]
+[ext_resource type="Texture2D" uid="uid://p76d72onkth1" path="res://sprites/Background/cloudlayer1.png" id="3_mi0d7"]
 [ext_resource type="PackedScene" uid="uid://2m60ku0tayym" path="res://actors/Player.tscn" id="4_xeiba"]
 [ext_resource type="Script" path="res://scripts/ui/PostProcessing.cs" id="5_j8p5i"]
 [ext_resource type="Shader" path="res://shaders/color.gdshader" id="6_qhkaq"]
@@ -12,7 +13,7 @@
 [ext_resource type="Script" path="res://scripts/ColoredPlatforms.cs" id="9_uevfq"]
 [ext_resource type="Shader" path="res://shaders/color_platform.gdshader" id="10_mtd1h"]
 [ext_resource type="PackedScene" uid="uid://djsi2ionjyiqf" path="res://actors/Enemy.tscn" id="11_pists"]
-[ext_resource type="PackedScene" uid="uid://b4aqnmp3wx4t1" path="res://actors/Card.tscn" id="13_q0uwx"]
+[ext_resource type="PackedScene" uid="uid://duam5f5qbghn7" path="res://actors/Card.tscn" id="13_q0uwx"]
 [ext_resource type="Texture2D" uid="uid://ctj0qmqqsmiq3" path="res://sprites/orange_card.png" id="14_5gc7s"]
 [ext_resource type="Script" path="res://scripts/DeathFloor.cs" id="14_e33w6"]
 [ext_resource type="Texture2D" uid="uid://b71vu60fbs6vc" path="res://sprites/yellow_card.png" id="15_g3a2c"]
@@ -25,7 +26,7 @@
 [ext_resource type="Texture2D" uid="uid://dbxolldm7hode" path="res://tilesets/Child's_Play_TileSet_Castle_Window-03.png" id="21_yufcp"]
 [ext_resource type="Texture2D" uid="uid://d4jkx06lf1gr7" path="res://sprites/stainedglass.png" id="22_i3ctk"]
 [ext_resource type="Script" path="res://scripts/DisperseTrigger.cs" id="22_sj1f2"]
-[ext_resource type="PackedScene" uid="uid://c2bu8c7go0jhx" path="res://global/DynamicMusic.tscn" id="26_dkwr1"]
+[ext_resource type="PackedScene" path="res://global/DynamicMusic.tscn" id="26_dkwr1"]
 [ext_resource type="AudioStream" uid="uid://bfb8glcsmjg71" path="res://sounds/sfx/switch.ogg" id="30_vn31i"]
 [ext_resource type="AudioStream" uid="uid://bndcedipiuesl" path="res://sounds/sfx/chirp.ogg" id="31_w0pxm"]
 
@@ -267,17 +268,27 @@ sources/3 = SubResource("TileSetAtlasSource_pwg3w")
 [node name="Test" type="Node2D"]
 script = ExtResource("1_dmkto")
 
-[node name="BG" type="CanvasLayer" parent="."]
+[node name="Parallax2D" type="Parallax2D" parent="."]
+scroll_scale = Vector2(0, 0)
+repeat_times = 999
 
-[node name="ParallaxBackground" type="ParallaxBackground" parent="BG"]
-
-[node name="Sprite2D" type="Sprite2D" parent="BG/ParallaxBackground"]
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D"]
+z_index = -5
 position = Vector2(960, 540)
-scale = Vector2(1.25, 1.25)
-texture = ExtResource("2_gey6x")
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_xq8sx")
 
-[node name="Parallax2D" type="Parallax2D" parent="BG"]
-scroll_offset = Vector2(398, 566)
+[node name="Parallax2D2" type="Parallax2D" parent="."]
+scroll_scale = Vector2(0.1, 0.1)
+repeat_size = Vector2(1, 1)
+repeat_times = 3
+ignore_camera_scroll = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D2"]
+z_index = -5
+position = Vector2(960, 540)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_mi0d7")
 
 [node name="Background" type="TileMapLayer" parent="."]
 scale = Vector2(0.25, 0.25)

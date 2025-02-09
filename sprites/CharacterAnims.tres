@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=14 format=3 uid="uid://cldk1vdqkr8a8"]
+[gd_resource type="SpriteFrames" load_steps=16 format=3 uid="uid://cldk1vdqkr8a8"]
 
 [ext_resource type="Texture2D" uid="uid://duo51flgrf264" path="res://sprites/CharacterAttack/attack_0001.png" id="1_5uwtj"]
 [ext_resource type="Texture2D" uid="uid://ewwn1yhybsf5" path="res://sprites/CharacterRun/1.png" id="1_jqyab"]
@@ -11,7 +11,9 @@
 [ext_resource type="Texture2D" uid="uid://bxqug3s8hveam" path="res://sprites/CharacterJump/jump_0003.png" id="3_vgtv4"]
 [ext_resource type="Texture2D" uid="uid://b7kktyjje7770" path="res://sprites/CharacterJump/jump_0004.png" id="4_glexl"]
 [ext_resource type="Texture2D" uid="uid://7jputu6wi3tg" path="res://sprites/CharacterRun/4.png" id="4_icn1i"]
+[ext_resource type="Texture2D" uid="uid://sgi2lpr4psnu" path="res://sprites/Character_Down0.png" id="4_xcuvu"]
 [ext_resource type="Texture2D" uid="uid://irt2k6bsgiwg" path="res://sprites/CharacterRun/5.png" id="5_o26ne"]
+[ext_resource type="Texture2D" uid="uid://b78tpwew3dyj8" path="res://sprites/CharacterDown.png" id="5_swwig"]
 [ext_resource type="Texture2D" uid="uid://k3rbh364b136" path="res://sprites/CharacterRun/6.png" id="6_4qkq0"]
 
 [resource]
@@ -32,6 +34,58 @@ animations = [{
 "loop": false,
 "name": &"attack",
 "speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_xcuvu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_swwig")
+}],
+"loop": false,
+"name": &"die",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_swwig")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_swwig")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_swwig")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_swwig")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_swwig")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_swwig")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_swwig")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_swwig")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_swwig")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_swwig")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_swwig")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_xcuvu")
+}],
+"loop": false,
+"name": &"faceplant",
+"speed": 4.0
 }, {
 "frames": [{
 "duration": 1.0,

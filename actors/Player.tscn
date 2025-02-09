@@ -23,7 +23,7 @@ height = 140.0
 size = Vector2(65, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5e3ro"]
-size = Vector2(87, 162)
+size = Vector2(185, 162)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_37mwr"]
 radius = 40.0
@@ -54,9 +54,7 @@ use_parent_material = true
 position = Vector2(9, -80)
 scale = Vector2(0.1, 0.1)
 sprite_frames = ExtResource("6_nupav")
-animation = &"attack"
-frame = 3
-frame_progress = 1.0
+animation = &"faceplant"
 
 [node name="Footbox" type="Area2D" parent="."]
 script = ExtResource("6_yyka5")
@@ -69,7 +67,7 @@ shape = SubResource("RectangleShape2D_0ttsu")
 script = ExtResource("7_h8nb4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-position = Vector2(69.5, -97)
+position = Vector2(88.5, -97)
 shape = SubResource("RectangleShape2D_5e3ro")
 
 [node name="Hurtbox" type="Area2D" parent="."]

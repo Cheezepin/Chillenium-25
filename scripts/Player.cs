@@ -174,11 +174,13 @@ public partial class Player : CharacterBody2D
 				break;
 			case Action.Faceplant:
 				velocity.X = Mathf.MoveToward(Velocity.X, 0, (float)(xFriction*delta));
-				if(actionTimer > 1.0) ChangeAction(Action.Move);
+				if(sprite.Animation != "faceplant") sprite.Play("faceplant");
+				if(actionTimer > 3.0) {ChangeAction(Action.Move);}
 				break;
 			case Action.Die:
 				velocity.X = Mathf.MoveToward(Velocity.X, 0, (float)(xFriction*delta));
-				if(actionTimer > 1.0) {ReturnToCheckpoint(); ChangeAction(Action.Move);}
+				if(sprite.Animation != "die") sprite.Play("die");
+				if(actionTimer > 2.0) {ReturnToCheckpoint(); ChangeAction(Action.Move);}
 				break;
 		}
 

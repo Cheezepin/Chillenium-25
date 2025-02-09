@@ -18,6 +18,7 @@ public partial class RotateSlides : Control
 		} else {
 			
 		}
-		RotationDegrees = Mathf.MoveToward(RotationDegrees, target, 300f*(float)delta);
+		// RotationDegrees = Mathf.MoveToward(RotationDegrees, target, 300f*(float)delta);
+		RotationDegrees = target;
 	}
 }
