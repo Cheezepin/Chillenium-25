@@ -27,7 +27,7 @@ volume_db = -18.515
 
 [node name="Track4" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_uilau")
-volume_db = -26.304
+volume_db = -29.584
 
 [node name="Track5" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_vrh0m")
@@ -35,7 +35,7 @@ volume_db = -16.811
 
 [node name="Track6" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_gpc16")
-volume_db = -15.847
+volume_db = -20.532
 
 [node name="Track7" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_qmpvw")
