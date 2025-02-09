@@ -1,41 +1,41 @@
-[gd_scene load_steps=20 format=3 uid="uid://i4otxtrfu7yh"]
+[gd_scene load_steps=20 format=3 uid="uid://282igke40xx8"]
 
-[ext_resource type="Shader" path="res://shaders/droplet_shader.gdshader" id="1_cfefk"]
-[ext_resource type="Script" path="res://scripts/Droplet.cs" id="2_rn5i3"]
-[ext_resource type="AudioStream" uid="uid://cn1t4hifmlndp" path="res://sounds/sfx/splat.ogg" id="3_r2jjn"]
-[ext_resource type="Texture2D" uid="uid://55y8p36wwhim" path="res://sprites/Enemies/red_0001.png" id="3_w7a4c"]
-[ext_resource type="Texture2D" uid="uid://bxgisq4fbvjp6" path="res://sprites/Enemies/red_0002.png" id="4_towq4"]
-[ext_resource type="Texture2D" uid="uid://nasvoa2d741c" path="res://sprites/Enemies/red_0003.png" id="5_p3gn8"]
-[ext_resource type="Texture2D" uid="uid://cjh3vg2e4nxyb" path="res://sprites/Enemies/red_0004.png" id="6_ku1c5"]
-[ext_resource type="Texture2D" uid="uid://dfuypm0jwpke2" path="res://sprites/Enemies/red_0005.png" id="7_7fkvg"]
-[ext_resource type="Script" path="res://scripts/Hurtbox.cs" id="8_k0847"]
-[ext_resource type="Script" path="res://scripts/Jumpbox.cs" id="9_6tley"]
-[ext_resource type="Script" path="res://scripts/Hitbox.cs" id="10_k7n38"]
-[ext_resource type="AudioStream" uid="uid://c8sst7b1o3sar" path="res://sounds/sfx/ding.ogg" id="11_4am0m"]
-[ext_resource type="AudioStream" uid="uid://cmuiqv54frdno" path="res://sounds/sfx/hit.ogg" id="12_6p81f"]
+[ext_resource type="Shader" path="res://shaders/droplet_shader.gdshader" id="1_mprgc"]
+[ext_resource type="Script" path="res://scripts/Droplet.cs" id="2_x47ti"]
+[ext_resource type="Texture2D" uid="uid://dcu4ipsumeddd" path="res://sprites/Enemies/yellow_0002.png" id="3_oj8st"]
+[ext_resource type="AudioStream" uid="uid://cn1t4hifmlndp" path="res://sounds/sfx/splat.ogg" id="3_xd3pp"]
+[ext_resource type="Texture2D" uid="uid://h8vw0pvrqkw8" path="res://sprites/Enemies/yellow_0003.png" id="4_kb1un"]
+[ext_resource type="Texture2D" uid="uid://dr202agg11shv" path="res://sprites/Enemies/yellow_0004.png" id="5_x5x54"]
+[ext_resource type="Texture2D" uid="uid://ci1d08bju7bqi" path="res://sprites/Enemies/yellow_0005.png" id="6_tdd7t"]
+[ext_resource type="Texture2D" uid="uid://cjroat60tmw4k" path="res://sprites/Enemies/yellow_0006.png" id="7_520fm"]
+[ext_resource type="Script" path="res://scripts/Hurtbox.cs" id="8_m36wn"]
+[ext_resource type="Script" path="res://scripts/Jumpbox.cs" id="9_ti8t2"]
+[ext_resource type="Script" path="res://scripts/Hitbox.cs" id="10_8uc6c"]
+[ext_resource type="AudioStream" uid="uid://c8sst7b1o3sar" path="res://sounds/sfx/ding.ogg" id="11_2ve5k"]
+[ext_resource type="AudioStream" uid="uid://cmuiqv54frdno" path="res://sounds/sfx/hit.ogg" id="12_r3bvm"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_trgev"]
-shader = ExtResource("1_cfefk")
+shader = ExtResource("1_mprgc")
 shader_parameter/flash = false
 shader_parameter/trans = true
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_ta4ab"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_nl875"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_w7a4c")
+"texture": ExtResource("3_oj8st")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_towq4")
+"texture": ExtResource("4_kb1un")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_p3gn8")
+"texture": ExtResource("5_x5x54")
 }, {
 "duration": 1.0,
-"texture": ExtResource("6_ku1c5")
+"texture": ExtResource("6_tdd7t")
 }, {
 "duration": 1.0,
-"texture": ExtResource("7_7fkvg")
+"texture": ExtResource("7_520fm")
 }],
 "loop": true,
 "name": &"default",
@@ -55,37 +55,37 @@ size = Vector2(70, 27)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_byx5i"]
 size = Vector2(53, 47)
 
-[node name="RedDroplet" type="AnimatableBody2D" node_paths=PackedStringArray("ding", "hitSound")]
+[node name="YellowDroplet" type="AnimatableBody2D" node_paths=PackedStringArray("ding", "hitSound")]
 material = SubResource("ShaderMaterial_trgev")
 collision_layer = 2
 collision_mask = 4095
 sync_to_physics = false
-script = ExtResource("2_rn5i3")
+script = ExtResource("2_x47ti")
+color = 2
 ding = NodePath("Ding")
 hitSound = NodePath("Hit")
-splatSound = ExtResource("3_r2jjn")
+splatSound = ExtResource("3_xd3pp")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 use_parent_material = true
 position = Vector2(0, -76)
 scale = Vector2(0.1, 0.1)
-sprite_frames = SubResource("SpriteFrames_ta4ab")
+sprite_frames = SubResource("SpriteFrames_nl875")
 autoplay = "default"
-frame_progress = 0.335454
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -20)
 shape = SubResource("CapsuleShape2D_d4jjj")
 
 [node name="Hurtbox" type="Area2D" parent="."]
-script = ExtResource("8_k0847")
+script = ExtResource("8_m36wn")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 position = Vector2(-1, -42)
 shape = SubResource("RectangleShape2D_o33fw")
 
 [node name="Jumpbox" type="Area2D" parent="."]
-script = ExtResource("9_6tley")
+script = ExtResource("9_ti8t2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Jumpbox"]
 position = Vector2(-1, -71.5)
@@ -93,7 +93,7 @@ shape = SubResource("RectangleShape2D_esgsk")
 
 [node name="Hitbox" type="Area2D" parent="."]
 position = Vector2(0, -72)
-script = ExtResource("10_k7n38")
+script = ExtResource("10_8uc6c")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 position = Vector2(0.5, 34.5)
@@ -104,11 +104,11 @@ position = Vector2(0, -10)
 target_position = Vector2(0, 20)
 
 [node name="Ding" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("11_4am0m")
+stream = ExtResource("11_2ve5k")
 volume_db = -13.117
 
 [node name="Hit" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("12_6p81f")
+stream = ExtResource("12_r3bvm")
 volume_db = 3.279
 
 [connection signal="area_entered" from="Hurtbox" to="." method="_OnHurtboxAreaEntered"]

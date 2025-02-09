@@ -321,6 +321,7 @@ shape = SubResource("RectangleShape2D_dk6or")
 position = Vector2(1779, 804)
 scale = Vector2(-1, 1)
 health = 10.0
+splatSound = null
 
 [node name="DeathFloors" type="Node2D" parent="."]
 

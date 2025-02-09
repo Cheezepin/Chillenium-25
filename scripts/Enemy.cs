@@ -13,7 +13,7 @@ public partial class Enemy : AnimatableBody2D
 
 	public const float gravity = 2500.0f;
 
-	[Export]public float health = 1.0f;
+	[Export]public float health = 2.0f;
 
 	[Export]public bool canBeJumpedOn = true;
 
@@ -68,7 +68,7 @@ public partial class Enemy : AnimatableBody2D
 		MoveAndCollide(yVelVec);
 
 		var collider = ray.GetCollider();
-		if(collider != null && collider is StaticBody2D) {
+		if(collider != null) {
 			velocity.Y = 0;
 		}
 
