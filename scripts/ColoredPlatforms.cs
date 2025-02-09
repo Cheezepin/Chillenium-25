@@ -40,7 +40,7 @@ public partial class ColoredPlatforms : TileMapLayer
 	{
 		switch(targetColor) {
 			case Global.ColorNames.Red:
-				GlobalPosition = new Vector2(home.X, 10f*(float)Math.Sin(timer*20.0));
+				GlobalPosition = new Vector2(10f*(float)Math.Sin(timer*20.0), home.Y);
 				break;
 			case Global.ColorNames.Orange:
 				float yVel = (timer % 2.0) < 1.0 ? 200.0f : -200.0f;

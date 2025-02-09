@@ -7,6 +7,8 @@ public partial class Player : CharacterBody2D
 	public const float MaxSpeed = 600.0f;
 	public const float JumpVelocity = -1000.0f;
 	public const float EnemyBounceVelocity = -600.0f;
+	public const float RedBounceVelocity = -900.0f;
+	public const float BlueBounceVelocity = -1500.0f;
 
 	public const double xAcceleration = 5500.0f;
 	public const double xFriction = 3500.0f;
@@ -230,7 +232,6 @@ public partial class Player : CharacterBody2D
 		if(body is Jumpbox) {
 			Enemy e = (Enemy)((Jumpbox)body).parent;
 			if(((Jumpbox)body).parent is Droplet) {
-				GD.Print("yeah");
 				if((int)((Droplet)e).color != Global.currColorID) return;
 			}
 			e.OnJumpedOn();
@@ -242,8 +243,8 @@ public partial class Player : CharacterBody2D
 		if(body is ColoredPlatforms) {
 			ColoredPlatforms plat = (ColoredPlatforms)body;
 			currPlatform = plat;
-			if(plat.targetColor == Global.ColorNames.Red) Velocity = new Vector2(Velocity.X, EnemyBounceVelocity*3);
-			if(plat.targetColor == Global.ColorNames.Blue) Velocity = new Vector2(Velocity.X, EnemyBounceVelocity*8);
+			if(plat.targetColor == Global.ColorNames.Red) Velocity = new Vector2(Velocity.X, RedBounceVelocity);
+			if(plat.targetColor == Global.ColorNames.Blue) Velocity = new Vector2(Velocity.X, BlueBounceVelocity);
 		}
 	}
 
