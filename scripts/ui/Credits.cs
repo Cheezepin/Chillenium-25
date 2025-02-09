@@ -8,7 +8,6 @@ public partial class Credits : Control
 	Parameters: None
 	Description: Creates a back button and its event for when it is pressed */
 
-	[Export] public AudioStreamPlayer pressSound;
 	public override void _Ready(){
 		var backButton = (TextureButton)GetNode("Return");
 		var backButtonCaller = new Callable(this, nameof(OnBackButtonPressed));
@@ -17,7 +16,6 @@ public partial class Credits : Control
 
 	private void OnBackButtonPressed(){
 		Hide();
-		pressSound.Play();
 		GetParent().GetNode<Control>("MainMenuItems").Show();
 	}
 }
