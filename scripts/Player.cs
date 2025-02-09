@@ -23,6 +23,7 @@ public partial class Player : CharacterBody2D
 	[Export] public AudioStreamPlayer hitSound;
 	[Export] public AudioStreamPlayer slideSound;
 	[Export] public AudioStreamPlayer attackSound;
+	[Export] public AudioStreamPlayer splatSound;
 
 	private CollisionShape2D hitbox;
 
@@ -183,12 +184,20 @@ public partial class Player : CharacterBody2D
 				break;
 			case Action.Faceplant:
 				velocity.X = Mathf.MoveToward(Velocity.X, 0, (float)(xFriction*delta));
-				if(sprite.Animation != "faceplant") sprite.Play("faceplant");
+				if (sprite.Animation != "faceplant")
+				{
+					sprite.Play("faceplant");
+					splatSound.Play();
+				}
 				if(actionTimer > 3.0) {ChangeAction(Action.Move);}
 				break;
 			case Action.Die:
 				velocity.X = Mathf.MoveToward(Velocity.X, 0, (float)(xFriction*delta));
-				if(sprite.Animation != "die") sprite.Play("die");
+				if (sprite.Animation != "die")
+				{
+					sprite.Play("die");
+					splatSound.Play();
+				}
 				if(actionTimer > 2.0) {ReturnToCheckpoint(); ChangeAction(Action.Move);}
 				break;
 		}
@@ -262,6 +271,7 @@ public partial class Player : CharacterBody2D
 		}
 
 		if(body is DeathFloor) {
+			splatSound.Play();
 			ReturnToCheckpoint();
 		}
 
