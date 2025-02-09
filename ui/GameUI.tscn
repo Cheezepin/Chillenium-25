@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bdwdf7hp3yex1"]
+[gd_scene load_steps=15 format=3 uid="uid://bdwdf7hp3yex1"]
 
 [ext_resource type="Script" path="res://scripts/GameUI.cs" id="1_htaga"]
 [ext_resource type="Texture2D" uid="uid://dftiunfvyslab" path="res://ui/vignette.png" id="2_uwkuw"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://xfk10uwhdop6" path="res://ui/game/Child's_Play_SlideColor-15.png" id="11_1n0oc"]
 [ext_resource type="Script" path="res://scripts/ui/RotateSlides.cs" id="12_g71rv"]
 [ext_resource type="Texture2D" uid="uid://ds4afr20hmb0g" path="res://ui/game/Child's_Play_SlideColor002-21.png" id="12_hwdf5"]
+[ext_resource type="Script" path="res://scripts/ui/UICard.cs" id="14_cc6pg"]
 
 [node name="GameUI" type="CanvasLayer"]
 layer = 10
@@ -92,6 +93,7 @@ offset_top = -1392.0
 offset_right = 422.0
 offset_bottom = -289.0
 texture = ExtResource("12_hwdf5")
+script = ExtResource("14_cc6pg")
 
 [node name="Orange" type="TextureRect" parent="Projector/Rotate"]
 modulate = Color(1, 0.498039, 0, 1)
@@ -102,6 +104,8 @@ offset_right = 1840.58
 offset_bottom = 85.3749
 rotation = 1.0472
 texture = ExtResource("12_hwdf5")
+script = ExtResource("14_cc6pg")
+col = 1
 
 [node name="Yellow" type="TextureRect" parent="Projector/Rotate"]
 modulate = Color(1, 1, 0, 1)
@@ -112,30 +116,41 @@ offset_right = 2237.36
 offset_bottom = 1481.37
 rotation = 2.0944
 texture = ExtResource("12_hwdf5")
+script = ExtResource("14_cc6pg")
+col = 2
 
 [node name="Green" type="TextureRect" parent="Projector/Rotate"]
 modulate = Color(0, 1, 0, 1)
+layout_mode = 0
 offset_left = 384.0
 offset_top = 1504.0
 offset_right = 1214.0
 offset_bottom = 2607.0
 rotation = -3.14159
 texture = ExtResource("12_hwdf5")
+script = ExtResource("14_cc6pg")
+col = 3
 
 [node name="Blue" type="TextureRect" parent="Projector/Rotate"]
 modulate = Color(0, 0, 1, 1)
+layout_mode = 0
 offset_left = -1098.5
 offset_top = 1105.34
 offset_right = -268.502
 offset_bottom = 2208.34
 rotation = -2.09439
 texture = ExtResource("12_hwdf5")
+script = ExtResource("14_cc6pg")
+col = 4
 
 [node name="Purple" type="TextureRect" parent="Projector/Rotate"]
 modulate = Color(1, 0, 1, 1)
+layout_mode = 0
 offset_left = -1490.79
 offset_top = -361.877
 offset_right = -660.79
 offset_bottom = 741.123
 rotation = -1.0472
 texture = ExtResource("12_hwdf5")
+script = ExtResource("14_cc6pg")
+col = 5

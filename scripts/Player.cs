@@ -43,6 +43,8 @@ public partial class Player : CharacterBody2D
 
 	private AnimatedSprite2D sprite;
 	private bool hasPurpleSpeed = false;
+
+	[Export]public PackedScene flyCardSpawner;
 	public override void _Ready()
 	{
 		s = (ShaderMaterial)Material;
@@ -254,6 +256,9 @@ public partial class Player : CharacterBody2D
 			Global.colorsUnlocked = 0;
 			body.QueueFree();
 			ChangeAction(Action.Faceplant);
+			Node2D spawner = (Node2D)flyCardSpawner.Instantiate();
+			Global.currentLevel.GetNode<CanvasLayer>("Cards").AddChild(spawner);
+			spawner.GlobalPosition = GlobalPosition;
 		}
 
 		if(body is DeathFloor) {

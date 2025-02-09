@@ -1,0 +1,32 @@
+[gd_scene load_steps=7 format=3 uid="uid://c6x6u5q6pbvla"]
+
+[ext_resource type="PackedScene" uid="uid://dmb5fepvwasad" path="res://actors/FlyCard.tscn" id="1_p6ahj"]
+[ext_resource type="Texture2D" uid="uid://ctj0qmqqsmiq3" path="res://sprites/orange_card.png" id="2_dh2so"]
+[ext_resource type="Texture2D" uid="uid://b71vu60fbs6vc" path="res://sprites/yellow_card.png" id="3_oyd4b"]
+[ext_resource type="Texture2D" uid="uid://bekp31i6wmh5" path="res://sprites/green_card.png" id="4_574px"]
+[ext_resource type="Texture2D" uid="uid://dx6emxhk5cafs" path="res://sprites/blue_card.png" id="5_qa85p"]
+[ext_resource type="Texture2D" uid="uid://blkudepji16vm" path="res://sprites/purple_card.png" id="6_vsrke"]
+
+[node name="FlyCardSpawner" type="Node2D"]
+
+[node name="FlyCard1" parent="." instance=ExtResource("1_p6ahj")]
+
+[node name="FlyCard2" parent="." instance=ExtResource("1_p6ahj")]
+texture = ExtResource("2_dh2so")
+id = 1
+
+[node name="FlyCard3" parent="." instance=ExtResource("1_p6ahj")]
+texture = ExtResource("3_oyd4b")
+id = 2
+
+[node name="FlyCard4" parent="." instance=ExtResource("1_p6ahj")]
+texture = ExtResource("4_574px")
+id = 3
+
+[node name="FlyCard5" parent="." instance=ExtResource("1_p6ahj")]
+texture = ExtResource("5_qa85p")
+id = 4
+
+[node name="FlyCard6" parent="." instance=ExtResource("1_p6ahj")]
+texture = ExtResource("6_vsrke")
+id = 5
