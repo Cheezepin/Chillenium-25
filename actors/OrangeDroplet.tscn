@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://xu7wlc0kappq"]
+[gd_scene load_steps=21 format=3 uid="uid://ch75sdvgpnjxy"]
 
 [ext_resource type="Shader" path="res://shaders/droplet_shader.gdshader" id="1_o8xq6"]
 [ext_resource type="Script" path="res://scripts/Droplet.cs" id="2_232tc"]
@@ -14,6 +14,7 @@
 [ext_resource type="Shape2D" uid="uid://d2eb8k1bxprf8" path="res://actors/hurtbox_droplet.tres" id="10_hk0df"]
 [ext_resource type="AudioStream" uid="uid://c8sst7b1o3sar" path="res://sounds/sfx/ding.ogg" id="11_l6vg7"]
 [ext_resource type="AudioStream" uid="uid://cmuiqv54frdno" path="res://sounds/sfx/hit.ogg" id="12_viw20"]
+[ext_resource type="PackedScene" uid="uid://dlmo8xhttnu2s" path="res://global/ExplosionPuff.tscn" id="14_va1s3"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_trgev"]
 shader = ExtResource("1_o8xq6")
@@ -53,7 +54,7 @@ size = Vector2(70, 27)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_byx5i"]
 size = Vector2(53, 47)
 
-[node name="OrangeDroplet" type="AnimatableBody2D" node_paths=PackedStringArray("ding", "hitSound")]
+[node name="OrangeDroplet" type="AnimatableBody2D" node_paths=PackedStringArray("ding", "hitSound", "explosion")]
 material = SubResource("ShaderMaterial_trgev")
 collision_layer = 2
 collision_mask = 4095
@@ -63,6 +64,7 @@ color = 1
 ding = NodePath("Ding")
 hitSound = NodePath("Hit")
 splatSound = ExtResource("3_ws55p")
+explosion = NodePath("ExplosionPuff")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 use_parent_material = true
@@ -108,5 +110,7 @@ volume_db = -13.117
 [node name="Hit" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("12_viw20")
 volume_db = 3.279
+
+[node name="ExplosionPuff" parent="." instance=ExtResource("14_va1s3")]
 
 [connection signal="area_entered" from="Hurtbox" to="." method="_OnHurtboxAreaEntered"]
