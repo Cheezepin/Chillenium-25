@@ -26,8 +26,8 @@
 [ext_resource type="Texture2D" uid="uid://d4jkx06lf1gr7" path="res://sprites/stainedglass.png" id="22_i3ctk"]
 [ext_resource type="Script" path="res://scripts/DisperseTrigger.cs" id="22_sj1f2"]
 [ext_resource type="PackedScene" uid="uid://c2bu8c7go0jhx" path="res://global/DynamicMusic.tscn" id="26_dkwr1"]
-[ext_resource type="PackedScene" path="res://actors/RedDroplet.tscn" id="26_si5v2"]
-[ext_resource type="PackedScene" path="res://actors/OrangeDroplet.tscn" id="27_x0xjj"]
+[ext_resource type="PackedScene" uid="uid://vjjvrv40250f" path="res://actors/RedDroplet.tscn" id="26_si5v2"]
+[ext_resource type="PackedScene" uid="uid://ch75sdvgpnjxy" path="res://actors/OrangeDroplet.tscn" id="27_x0xjj"]
 [ext_resource type="AudioStream" uid="uid://bfb8glcsmjg71" path="res://sounds/sfx/switch.ogg" id="30_vn31i"]
 [ext_resource type="AudioStream" uid="uid://bndcedipiuesl" path="res://sounds/sfx/chirp.ogg" id="31_w0pxm"]
 

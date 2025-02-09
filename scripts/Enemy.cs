@@ -21,6 +21,7 @@ public partial class Enemy : AnimatableBody2D
 	[Export] public AudioStreamPlayer hitSound;
 	private RayCast2D ray;
 	[Export] public AudioStream splatSound;
+	[Export] public GpuParticles2D explosion;
 
 	protected double timer = 0;
 	protected Player player;
@@ -91,6 +92,11 @@ public partial class Enemy : AnimatableBody2D
 			AudioStreamPlayer splat = new() { Stream = splatSound, VolumeDb = -5  };
 			GetParent().AddChild(splat);
 			splat.Play();
+			RemoveChild(explosion);
+			GetParent().AddChild(explosion);
+			explosion.GlobalPosition = GlobalPosition;
+			explosion.Emitting = true;
+			explosion.Finished += () => { explosion.QueueFree(); };
 			QueueFree();
 		}
 	}

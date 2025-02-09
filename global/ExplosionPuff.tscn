@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://dlmo8xhttnu2s"]
+
+[ext_resource type="Texture2D" uid="uid://chdcwhvk7x0pt" path="res://sprites/explosionparticle.png" id="1_ts0v5"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_oojjn"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 1.0
+direction = Vector3(0, -1, 0)
+spread = 58.652
+initial_velocity_min = 244.62
+initial_velocity_max = 244.62
+gravity = Vector3(0, 200, 0)
+
+[node name="ExplosionPuff" type="GPUParticles2D"]
+emitting = false
+process_material = SubResource("ParticleProcessMaterial_oojjn")
+texture = ExtResource("1_ts0v5")
+one_shot = true
+explosiveness = 0.76
+randomness = 0.31

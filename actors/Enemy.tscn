@@ -1,13 +1,15 @@
-[gd_scene load_steps=15 format=3 uid="uid://djsi2ionjyiqf"]
+[gd_scene load_steps=17 format=3 uid="uid://djsi2ionjyiqf"]
 
 [ext_resource type="Texture2D" uid="uid://dvu3egfotdpy1" path="res://ui/tiramisu.png" id="1_ewsdf"]
 [ext_resource type="Material" uid="uid://dhqtai7vi8ml3" path="res://materials/character_material.tres" id="1_f02fe"]
 [ext_resource type="Script" path="res://scripts/Enemy.cs" id="1_oegqa"]
+[ext_resource type="AudioStream" uid="uid://cn1t4hifmlndp" path="res://sounds/sfx/splat.ogg" id="3_mawr0"]
 [ext_resource type="Script" path="res://scripts/Hitbox.cs" id="4_hdhqb"]
 [ext_resource type="Script" path="res://scripts/Hurtbox.cs" id="4_k83aa"]
 [ext_resource type="Script" path="res://scripts/Jumpbox.cs" id="5_iwmvv"]
 [ext_resource type="AudioStream" uid="uid://c8sst7b1o3sar" path="res://sounds/sfx/ding.ogg" id="7_om85j"]
 [ext_resource type="AudioStream" uid="uid://cmuiqv54frdno" path="res://sounds/sfx/hit.ogg" id="8_8c34d"]
+[ext_resource type="PackedScene" uid="uid://dlmo8xhttnu2s" path="res://global/ExplosionPuff.tscn" id="10_kaqrl"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s4stb"]
 atlas = ExtResource("1_ewsdf")
@@ -37,7 +39,7 @@ size = Vector2(156, 27)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_byx5i"]
 size = Vector2(156, 146)
 
-[node name="Enemy" type="AnimatableBody2D" node_paths=PackedStringArray("ding", "hitSound")]
+[node name="Enemy" type="AnimatableBody2D" node_paths=PackedStringArray("ding", "hitSound", "explosion")]
 material = ExtResource("1_f02fe")
 collision_layer = 2
 collision_mask = 4095
@@ -45,6 +47,8 @@ sync_to_physics = false
 script = ExtResource("1_oegqa")
 ding = NodePath("Ding")
 hitSound = NodePath("Hit")
+splatSound = ExtResource("3_mawr0")
+explosion = NodePath("ExplosionPuff")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 use_parent_material = true
@@ -92,5 +96,7 @@ volume_db = -13.117
 [node name="Hit" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_8c34d")
 volume_db = 3.279
+
+[node name="ExplosionPuff" parent="." instance=ExtResource("10_kaqrl")]
 
 [connection signal="area_entered" from="Hurtbox" to="." method="_OnHurtboxAreaEntered"]

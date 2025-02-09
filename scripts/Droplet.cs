@@ -15,6 +15,7 @@ public partial class Droplet : Enemy
 	{
 		r = new Random();
 		phase = r.NextDouble()*2.0;
+		explosion.Modulate = Global.colors[(int)color];
 		base._Ready();
 	}
 	public override void _Process(double delta)
