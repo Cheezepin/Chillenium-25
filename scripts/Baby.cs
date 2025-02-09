@@ -48,6 +48,7 @@ public partial class Baby : AnimatedSprite2D
 			Girl girlNode = girl.Instantiate<Girl>();
 			Global.currentLevel.AddChild(girlNode);
 			girlNode.GlobalPosition = new Vector2(1300.0f, -250.0f);
+			girlNode.player = body.GetParent<Player>();
 		}
 	}
 }
