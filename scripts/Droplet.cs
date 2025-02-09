@@ -45,7 +45,7 @@ public partial class Droplet : Enemy
 		if(timer < 0.2) return;
 		if(!Global.currBW && Global.currColorID == (int)color && body is Hitbox) {
 			flashTimer = 0.04;
-			velocity.X = body.GlobalPosition.X - GlobalPosition.X > 0 ? -1000.0f : 1000.0f;
+			velocity.X = body.GlobalPosition.X - GlobalPosition.X > 0 ? -500.0f : 500.0f;
 			TakeDamage(1.0f);
 			GlobalScale = new Vector2(0.5f, 1.0f);
 		}
