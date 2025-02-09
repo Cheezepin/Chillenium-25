@@ -352,35 +352,35 @@ position = Vector2(-202, 0)
 shape = SubResource("RectangleShape2D_q53oc")
 
 [node name="Checkpoint2" type="Area2D" parent="Checkpoints"]
-position = Vector2(274, 670)
+position = Vector2(-1670, 939)
 script = ExtResource("15_qxhjv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Checkpoints/Checkpoint2"]
-position = Vector2(-1939.5, 235)
+position = Vector2(18, -34)
 shape = SubResource("RectangleShape2D_psko0")
 
 [node name="Checkpoint3" type="Area2D" parent="Checkpoints"]
-position = Vector2(-2285, 533)
+position = Vector2(-4222, 768)
 script = ExtResource("15_qxhjv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Checkpoints/Checkpoint3"]
-position = Vector2(-1939.5, 235)
+position = Vector2(11, 6)
 shape = SubResource("RectangleShape2D_psko0")
 
 [node name="Checkpoint4" type="Area2D" parent="Checkpoints"]
-position = Vector2(-602, -102)
+position = Vector2(-2506, 86)
 script = ExtResource("15_qxhjv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Checkpoints/Checkpoint4"]
-position = Vector2(-1884.5, 235)
+position = Vector2(13, 53)
 shape = SubResource("RectangleShape2D_pp2gm")
 
 [node name="Checkpoint5" type="Area2D" parent="Checkpoints"]
-position = Vector2(3722, 420)
+position = Vector2(1966, 622)
 script = ExtResource("15_qxhjv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Checkpoints/Checkpoint5"]
-position = Vector2(-1740, 265)
+position = Vector2(2, 36)
 shape = SubResource("RectangleShape2D_8id75")
 
 [node name="Checkpoint6" type="Area2D" parent="Checkpoints"]

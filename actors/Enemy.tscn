@@ -9,7 +9,7 @@
 [ext_resource type="Script" path="res://scripts/Jumpbox.cs" id="5_iwmvv"]
 [ext_resource type="AudioStream" uid="uid://c8sst7b1o3sar" path="res://sounds/sfx/ding.ogg" id="7_om85j"]
 [ext_resource type="AudioStream" uid="uid://cmuiqv54frdno" path="res://sounds/sfx/hit.ogg" id="8_8c34d"]
-[ext_resource type="PackedScene" uid="uid://dlmo8xhttnu2s" path="res://global/ExplosionPuff.tscn" id="10_kaqrl"]
+[ext_resource type="PackedScene" path="res://global/ExplosionPuff.tscn" id="10_kaqrl"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s4stb"]
 atlas = ExtResource("1_ewsdf")
@@ -39,7 +39,7 @@ size = Vector2(156, 27)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_byx5i"]
 size = Vector2(156, 146)
 
-[node name="Enemy" type="AnimatableBody2D" node_paths=PackedStringArray("ding", "hitSound", "explosion")]
+[node name="Enemy" type="AnimatableBody2D" node_paths=PackedStringArray("ding", "hitSound")]
 material = ExtResource("1_f02fe")
 collision_layer = 2
 collision_mask = 4095
@@ -48,7 +48,6 @@ script = ExtResource("1_oegqa")
 ding = NodePath("Ding")
 hitSound = NodePath("Hit")
 splatSound = ExtResource("3_mawr0")
-explosion = NodePath("ExplosionPuff")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 use_parent_material = true
