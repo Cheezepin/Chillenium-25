@@ -73,7 +73,7 @@ public partial class TextTriggers : Node2D
     {
 		if (body is Player)
 		{
-			tutorialPos = -150;
+			tutorialPos = -250;
 		}
     }
 }
